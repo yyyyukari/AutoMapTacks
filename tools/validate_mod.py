@@ -403,6 +403,11 @@ def main() -> int:
             and "pcall(CanPlacePin, playerID, subject)" in lua
             and "pcall(UpdatePinYields, playerID, {})" in lua
             and "AdjacentImprovement" in wonder_lua,
+        "wonder land-water placement fallback":
+            "if isWater ~= requiresWater then return false, false; end"
+                in wonder_lua
+            and "MustBeAdjacentLand" in wonder_lua
+            and "MustBeLake" in wonder_lua,
         "automatic wonder support bundles":
             "BuildWonderSupportBundles" in lua
             and "candidate.supportItems" in lua

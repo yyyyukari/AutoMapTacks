@@ -277,14 +277,6 @@ function AMT_WonderPlanner.CanUseRawCandidate(playerID, item)
         Key = item.subjectKey,
         Type = MAP_PIN_TYPE_WONDER,
     };
-    -- Wonders without relational requirements can be checked directly.  A
-    -- wonder requiring an adjacent district/improvement must keep candidates
-    -- whose base tile is legal; the complete pair is checked later by DMT in
-    -- the planner's simulation overlay.
-    if not rules.hasDeferredRequirement then
-        local ok, canPlace = pcall(CanPlacePin, playerID, subject);
-        return ok and canPlace == true, false;
-    end
     if not rules.row or not item.plot then
         return false, false;
     end
@@ -299,6 +291,17 @@ function AMT_WonderPlanner.CanUseRawCandidate(playerID, item)
         if directive.plantForest then featureType = "FEATURE_FOREST"; end
         if directive.removeResource then resourceType = nil; end
     end
+    local row = rules.row;
+    local isWater = IsTerrainWater(terrainType);
+    local isBridge = row.BuildingType == "BUILDING_GOLDEN_GATE_BRIDGE"
+        or row.BuildingType == "BUILDING_TOWER_BRIDGE";
+    local requiresWater = IsTrue(row.MustBeAdjacentLand)
+        or IsTrue(row.MustBeLake)
+        or isBridge;
+    -- DMT can accept a wonder with no explicit terrain list on water.  Civ VI
+    -- treats such wonders as land-only; water wonders are identified by their
+    -- MustBeAdjacentLand/MustBeLake fields (plus supported bridge types).
+    if isWater ~= requiresWater then return false, false; end
     if districtType or wonderType then return false, false; end
     if resourceType and IsResourceVisible(playerID, resourceType)
         and not CanHarvestResource(resourceType) then
@@ -315,7 +318,6 @@ function AMT_WonderPlanner.CanUseRawCandidate(playerID, item)
     );
     if terrainOK and not validTerrain then return false, false; end
 
-    local row = rules.row;
     if IsTrue(row.RequiresRiver)
         and not IsAdjacentToRiver(playerID, item.x, item.y) then
         return false, false;
@@ -356,11 +358,16 @@ function AMT_WonderPlanner.CanUseRawCandidate(playerID, item)
         and IsTerrainWater(terrainType) then
         return false, false;
     end
-    if row.BuildingType == "BUILDING_GOLDEN_GATE_BRIDGE"
-        or row.BuildingType == "BUILDING_TOWER_BRIDGE" then
+    if isBridge then
         if not IsValidBridgePosition(playerID, item.x, item.y) then
             return false, false;
         end
+    end
+    -- Wonders without projected district/improvement requirements still use
+    -- DMT as the final authority after AMT's database-backed base-tile checks.
+    if not rules.hasDeferredRequirement then
+        local ok, canPlace = pcall(CanPlacePin, playerID, subject);
+        return ok and canPlace == true, false;
     end
     return true, rules.hasDeferredRequirement;
 end
