@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GameData>
+  <Instance Name="AMTEntryButtonInstance">
+    <Button ID="OpenPlannerButton"
+            Anchor="L,C"
+            Size="49,49"
+            Texture="LaunchBar_Hook_GreatPeopleButton"
+            TextureOffset="0,-1"
+            StateOffsetIncrement="0,49"
+            Style="ButtonNormalText"
+            ToolTip="LOC_AMT_ENTRY_TOOLTIP">
+      <Image ID="OpenPlannerIcon"
+             Anchor="C,C"
+             Offset="0,1"
+             Size="24,24"
+             Texture="Placeholder"/>
+    </Button>
+  </Instance>
+
+  <Instance Name="AMTEntryPinInstance">
+    <Image ID="Pin"
+           Anchor="L,C"
+           Offset="0,-2"
+           Size="7,7"
+           Texture="LaunchBar_TrackPip"
+           Color="255,255,255,200"/>
+  </Instance>
+</GameData>

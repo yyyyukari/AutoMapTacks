@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<GameInfo>
+
+    <InputCategories>
+        <InsertOrIgnore CategoryId="AMT" Name="LOC_AMT_OPTIONS_HOTKEY_CATEGORY" Visible="1" SortIndex="0"/>
+    </InputCategories>
+
+    <InputActions>
+        <InsertOrIgnore ActionId="AutoPlanMapTacks" Name="LOC_AMT_OPTIONS_HOTKEY_AUTO_PLAN" Description="LOC_AMT_OPTIONS_HOTKEY_AUTO_PLAN" CategoryId="AMT" ContextId="World"/>
+    </InputActions>
+
+    <InputActionDefaultGestures>
+        <InsertOrIgnore ActionId="AutoPlanMapTacks" Index="0" GestureType="KBMouse" GestureData="LOC_OPTIONS_KEY_SHIFT+LOC_OPTIONS_KEY_P"/>
+    </InputActionDefaultGestures>
+
+</GameInfo>

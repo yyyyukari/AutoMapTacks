@@ -1,0 +1,802 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GameData>
+    <EnglishText>
+        <Row Tag="LOC_AMT_V60_MOD_NAME"><Text>Auto Map Tacks Planner</Text></Row>
+        <Row Tag="LOC_AMT_V60_MOD_TEASER"><Text>Plan one selected city's districts, improvements, and wonders with population-aware optimization.</Text></Row>
+        <Row Tag="LOC_AMT_V60_MOD_DESCRIPTION"><Text>Plan one selected city's districts, improvements, and wonders with population-aware heuristic optimization and a full preview report. [v60]</Text></Row>
+        <Row Tag="LOC_AMT_OPTIONS_HOTKEY_CATEGORY">
+            <Text>Auto Map Tacks</Text>
+        </Row>
+        <Row Tag="LOC_AMT_OPTIONS_HOTKEY_AUTO_PLAN">
+            <Text>Open Auto-Plan Popup</Text>
+        </Row>
+        <Row Tag="LOC_AMT_ENTRY_BUTTON"><Text>Auto Planner</Text></Row>
+        <Row Tag="LOC_AMT_ENTRY_TOOLTIP"><Text>Auto Map Tacks Planner toggle. Shortcut: Shift+P.</Text></Row>
+        <Row Tag="LOC_AMT_RULES_REFRESHED"><Text>Technology or civic completed. Options were preserved and planning rules were refreshed.</Text></Row>
+        <Row Tag="LOC_AMT_POPUP_TITLE">
+            <Text>Auto Map Tacks Planner</Text>
+        </Row>
+        <Row Tag="LOC_AMT_TARGET_CITY_LABEL">
+            <Text>Target city:</Text>
+        </Row>
+        <Row Tag="LOC_AMT_TARGET_CITY_NONE">
+            <Text>(no city - click a city first)</Text>
+        </Row>
+        <Row Tag="LOC_AMT_DISTRICTS_LABEL">
+            <Text>Districts to plan:</Text>
+        </Row>
+        <Row Tag="LOC_AMT_DISTRICTS_HINT">
+            <Text>Includes support districts such as Aqueducts, Dams and Canals.</Text>
+        </Row>
+        <Row Tag="LOC_AMT_VISIBILITY_HINT">
+            <Text>Only revealed tiles are evaluated. Clear and re-plan after exploring new tiles.</Text>
+        </Row>
+        <Row Tag="LOC_AMT_FIXED_ANCHOR_HINT">
+            <Text>Manual district tacks are protected by default and scored as anchors; limits are enforced.</Text>
+        </Row>
+        <Row Tag="LOC_AMT_LIMIT_ONE_PER_PLAYER">
+            <Text>Limited to one per civilization; existing districts and tacks count toward the limit.</Text>
+        </Row>
+        <Row Tag="LOC_AMT_LIMIT_PER_PLAYER">
+            <Text>Limited to {1_Amount} per civilization; existing districts and tacks count toward the limit.</Text>
+        </Row>
+        <Row Tag="LOC_AMT_WEIGHTS_LABEL">
+            <Text>Yield weights:</Text>
+        </Row>
+        <Row Tag="LOC_AMT_OVERWRITE">
+            <Text>Replace generated tacks</Text>
+        </Row>
+        <Row Tag="LOC_AMT_OVERWRITE_TOOLTIP">
+            <Text>Allows new placements to replace Auto Map Tacks pins. Manually placed pins remain protected.</Text>
+        </Row>
+        <Row Tag="LOC_AMT_CLEAR">
+            <Text>Clear this city's generated tacks first</Text>
+        </Row>
+        <Row Tag="LOC_AMT_CLEAR_TOOLTIP">
+            <Text>Deletes Auto Map Tacks generated for the current city, including compatible tacks from earlier versions. Other cities' tacks are preserved.</Text>
+        </Row>
+        <Row Tag="LOC_AMT_CLEAR_MANUAL">
+            <Text>Also clear this city's manual tacks</Text>
+        </Row>
+        <Row Tag="LOC_AMT_CLEAR_MANUAL_TOOLTIP">
+            <Text>Optional: also deletes manual tacks assigned to the current city. Undo Last Plan restores them when their tiles remain free.</Text>
+        </Row>
+        <Row Tag="LOC_AMT_MULTI_CITY">
+            <Text>Link nearby cities (within 6 tiles, up to 4 cities)</Text>
+        </Row>
+        <Row Tag="LOC_AMT_MULTI_CITY_TOOLTIP">
+            <Text>Plans the selected district types for nearby cities together and maximizes the combined adjacency value.</Text>
+        </Row>
+        <Row Tag="LOC_AMT_CALCULATING">
+            <Text>Calculating the best combined layout...</Text>
+        </Row>
+        <Row Tag="LOC_AMT_CALCULATION_HINT">
+            <Text>Combination planning can take a while when many items are selected. Please wait after starting the calculation.</Text>
+        </Row>
+        <Row Tag="LOC_AMT_CALCULATING_LONG">
+            <Text>Calculating the optimal complete plan...[NEWLINE]Large selections may take some time. Please wait and do not click repeatedly.</Text>
+        </Row>
+        <Row Tag="LOC_AMT_CALCULATION_SCAN"><Text>Checking legal revealed plots... {1_Current}/{2_Total}</Text></Row>
+        <Row Tag="LOC_AMT_CALCULATION_CANDIDATES"><Text>Comparing candidate locations... {1_Current}/{2_Total}</Text></Row>
+        <Row Tag="LOC_AMT_CALCULATION_SEARCH"><Text>Optimizing the complete combination... {1_Current}/{2_Total}</Text></Row>
+        <Row Tag="LOC_AMT_CANCEL_CALCULATION"><Text>Cancel calculation</Text></Row>
+        <Row Tag="LOC_AMT_CALCULATION_CANCELLED"><Text>Calculation cancelled. Settings were kept and no map tacks were changed.</Text></Row>
+        <Row Tag="LOC_AMT_ONE_CLICK_PLAN"><Text>One-click Plan</Text></Row>
+        <Row Tag="LOC_AMT_ONE_CLICK_PLAN_TOOLTIP"><Text>Automatically selects districts according to the current horizon and all currently unlocked planning improvements, keeps manually selected wonders, then generates a complete preview. It never places tacks without confirmation.</Text></Row>
+        <Row Tag="LOC_AMT_AUTO_SUPPLEMENT"><Text>Auto-select</Text></Row>
+        <Row Tag="LOC_AMT_AUTO_SUPPLEMENT_TOOLTIP"><Text>Fills empty specialty-district slots using the current yield preferences and selects currently unlocked improvements that may help. It only changes settings and does not start calculation.</Text></Row>
+        <Row Tag="LOC_AMT_HIGH_ADJACENCY_ANALYSIS"><Text>Analyze District Sites</Text></Row>
+        <Row Tag="LOC_AMT_HIGH_ADJACENCY_ANALYSIS_TOOLTIP"><Text>Independently analyzes every population-limited specialty district and the legal adjacent improvements that can directly raise that district's own adjacency. Click a report entry to preview that result on the map. This does not change selections, slot order, or map tacks.</Text></Row>
+        <Row Tag="LOC_AMT_HIGH_ADJACENCY_TITLE"><Text>High-Adjacency Specialty District Analysis</Text></Row>
+        <Row Tag="LOC_AMT_HIGH_ADJACENCY_CALCULATING"><Text>Analyzing high-adjacency specialty districts for the selected city. This may take a moment...</Text></Row>
+        <Row Tag="LOC_AMT_HIGH_ADJACENCY_SUMMARY"><Text>{1_City}: analyzed {2_Available} specialty district type(s); {3_Unavailable} unavailable. Results are independent and may share a best tile. Click an entry to switch its map preview.</Text></Row>
+        <Row Tag="LOC_AMT_HIGH_ADJACENCY_AVAILABLE_SECTION"><Text>Best attainable adjacency ({1_Amount})</Text></Row>
+        <Row Tag="LOC_AMT_HIGH_ADJACENCY_UNAVAILABLE_SECTION"><Text>Unavailable or already committed ({1_Amount})</Text></Row>
+        <Row Tag="LOC_AMT_HIGH_ADJACENCY_ENTRY"><Text>{1_Index}. {2_District}[NEWLINE]Best tile ({3_X}, {4_Y})  {5_Yields}[NEWLINE]{6_Status}; {7_Support}</Text></Row>
+        <Row Tag="LOC_AMT_HIGH_ADJACENCY_UNAVAILABLE_ENTRY"><Text>{1_District}[NEWLINE]{2_Reason}</Text></Row>
+        <Row Tag="LOC_AMT_HIGH_ADJACENCY_CURRENT"><Text>Available under current rules</Text></Row>
+        <Row Tag="LOC_AMT_HIGH_ADJACENCY_FUTURE"><Text>Future option: required technology or civic is not unlocked</Text></Row>
+        <Row Tag="LOC_AMT_HIGH_ADJACENCY_ALREADY_BUILT"><Text>This city has already built this specialty district</Text></Row>
+        <Row Tag="LOC_AMT_HIGH_ADJACENCY_ALREADY_PLANNED"><Text>This city already has a map tack for this specialty district</Text></Row>
+        <Row Tag="LOC_AMT_HIGH_ADJACENCY_NO_LEGAL_TILE"><Text>No legal tile in the currently revealed map and planning range</Text></Row>
+        <Row Tag="LOC_AMT_HIGH_ADJACENCY_NO_SUPPORT"><Text>No supporting improvement required</Text></Row>
+        <Row Tag="LOC_AMT_HIGH_ADJACENCY_SUPPORT"><Text>Supporting improvements: {1_List}</Text></Row>
+        <Row Tag="LOC_AMT_HIGH_ADJACENCY_SUPPORT_BADGE"><Text>Support</Text></Row>
+        <Row Tag="LOC_AMT_HIGH_ADJACENCY_SELECT_TOOLTIP"><Text>Preview only this district and its supporting improvements on the map</Text></Row>
+        <Row Tag="LOC_AMT_YIELD_FOCUS_LABEL"><Text>Yield preferences (click to cycle):</Text></Row>
+        <Row Tag="LOC_AMT_YIELD_FOCUS_NEUTRAL"><Text>Normal</Text></Row>
+        <Row Tag="LOC_AMT_YIELD_FOCUS_PRIORITY"><Text>Prioritize</Text></Row>
+        <Row Tag="LOC_AMT_YIELD_FOCUS_IGNORE"><Text>Ignore</Text></Row>
+        <Row Tag="LOC_AMT_YIELD_FOCUS_TOOLTIP"><Text>{1_Yield}: {2_State}[NEWLINE]Click once to prioritize, click again to ignore, and click a third time to return to normal.</Text></Row>
+        <Row Tag="LOC_AMT_YIELD_FOCUS_SUMMARY"><Text>Yield focus: {1_List}</Text></Row>
+        <Row Tag="LOC_AMT_SPECIALTY_SLOTS_LABEL"><Text>Specialty-district slots</Text></Row>
+        <Row Tag="LOC_AMT_SPECIALTY_SLOTS_HINT"><Text>Each city keeps its own order. Click a specialty district to add or remove it; drag filled slots to reorder them. Earlier slots get priority on high-value tiles.</Text></Row>
+        <Row Tag="LOC_AMT_SLOT_COUNT"><Text>{1_Amount} slots</Text></Row>
+        <Row Tag="LOC_AMT_SPECIALTY_SLOT_COUNT_LABEL"><Text>Specialty districts</Text></Row>
+        <Row Tag="LOC_AMT_SLOT_ADD"><Text>+</Text></Row>
+        <Row Tag="LOC_AMT_SLOT_REMOVE"><Text>-</Text></Row>
+        <Row Tag="LOC_AMT_SLOT_CLEAR"><Text>X</Text></Row>
+        <Row Tag="LOC_AMT_SLOT_EMPTY"><Text>Empty specialty slot</Text></Row>
+        <Row Tag="LOC_AMT_SLOT_LOCKED"><Text>{1_District} (locked)</Text></Row>
+        <Row Tag="LOC_AMT_SLOT_LOCKED_TOOLTIP"><Text>{1_District} has already been placed or completed in this city. Its location is fixed and it occupies this specialty-district slot.</Text></Row>
+        <Row Tag="LOC_AMT_SLOT_FULL"><Text>All specialty-district slots are filled. Add a slot or clear one first.</Text></Row>
+        <Row Tag="LOC_AMT_DISTRICT_GROUP_SPECIALTY"><Text>Population-limited specialty districts</Text></Row>
+        <Row Tag="LOC_AMT_DISTRICT_GROUP_SUPPORT"><Text>Districts not limited by population</Text></Row>
+        <Row Tag="LOC_AMT_AUTO_SUPPLEMENT_RESULT"><Text>Settings supplemented: filled {1_Slots} specialty slot(s) and selected {2_Improvements} useful unlocked improvement type(s). Review the choices, then preview when ready.</Text></Row>
+        <Row Tag="LOC_AMT_MOVE_UP"><Text>Up</Text></Row>
+        <Row Tag="LOC_AMT_MOVE_DOWN"><Text>Dn</Text></Row>
+        <Row Tag="LOC_AMT_OK">
+            <Text>Plan</Text>
+        </Row>
+        <Row Tag="LOC_AMT_PREVIEW_PLAN">
+            <Text>Preview Plan</Text>
+        </Row>
+        <Row Tag="LOC_AMT_CONFIRM_PLAN">
+            <Text>Place Tacks</Text>
+        </Row>
+        <Row Tag="LOC_AMT_PREVIEW_TITLE">
+            <Text>Planning Report</Text>
+        </Row>
+        <Row Tag="LOC_AMT_PREVIEW_BADGE">
+            <Text>PREVIEW</Text>
+        </Row>
+        <Row Tag="LOC_AMT_PREVIEW_LIST_LABEL">
+            <Text>Proposed locations</Text>
+        </Row>
+        <Row Tag="LOC_AMT_PREVIEW_ENTRY">
+            <Text>{1_Index}. {2_City} - {3_District}[NEWLINE]Tile ({4_X}, {5_Y})   {6_Yields}</Text>
+        </Row>
+        <Row Tag="LOC_AMT_PREVIEW_READY">
+            <Text>Preview ready: {1_Amount} tack(s). No map tacks have been changed yet.</Text>
+        </Row>
+        <Row Tag="LOC_AMT_PREVIEW_READY_PARTIAL">
+            <Text>Preview: {1_Amount} tack(s). Some requests were skipped: {2_List}. No changes yet.</Text>
+        </Row>
+        <Row Tag="LOC_AMT_PREVIEW_MAP_HINT">
+            <Text>Map icons are proposed locations. Click a planned item to focus it; map tacks change only after confirmation.</Text>
+        </Row>
+        <Row Tag="LOC_AMT_PREVIEW_FOCUS_TOOLTIP">
+            <Text>Focus this proposed location on the map.</Text>
+        </Row>
+        <Row Tag="LOC_AMT_PREVIEW_BACK">
+            <Text>Back</Text>
+        </Row>
+        <Row Tag="LOC_AMT_PREVIEW_CANCELLED">
+            <Text>Preview cancelled; no map tacks were changed.</Text>
+        </Row>
+        <Row Tag="LOC_AMT_PREVIEW_STALE">
+            <Text>The map tacks changed after the preview. Review the settings and preview again.</Text>
+        </Row>
+        <Row Tag="LOC_AMT_NO_ADJACENCY">
+            <Text>No adjacency yield</Text>
+        </Row>
+        <Row Tag="LOC_AMT_CANCEL">
+            <Text>Cancel</Text>
+        </Row>
+        <Row Tag="LOC_AMT_UNDO">
+            <Text>Undo Last Plan</Text>
+        </Row>
+        <Row Tag="LOC_AMT_UNDO_NONE">
+            <Text>There is no automatic planning operation to undo.</Text>
+        </Row>
+        <Row Tag="LOC_AMT_UNDO_RESULT">
+            <Text>Undo complete: removed {1_Removed} new tack(s) and restored {2_Restored} replaced tack(s).</Text>
+        </Row>
+        <Row Tag="LOC_AMT_UNDO_PARTIAL">
+            <Text>Partial undo: removed {1_Removed}, restored {2_Restored}; {3_Blocked} position(s) are occupied.</Text>
+        </Row>
+        <Row Tag="LOC_AMT_RESULT_NONE">
+            <Text>No valid placements found.</Text>
+        </Row>
+        <Row Tag="LOC_AMT_RESULT_NO_BENEFIT">
+            <Text>The legal candidate pool contains no placement that improves the weighted plan, so the automatic quantity is zero.</Text>
+        </Row>
+        <Row Tag="LOC_AMT_RESULT_SATISFIED">
+            <Text>No new tack is needed: the selected districts are already built or represented by existing tacks.</Text>
+        </Row>
+        <Row Tag="LOC_AMT_RESULT_PLACED">
+            <Text>Placed {1_Amount} tack(s).</Text>
+        </Row>
+        <Row Tag="LOC_AMT_RESULT_ERROR">
+            <Text>The optimizer encountered an error and stopped before completing.</Text>
+        </Row>
+        <Row Tag="LOC_AMT_RESULT_UNAVAILABLE">
+            <Text>Could not plan: {1_List}.</Text>
+        </Row>
+        <Row Tag="LOC_AMT_RESULT_PARTIAL">
+            <Text>Placed {1_Amount}; could not plan: {2_List}.</Text>
+        </Row>
+        <Row Tag="LOC_AMT_REASON_NO_LEGAL_TILE">
+            <Text>no legal tile</Text>
+        </Row>
+        <Row Tag="LOC_AMT_REASON_INCOMPATIBLE">
+            <Text>incompatible with the selected layout</Text>
+        </Row>
+        <Row Tag="LOC_AMT_REASON_MUTUALLY_EXCLUSIVE">
+            <Text>conflicts with {1_District}</Text>
+        </Row>
+        <Row Tag="LOC_AMT_LINKED_CITIES">
+            <Text>Linked cities</Text>
+        </Row>
+        <Row Tag="LOC_AMT_MORE_ITEMS">
+            <Text>and {1_Amount} more</Text>
+        </Row>
+        <Row Tag="LOC_AMT_NO_CITY">
+            <Text>Select a city before planning.</Text>
+        </Row>
+        <Row Tag="LOC_AMT_NO_DISTRICTS">
+            <Text>Select at least one district.</Text>
+        </Row>
+        <Row Tag="LOC_AMT_CATEGORY_DISTRICTS"><Text>Districts</Text></Row>
+        <Row Tag="LOC_AMT_CATEGORY_IMPROVEMENTS"><Text>Improvements</Text></Row>
+        <Row Tag="LOC_AMT_CATEGORY_WONDERS"><Text>Wonders</Text></Row>
+        <Row Tag="LOC_AMT_VICTORY_GOAL_LABEL"><Text>Strategic focus:</Text></Row>
+        <Row Tag="LOC_AMT_GOAL_BALANCED"><Text>Balanced</Text></Row>
+        <Row Tag="LOC_AMT_GOAL_SCIENCE"><Text>Science</Text></Row>
+        <Row Tag="LOC_AMT_GOAL_CULTURE"><Text>Culture</Text></Row>
+        <Row Tag="LOC_AMT_GOAL_RELIGION"><Text>Religion</Text></Row>
+        <Row Tag="LOC_AMT_GOAL_DOMINATION"><Text>Domination</Text></Row>
+        <Row Tag="LOC_AMT_GOAL_DIPLOMACY"><Text>Diplomacy</Text></Row>
+        <Row Tag="LOC_AMT_UNIQUE_DIRECTION"><Text>Prioritize unique districts</Text></Row>
+        <Row Tag="LOC_AMT_UNIQUE_DIRECTION_DYNAMIC"><Text>Prioritize unique districts: {1_List}</Text></Row>
+        <Row Tag="LOC_AMT_UNIQUE_DIRECTION_TOOLTIP"><Text>Moves the current civilization's replacement districts to the front when a preset is applied and gives them an additional strategic bonus. You can still reorder them afterward.</Text></Row>
+        <Row Tag="LOC_AMT_NO_UNIQUE_DISTRICT"><Text>none</Text></Row>
+        <Row Tag="LOC_AMT_UNIQUE_DISTRICT_BADGE"><Text>Civilization-unique district</Text></Row>
+        <Row Tag="LOC_AMT_UNIQUE_DISTRICT_TOOLTIP"><Text>Unique replacement for {1_District}.</Text></Row>
+        <Row Tag="LOC_AMT_PRESERVE_PLANNING"><Text>Plan Preserves</Text></Row>
+        <Row Tag="LOC_AMT_PRESERVE_PLANNING_TOOLTIP"><Text>Off by default. When enabled, Preserves use a dedicated appeal and six-tile ring model instead of ordinary adjacency alone.</Text></Row>
+        <Row Tag="LOC_AMT_PRESERVE_DISABLED_TOOLTIP"><Text>Enable "Plan Preserves" first. Preserve placement depends on the future state of all six adjacent tiles.</Text></Row>
+        <Row Tag="LOC_AMT_DISTRICT_PRIORITY_LABEL"><Text>Specialty district build order</Text></Row>
+        <Row Tag="LOC_AMT_DISTRICT_PRIORITY_HINT"><Text>Use the arrows to set which population-limited district is reserved first. The order also shows the normal population milestone.</Text></Row>
+        <Row Tag="LOC_AMT_PRIORITY_EDIT_TOOLTIP"><Text>Click to enter this district's priority (1-99).</Text></Row>
+        <Row Tag="LOC_AMT_SPECIALTY_MILESTONE"><Text>Population {1_Amount} milestone</Text></Row>
+        <Row Tag="LOC_AMT_ERA_GROUP_LABEL"><Text>{1_Era} ({2_Amount})</Text></Row>
+        <Row Tag="LOC_AMT_SELECT_ERA"><Text>Select this era</Text></Row>
+        <Row Tag="LOC_AMT_CLEAR_ERA"><Text>Clear this era</Text></Row>
+        <Row Tag="LOC_AMT_CATEGORY_DISTRICTS_HINT"><Text>Click specialty districts to add or remove them from the numbered slots on the right. Drag filled slots to reorder them.</Text></Row>
+        <Row Tag="LOC_AMT_CATEGORY_IMPROVEMENTS_HINT"><Text>Select useful improvement types by era. The planner chooses only legal tiles and does not fill every available hex.</Text></Row>
+        <Row Tag="LOC_AMT_CATEGORY_WONDERS_HINT"><Text>Select specific wonders or the generic placeholder manually. The placeholder reserves a location without naming a wonder.</Text></Row>
+        <Row Tag="LOC_AMT_CATEGORY_DISTRICTS_KEY_RULE"><Text>KEY RULE: Earlier specialty slots have first claim on high-value tiles.</Text></Row>
+        <Row Tag="LOC_AMT_CATEGORY_IMPROVEMENTS_KEY_RULE"><Text>POPULATION {1_Population}: target {2_Target} improved workable plots; existing improvements are subtracted.</Text></Row>
+        <Row Tag="LOC_AMT_CATEGORY_WONDERS_KEY_RULE"><Text>KEY RULE: Wonders are never auto-selected; each selected wonder is planned at most once.</Text></Row>
+        <Row Tag="LOC_AMT_LONG_TERM"><Text>Long-term</Text></Row>
+        <Row Tag="LOC_AMT_CURRENT_BUILDABLE"><Text>Current rules</Text></Row>
+        <Row Tag="LOC_AMT_LONG_TERM_TOOLTIP"><Text>May use future unlocks and revealed plots within this city's workable radius that are not owned yet.</Text></Row>
+        <Row Tag="LOC_AMT_CURRENT_CONDITIONS_TOOLTIP"><Text>Uses only currently unlocked choices and revealed plots already owned by this city. It does not mean construction can begin this turn.</Text></Row>
+        <Row Tag="LOC_AMT_ACTIVE_SUFFIX"><Text>*</Text></Row>
+        <Row Tag="LOC_AMT_CLEAR_CATEGORY"><Text>Clear</Text></Row>
+        <Row Tag="LOC_AMT_SELECTION_COUNT"><Text>Selected: {1_Amount}</Text></Row>
+        <Row Tag="LOC_AMT_AUTO_COUNT"><Text>Quantity: automatic, population based</Text></Row>
+        <Row Tag="LOC_AMT_POPULATION_BUDGET_LABEL"><Text>Plan population</Text></Row>
+        <Row Tag="LOC_AMT_POPULATION_BUDGET_TOOLTIP"><Text>Current population: {1_Current}. Population {2_Required} supports every configured specialty slot.</Text></Row>
+        <Row Tag="LOC_AMT_POPULATION_BUDGET_WARNING"><Text>Population {1_Budget} is short: {3_Slots} slots need {2_Required}</Text></Row>
+        <Row Tag="LOC_AMT_POPULATION_BUDGET_WARNING_TOOLTIP"><Text>Only the specialty slots available by the planned population will be placed. {1_Slots} configured slots normally require population {2_Required}.</Text></Row>
+        <Row Tag="LOC_AMT_WONDER_NO_SELECT_ALL_TOOLTIP"><Text>Wonders are deliberately excluded from automatic selection. Choose specific wonders or the generic wonder placeholder manually.</Text></Row>
+        <Row Tag="LOC_AMT_NO_SUBJECTS"><Text>Select at least one district, improvement, or wonder.</Text></Row>
+        <Row Tag="LOC_AMT_WONDER_REQUIRES_SELECTED_DISTRICT"><Text>{1_Wonder} requires {2_District}. Select that district manually before planning.</Text></Row>
+        <Row Tag="LOC_AMT_REASON_ALREADY_EXISTS"><Text>already built or represented by an existing tack; no duplicate plan is needed</Text></Row>
+        <Row Tag="LOC_AMT_REASON_LOWER_PRIORITY"><Text>omitted because higher-priority districts use the compatible tiles</Text></Row>
+        <Row Tag="LOC_AMT_REASON_POPULATION_LIMIT"><Text>no specialty-district slot remains before the population {1_Amount} planning target; earlier districts were reserved first</Text></Row>
+        <Row Tag="LOC_AMT_REASON_IMPROVEMENT_BUDGET"><Text>not selected within the population-based improvement budget (target {1_Amount} improved workable plots, including {2_Existing} existing improvements)</Text></Row>
+        <Row Tag="LOC_AMT_REASON_COVERAGE_SATISFIED"><Text>the linked city group is already covered; another copy would be redundant</Text></Row>
+        <Row Tag="LOC_AMT_REASON_TRADE_ROUTE_REDUNDANCY"><Text>a Commercial Hub or Harbor is already reserved for this city; the second usually adds no trade-route capacity</Text></Row>
+        <Row Tag="LOC_AMT_PREVIEW_SPECIALTY_SLOT"><Text>Specialty slot {1_Index}; normally unlocked at population {2_Amount}</Text></Row>
+        <Row Tag="LOC_AMT_PREVIEW_PRESERVE_SCORE"><Text>Includes appeal and the future state of the six adjacent tiles.</Text></Row>
+        <Row Tag="LOC_AMT_PREVIEW_CONTEXT"><Text>Focus: {1_Goal}; Horizon: {2_Horizon}</Text></Row>
+        <Row Tag="LOC_AMT_PREVIEW_SKIPPED_ENTRY"><Text>Not placed: {1_City} - {2_Subject}[NEWLINE]{3_Reason}</Text></Row>
+        <Row Tag="LOC_AMT_REPORT_SUMMARY"><Text>RESULT: {1_Planned} planned; {2_Skipped} not placed[NEWLINE]Plan population {3_Population}; {4_Horizon}; no map tacks changed yet</Text></Row>
+        <Row Tag="LOC_AMT_REPORT_SKIPPED_SECTION"><Text>Needs attention: not placed ({1_Amount})</Text></Row>
+        <Row Tag="LOC_AMT_REPORT_PLANNED_SECTION"><Text>Planned ({1_Amount})</Text></Row>
+        <Row Tag="LOC_AMT_REPORT_NONE_SKIPPED"><Text>Every selected item was assigned.</Text></Row>
+        <Row Tag="LOC_AMT_REPORT_SKIPPED_ENTRY"><Text>{1_Subject} - {2_City}[NEWLINE]Reason: {3_Reason}</Text></Row>
+        <Row Tag="LOC_AMT_DIAG_COUNTS"><Text>Scan {1_Scanned} / eligible {2_Eligible} / base {3_Base} / support {4_Support} / full {5_Full} / DMT-pass {6_Dmt} / accepted {7_Accepted}</Text></Row>
+        <Row Tag="LOC_AMT_DIAG_FIRST_FAILURE"><Text>[{1_Stage}] {2_Subject} ({3_X},{4_Y}): {5_Detail}</Text></Row>
+        <Row Tag="LOC_AMT_DIAG_NO_DETAIL"><Text>No detailed reason returned.</Text></Row>
+        <Row Tag="LOC_AMT_PLANNER_FOOTNOTE"><Text>Pre-place district, improvement, wonder, Remove Feature, Harvest Resource or Plant Forest tacks to direct the planner. Each city remembers its own settings. Re-preview after a technology or civic unlock to use the latest rules.</Text></Row>
+    </EnglishText>
+    <LocalizedText>
+        <Replace Tag="LOC_AMT_V60_MOD_NAME" Language="zh_Hans_CN"><Text>自动地图钉规划</Text></Replace>
+        <Replace Tag="LOC_AMT_V60_MOD_TEASER" Language="zh_Hans_CN"><Text>根据人口预算，为单座城市规划区域、改良设施和奇观。</Text></Replace>
+        <Replace Tag="LOC_AMT_V60_MOD_DESCRIPTION" Language="zh_Hans_CN"><Text>为所选单座城市规划区域、改良设施和奇观，结合人口预算进行启发式组合优化，并在放置前生成完整规划报告。[v60]</Text></Replace>
+        <!-- Front-end mod metadata does not reliably fall back to English in
+             Traditional Chinese, so provide explicit entries for the mod list. -->
+        <!-- Keep the mod identifiable in every other officially supported
+             language. The full UI continues to use its English fallback. -->
+        <Replace Tag="LOC_AMT_V60_MOD_NAME" Language="de_DE"><Text>Auto Map Tacks Planner</Text></Replace>
+        <Replace Tag="LOC_AMT_V60_MOD_TEASER" Language="de_DE"><Text>Plan one selected city's districts, improvements, and wonders with population-aware optimization.</Text></Replace>
+        <Replace Tag="LOC_AMT_V60_MOD_DESCRIPTION" Language="de_DE"><Text>Plan one selected city's districts, improvements, and wonders with population-aware heuristic optimization and a full preview report. [v60]</Text></Replace>
+        <Replace Tag="LOC_AMT_V60_MOD_NAME" Language="es_ES"><Text>Auto Map Tacks Planner</Text></Replace>
+        <Replace Tag="LOC_AMT_V60_MOD_TEASER" Language="es_ES"><Text>Plan one selected city's districts, improvements, and wonders with population-aware optimization.</Text></Replace>
+        <Replace Tag="LOC_AMT_V60_MOD_DESCRIPTION" Language="es_ES"><Text>Plan one selected city's districts, improvements, and wonders with population-aware heuristic optimization and a full preview report. [v60]</Text></Replace>
+        <Replace Tag="LOC_AMT_V60_MOD_NAME" Language="fr_FR"><Text>Auto Map Tacks Planner</Text></Replace>
+        <Replace Tag="LOC_AMT_V60_MOD_TEASER" Language="fr_FR"><Text>Plan one selected city's districts, improvements, and wonders with population-aware optimization.</Text></Replace>
+        <Replace Tag="LOC_AMT_V60_MOD_DESCRIPTION" Language="fr_FR"><Text>Plan one selected city's districts, improvements, and wonders with population-aware heuristic optimization and a full preview report. [v60]</Text></Replace>
+        <Replace Tag="LOC_AMT_V60_MOD_NAME" Language="it_IT"><Text>Auto Map Tacks Planner</Text></Replace>
+        <Replace Tag="LOC_AMT_V60_MOD_TEASER" Language="it_IT"><Text>Plan one selected city's districts, improvements, and wonders with population-aware optimization.</Text></Replace>
+        <Replace Tag="LOC_AMT_V60_MOD_DESCRIPTION" Language="it_IT"><Text>Plan one selected city's districts, improvements, and wonders with population-aware heuristic optimization and a full preview report. [v60]</Text></Replace>
+        <Replace Tag="LOC_AMT_V60_MOD_NAME" Language="ja_JP"><Text>Auto Map Tacks Planner</Text></Replace>
+        <Replace Tag="LOC_AMT_V60_MOD_TEASER" Language="ja_JP"><Text>Plan one selected city's districts, improvements, and wonders with population-aware optimization.</Text></Replace>
+        <Replace Tag="LOC_AMT_V60_MOD_DESCRIPTION" Language="ja_JP"><Text>Plan one selected city's districts, improvements, and wonders with population-aware heuristic optimization and a full preview report. [v60]</Text></Replace>
+        <Replace Tag="LOC_AMT_V60_MOD_NAME" Language="ko_KR"><Text>Auto Map Tacks Planner</Text></Replace>
+        <Replace Tag="LOC_AMT_V60_MOD_TEASER" Language="ko_KR"><Text>Plan one selected city's districts, improvements, and wonders with population-aware optimization.</Text></Replace>
+        <Replace Tag="LOC_AMT_V60_MOD_DESCRIPTION" Language="ko_KR"><Text>Plan one selected city's districts, improvements, and wonders with population-aware heuristic optimization and a full preview report. [v60]</Text></Replace>
+        <Replace Tag="LOC_AMT_V60_MOD_NAME" Language="pl_PL"><Text>Auto Map Tacks Planner</Text></Replace>
+        <Replace Tag="LOC_AMT_V60_MOD_TEASER" Language="pl_PL"><Text>Plan one selected city's districts, improvements, and wonders with population-aware optimization.</Text></Replace>
+        <Replace Tag="LOC_AMT_V60_MOD_DESCRIPTION" Language="pl_PL"><Text>Plan one selected city's districts, improvements, and wonders with population-aware heuristic optimization and a full preview report. [v60]</Text></Replace>
+        <Replace Tag="LOC_AMT_V60_MOD_NAME" Language="pt_BR"><Text>Auto Map Tacks Planner</Text></Replace>
+        <Replace Tag="LOC_AMT_V60_MOD_TEASER" Language="pt_BR"><Text>Plan one selected city's districts, improvements, and wonders with population-aware optimization.</Text></Replace>
+        <Replace Tag="LOC_AMT_V60_MOD_DESCRIPTION" Language="pt_BR"><Text>Plan one selected city's districts, improvements, and wonders with population-aware heuristic optimization and a full preview report. [v60]</Text></Replace>
+        <Replace Tag="LOC_AMT_V60_MOD_NAME" Language="ru_RU"><Text>Auto Map Tacks Planner</Text></Replace>
+        <Replace Tag="LOC_AMT_V60_MOD_TEASER" Language="ru_RU"><Text>Plan one selected city's districts, improvements, and wonders with population-aware optimization.</Text></Replace>
+        <Replace Tag="LOC_AMT_V60_MOD_DESCRIPTION" Language="ru_RU"><Text>Plan one selected city's districts, improvements, and wonders with population-aware heuristic optimization and a full preview report. [v60]</Text></Replace>
+        <Replace Tag="LOC_AMT_OPTIONS_HOTKEY_CATEGORY" Language="zh_Hans_CN">
+            <Text>自动地图钉</Text>
+        </Replace>
+        <Replace Tag="LOC_AMT_OPTIONS_HOTKEY_AUTO_PLAN" Language="zh_Hans_CN">
+            <Text>打开自动规划界面</Text>
+        </Replace>
+        <Replace Tag="LOC_AMT_ENTRY_BUTTON" Language="zh_Hans_CN"><Text>自动地图钉</Text></Replace>
+        <Replace Tag="LOC_AMT_ENTRY_TOOLTIP" Language="zh_Hans_CN"><Text>自动地图钉规划开关；快捷键：Shift+P</Text></Replace>
+        <Replace Tag="LOC_AMT_RULES_REFRESHED" Language="zh_Hans_CN"><Text>科技或市政已完成：已保留本城选项，并按最新规则刷新。</Text></Replace>
+        <Replace Tag="LOC_AMT_POPUP_TITLE" Language="zh_Hans_CN">
+            <Text>自动地图钉规划</Text>
+        </Replace>
+        <Replace Tag="LOC_AMT_TARGET_CITY_LABEL" Language="zh_Hans_CN">
+            <Text>目标城市：</Text>
+        </Replace>
+        <Replace Tag="LOC_AMT_TARGET_CITY_NONE" Language="zh_Hans_CN">
+            <Text>未选择城市</Text>
+        </Replace>
+        <Replace Tag="LOC_AMT_DISTRICTS_LABEL" Language="zh_Hans_CN">
+            <Text>选择需要规划的区域</Text>
+        </Replace>
+        <Replace Tag="LOC_AMT_DISTRICTS_HINT" Language="zh_Hans_CN">
+            <Text>包含水渠、堤坝、运河等用于组合加成的辅助区域</Text>
+        </Replace>
+        <Replace Tag="LOC_AMT_VISIBILITY_HINT" Language="zh_Hans_CN">
+            <Text>只计算已探索地块；探索新地块后可勾选清除并重新规划</Text>
+        </Replace>
+        <Replace Tag="LOC_AMT_FIXED_ANCHOR_HINT" Language="zh_Hans_CN">
+            <Text>手动区域钉默认受保护并作为固定位置参与评分；限量区域自动遵守上限</Text>
+        </Replace>
+        <Replace Tag="LOC_AMT_LIMIT_ONE_PER_PLAYER" Language="zh_Hans_CN">
+            <Text>每个文明限建 1 个；已建区域和已有地图钉都会占用名额</Text>
+        </Replace>
+        <Replace Tag="LOC_AMT_LIMIT_PER_PLAYER" Language="zh_Hans_CN">
+            <Text>每个文明限建 {1_Amount} 个；已建区域和已有地图钉都会占用名额</Text>
+        </Replace>
+        <Replace Tag="LOC_AMT_WEIGHTS_LABEL" Language="zh_Hans_CN">
+            <Text>产出权重</Text>
+        </Replace>
+        <Replace Tag="LOC_AMT_OVERWRITE" Language="zh_Hans_CN">
+            <Text>允许覆盖自动生成的地图钉</Text>
+        </Replace>
+        <Replace Tag="LOC_AMT_OVERWRITE_TOOLTIP" Language="zh_Hans_CN">
+            <Text>新方案可以替换自动地图钉模组生成的钉；玩家手动放置的地图钉始终受到保护。</Text>
+        </Replace>
+        <Replace Tag="LOC_AMT_CLEAR" Language="zh_Hans_CN">
+            <Text>规划前清除本城市的自动地图钉</Text>
+        </Replace>
+        <Replace Tag="LOC_AMT_CLEAR_TOOLTIP" Language="zh_Hans_CN">
+            <Text>只删除归属于当前城市的自动地图钉，并兼容旧版本生成的钉；其他城市的钉不会受影响。</Text>
+        </Replace>
+        <Replace Tag="LOC_AMT_CLEAR_MANUAL" Language="zh_Hans_CN">
+            <Text>同时清除本城市的手动钉</Text>
+        </Replace>
+        <Replace Tag="LOC_AMT_CLEAR_MANUAL_TOOLTIP" Language="zh_Hans_CN">
+            <Text>可选：同时删除归属于当前城市的手动地图钉；只要位置未被占用，“撤销上次规划”就会恢复它们。</Text>
+        </Replace>
+        <Replace Tag="LOC_AMT_MULTI_CITY" Language="zh_Hans_CN">
+            <Text>联动规划附近城市（6格内，最多4城）</Text>
+        </Replace>
+        <Replace Tag="LOC_AMT_MULTI_CITY_TOOLTIP" Language="zh_Hans_CN">
+            <Text>会为附近城市重复规划所选区域，并按整个城市群的相邻加成总和选择布局。</Text>
+        </Replace>
+        <Replace Tag="LOC_AMT_CALCULATING" Language="zh_Hans_CN">
+            <Text>正在计算最佳组合布局……</Text>
+        </Replace>
+        <Replace Tag="LOC_AMT_CALCULATION_HINT" Language="zh_Hans_CN">
+            <Text>组合规划计算量较大，勾选项目越多耗时越长；点击后请耐心等待。</Text>
+        </Replace>
+        <Replace Tag="LOC_AMT_CALCULATING_LONG" Language="zh_Hans_CN">
+            <Text>正在计算完整的最优规划……[NEWLINE]项目较多时可能需要一些时间，请耐心等待，不要重复点击。</Text>
+        </Replace>
+        <Replace Tag="LOC_AMT_CALCULATION_SCAN" Language="zh_Hans_CN"><Text>正在检查已探索地块是否合法……{1_Current}/{2_Total}</Text></Replace>
+        <Replace Tag="LOC_AMT_CALCULATION_CANDIDATES" Language="zh_Hans_CN"><Text>正在比较候选位置……{1_Current}/{2_Total}</Text></Replace>
+        <Replace Tag="LOC_AMT_CALCULATION_SEARCH" Language="zh_Hans_CN"><Text>正在优化完整组合……{1_Current}/{2_Total}</Text></Replace>
+        <Replace Tag="LOC_AMT_CANCEL_CALCULATION" Language="zh_Hans_CN"><Text>取消计算</Text></Replace>
+        <Replace Tag="LOC_AMT_CALCULATION_CANCELLED" Language="zh_Hans_CN"><Text>计算已取消；设置已保留，地图钉没有发生变化。</Text></Replace>
+        <Replace Tag="LOC_AMT_ONE_CLICK_PLAN" Language="zh_Hans_CN"><Text>一键规划</Text></Replace>
+        <Replace Tag="LOC_AMT_ONE_CLICK_PLAN_TOOLTIP" Language="zh_Hans_CN"><Text>按照当前规划范围自动选择区域，并加入目前已解锁的规划型改良设施；保留玩家手动选择的奇观，然后直接生成完整预览。未经确认不会放置地图钉。</Text></Replace>
+        <Replace Tag="LOC_AMT_AUTO_SUPPLEMENT" Language="zh_Hans_CN"><Text>自动补充勾选</Text></Replace>
+        <Replace Tag="LOC_AMT_AUTO_SUPPLEMENT_TOOLTIP" Language="zh_Hans_CN"><Text>按照当前产出侧重点填充空余专业区域槽位，并勾选目前已解锁且可能有帮助的改良设施。只调整设置，不会开始计算。</Text></Replace>
+        <Replace Tag="LOC_AMT_HIGH_ADJACENCY_ANALYSIS" Language="zh_Hans_CN"><Text>高加成专业区域分析</Text></Replace>
+        <Replace Tag="LOC_AMT_HIGH_ADJACENCY_ANALYSIS_TOOLTIP" Language="zh_Hans_CN"><Text>逐项独立分析当前城市各个人口受限专业区域，并尝试能直接提高该区域自身相邻加成的合法相邻改良。点击报告条目可在地图上切换预览。只生成报告，不会更改勾选、槽位顺序或地图钉。</Text></Replace>
+        <Replace Tag="LOC_AMT_HIGH_ADJACENCY_TITLE" Language="zh_Hans_CN"><Text>高加成专业区域分析</Text></Replace>
+        <Replace Tag="LOC_AMT_HIGH_ADJACENCY_CALCULATING" Language="zh_Hans_CN"><Text>正在分析当前城市的高加成专业区域，请稍候……</Text></Replace>
+        <Replace Tag="LOC_AMT_HIGH_ADJACENCY_SUMMARY" Language="zh_Hans_CN"><Text>{1_City}：已分析 {2_Available} 种专业区域，另有 {3_Unavailable} 种不可用。各结果相互独立，最佳地块可以重复；点击任一条目可切换地图预览。</Text></Replace>
+        <Replace Tag="LOC_AMT_HIGH_ADJACENCY_AVAILABLE_SECTION" Language="zh_Hans_CN"><Text>最高可达加成（{1_Amount}）</Text></Replace>
+        <Replace Tag="LOC_AMT_HIGH_ADJACENCY_UNAVAILABLE_SECTION" Language="zh_Hans_CN"><Text>不可用或已有安排（{1_Amount}）</Text></Replace>
+        <Replace Tag="LOC_AMT_HIGH_ADJACENCY_ENTRY" Language="zh_Hans_CN"><Text>{1_Index}. {2_District}[NEWLINE]最佳地块（{3_X}, {4_Y}）  {5_Yields}[NEWLINE]{6_Status}；{7_Support}</Text></Replace>
+        <Replace Tag="LOC_AMT_HIGH_ADJACENCY_UNAVAILABLE_ENTRY" Language="zh_Hans_CN"><Text>{1_District}[NEWLINE]{2_Reason}</Text></Replace>
+        <Replace Tag="LOC_AMT_HIGH_ADJACENCY_CURRENT" Language="zh_Hans_CN"><Text>按当前规则可用</Text></Replace>
+        <Replace Tag="LOC_AMT_HIGH_ADJACENCY_FUTURE" Language="zh_Hans_CN"><Text>未来可用：所需科技或市政尚未解锁</Text></Replace>
+        <Replace Tag="LOC_AMT_HIGH_ADJACENCY_ALREADY_BUILT" Language="zh_Hans_CN"><Text>本城市已经修建该专业区域</Text></Replace>
+        <Replace Tag="LOC_AMT_HIGH_ADJACENCY_ALREADY_PLANNED" Language="zh_Hans_CN"><Text>本城市已经有该专业区域地图钉</Text></Replace>
+        <Replace Tag="LOC_AMT_HIGH_ADJACENCY_NO_LEGAL_TILE" Language="zh_Hans_CN"><Text>在当前已探索地图与规划范围内没有合法地块</Text></Replace>
+        <Replace Tag="LOC_AMT_HIGH_ADJACENCY_NO_SUPPORT" Language="zh_Hans_CN"><Text>无需辅助改良</Text></Replace>
+        <Replace Tag="LOC_AMT_HIGH_ADJACENCY_SUPPORT" Language="zh_Hans_CN"><Text>辅助改良：{1_List}</Text></Replace>
+        <Replace Tag="LOC_AMT_HIGH_ADJACENCY_SUPPORT_BADGE" Language="zh_Hans_CN"><Text>辅助</Text></Replace>
+        <Replace Tag="LOC_AMT_HIGH_ADJACENCY_SELECT_TOOLTIP" Language="zh_Hans_CN"><Text>只在地图上预览此区域及其辅助改良</Text></Replace>
+        <Replace Tag="LOC_AMT_YIELD_FOCUS_LABEL" Language="zh_Hans_CN"><Text>产出侧重点（点击切换）：</Text></Replace>
+        <Replace Tag="LOC_AMT_YIELD_FOCUS_NEUTRAL" Language="zh_Hans_CN"><Text>普通考虑</Text></Replace>
+        <Replace Tag="LOC_AMT_YIELD_FOCUS_PRIORITY" Language="zh_Hans_CN"><Text>优先考虑</Text></Replace>
+        <Replace Tag="LOC_AMT_YIELD_FOCUS_IGNORE" Language="zh_Hans_CN"><Text>不考虑</Text></Replace>
+        <Replace Tag="LOC_AMT_YIELD_FOCUS_TOOLTIP" Language="zh_Hans_CN"><Text>{1_Yield}：{2_State}[NEWLINE]点击一次设为优先考虑，再点一次设为不考虑，第三次恢复普通考虑。</Text></Replace>
+        <Replace Tag="LOC_AMT_YIELD_FOCUS_SUMMARY" Language="zh_Hans_CN"><Text>产出侧重点：{1_List}</Text></Replace>
+        <Replace Tag="LOC_AMT_SPECIALTY_SLOTS_LABEL" Language="zh_Hans_CN"><Text>专业区域预留槽位</Text></Replace>
+        <Replace Tag="LOC_AMT_SPECIALTY_SLOTS_HINT" Language="zh_Hans_CN"><Text>每座城市独立设置。单击专业区域即可加入或移除；拖动右侧已填槽位可调整顺序。越靠前越优先保留高加成地块。</Text></Replace>
+        <Replace Tag="LOC_AMT_SLOT_COUNT" Language="zh_Hans_CN"><Text>{1_Amount} 格</Text></Replace>
+        <Replace Tag="LOC_AMT_SPECIALTY_SLOT_COUNT_LABEL" Language="zh_Hans_CN"><Text>专业区域数量</Text></Replace>
+        <Replace Tag="LOC_AMT_SLOT_ADD" Language="zh_Hans_CN"><Text>+</Text></Replace>
+        <Replace Tag="LOC_AMT_SLOT_REMOVE" Language="zh_Hans_CN"><Text>-</Text></Replace>
+        <Replace Tag="LOC_AMT_SLOT_CLEAR" Language="zh_Hans_CN"><Text>清</Text></Replace>
+        <Replace Tag="LOC_AMT_SLOT_EMPTY" Language="zh_Hans_CN"><Text>空专业区域槽位</Text></Replace>
+        <Replace Tag="LOC_AMT_SLOT_LOCKED" Language="zh_Hans_CN"><Text>{1_District}（已锁定）</Text></Replace>
+        <Replace Tag="LOC_AMT_SLOT_LOCKED_TOOLTIP" Language="zh_Hans_CN"><Text>{1_District} 已在本城市拍下地基或建成，位置无法更改，并占用这一专业区域槽位。</Text></Replace>
+        <Replace Tag="LOC_AMT_SLOT_FULL" Language="zh_Hans_CN"><Text>专业区域槽位已满，请先增加槽位或清空一格。</Text></Replace>
+        <Replace Tag="LOC_AMT_DISTRICT_GROUP_SPECIALTY" Language="zh_Hans_CN"><Text>受人口限制的专业区域</Text></Replace>
+        <Replace Tag="LOC_AMT_DISTRICT_GROUP_SUPPORT" Language="zh_Hans_CN"><Text>不受人口数量限制的区域</Text></Replace>
+        <Replace Tag="LOC_AMT_AUTO_SUPPLEMENT_RESULT" Language="zh_Hans_CN"><Text>已补充设置：填入 {1_Slots} 个专业区域槽位，并勾选 {2_Improvements} 种目前可用的规划型改良设施。请检查后再预览。</Text></Replace>
+        <Replace Tag="LOC_AMT_MOVE_UP" Language="zh_Hans_CN"><Text>上</Text></Replace>
+        <Replace Tag="LOC_AMT_MOVE_DOWN" Language="zh_Hans_CN"><Text>下</Text></Replace>
+        <Replace Tag="LOC_AMT_OK" Language="zh_Hans_CN">
+            <Text>开始规划</Text>
+        </Replace>
+        <Replace Tag="LOC_AMT_PREVIEW_PLAN" Language="zh_Hans_CN">
+            <Text>预览规划</Text>
+        </Replace>
+        <Replace Tag="LOC_AMT_CONFIRM_PLAN" Language="zh_Hans_CN">
+            <Text>确认放置</Text>
+        </Replace>
+        <Replace Tag="LOC_AMT_PREVIEW_TITLE" Language="zh_Hans_CN">
+            <Text>规划报告</Text>
+        </Replace>
+        <Replace Tag="LOC_AMT_PREVIEW_BADGE" Language="zh_Hans_CN">
+            <Text>预览</Text>
+        </Replace>
+        <Replace Tag="LOC_AMT_PREVIEW_LIST_LABEL" Language="zh_Hans_CN">
+            <Text>拟放置位置</Text>
+        </Replace>
+        <Replace Tag="LOC_AMT_PREVIEW_ENTRY" Language="zh_Hans_CN">
+            <Text>{1_Index}. {2_City}—{3_District}[NEWLINE]地块（{4_X}, {5_Y}）  {6_Yields}</Text>
+        </Replace>
+        <Replace Tag="LOC_AMT_PREVIEW_READY" Language="zh_Hans_CN">
+            <Text>预览完成：计划放置 {1_Amount} 个地图钉；目前尚未改动任何地图钉。</Text>
+        </Replace>
+        <Replace Tag="LOC_AMT_PREVIEW_READY_PARTIAL" Language="zh_Hans_CN">
+            <Text>预览：计划放置 {1_Amount} 个；部分项目未能规划：{2_List}。目前尚未改动地图钉。</Text>
+        </Replace>
+        <Replace Tag="LOC_AMT_PREVIEW_MAP_HINT" Language="zh_Hans_CN">
+            <Text>地图图标是拟放置位置；点击“已规划”项目可定位，确认后才会改动地图钉。</Text>
+        </Replace>
+        <Replace Tag="LOC_AMT_PREVIEW_FOCUS_TOOLTIP" Language="zh_Hans_CN">
+            <Text>将镜头移到这个拟放置位置。</Text>
+        </Replace>
+        <Replace Tag="LOC_AMT_PREVIEW_BACK" Language="zh_Hans_CN">
+            <Text>返回设置</Text>
+        </Replace>
+        <Replace Tag="LOC_AMT_PREVIEW_CANCELLED" Language="zh_Hans_CN">
+            <Text>已取消预览，没有改动任何地图钉。</Text>
+        </Replace>
+        <Replace Tag="LOC_AMT_PREVIEW_STALE" Language="zh_Hans_CN">
+            <Text>预览后地图钉发生了变化，请检查设置并重新预览。</Text>
+        </Replace>
+        <Replace Tag="LOC_AMT_NO_ADJACENCY" Language="zh_Hans_CN">
+            <Text>无相邻加成</Text>
+        </Replace>
+        <Replace Tag="LOC_AMT_CANCEL" Language="zh_Hans_CN">
+            <Text>取消</Text>
+        </Replace>
+        <Replace Tag="LOC_AMT_UNDO" Language="zh_Hans_CN">
+            <Text>撤销上次规划</Text>
+        </Replace>
+        <Replace Tag="LOC_AMT_UNDO_NONE" Language="zh_Hans_CN">
+            <Text>没有可以撤销的自动规划操作。</Text>
+        </Replace>
+        <Replace Tag="LOC_AMT_UNDO_RESULT" Language="zh_Hans_CN">
+            <Text>撤销完成：删除 {1_Removed} 个新钉，恢复 {2_Restored} 个被替换的钉。</Text>
+        </Replace>
+        <Replace Tag="LOC_AMT_UNDO_PARTIAL" Language="zh_Hans_CN">
+            <Text>部分撤销：删除 {1_Removed} 个，恢复 {2_Restored} 个；另有 {3_Blocked} 个位置已被占用。</Text>
+        </Replace>
+        <Replace Tag="LOC_AMT_RESULT_NONE" Language="zh_Hans_CN">
+            <Text>没有找到合法的放置位置。</Text>
+        </Replace>
+        <Replace Tag="LOC_AMT_RESULT_NO_BENEFIT" Language="zh_Hans_CN">
+            <Text>合法候选位置中没有能提升当前权重总收益的方案，因此自动规划数量为 0。</Text>
+        </Replace>
+        <Replace Tag="LOC_AMT_RESULT_SATISFIED" Language="zh_Hans_CN">
+            <Text>无需补充：所选区域已经建成，或已有地图钉占用了相应位置与名额。</Text>
+        </Replace>
+        <Replace Tag="LOC_AMT_RESULT_PLACED" Language="zh_Hans_CN">
+            <Text>已放置 {1_Amount} 个地图钉。</Text>
+        </Replace>
+        <Replace Tag="LOC_AMT_RESULT_ERROR" Language="zh_Hans_CN">
+            <Text>规划器遇到错误，已停止本次规划。</Text>
+        </Replace>
+        <Replace Tag="LOC_AMT_RESULT_UNAVAILABLE" Language="zh_Hans_CN">
+            <Text>未能规划：{1_List}。</Text>
+        </Replace>
+        <Replace Tag="LOC_AMT_RESULT_PARTIAL" Language="zh_Hans_CN">
+            <Text>已放置 {1_Amount} 个；未能规划：{2_List}。</Text>
+        </Replace>
+        <Replace Tag="LOC_AMT_REASON_NO_LEGAL_TILE" Language="zh_Hans_CN">
+            <Text>没有合法地块</Text>
+        </Replace>
+        <Replace Tag="LOC_AMT_REASON_INCOMPATIBLE" Language="zh_Hans_CN">
+            <Text>与所选布局不兼容</Text>
+        </Replace>
+        <Replace Tag="LOC_AMT_REASON_MUTUALLY_EXCLUSIVE" Language="zh_Hans_CN">
+            <Text>与{1_District}互斥</Text>
+        </Replace>
+        <Replace Tag="LOC_AMT_LINKED_CITIES" Language="zh_Hans_CN">
+            <Text>联动城市群</Text>
+        </Replace>
+        <Replace Tag="LOC_AMT_MORE_ITEMS" Language="zh_Hans_CN">
+            <Text>另有 {1_Amount} 项</Text>
+        </Replace>
+        <Replace Tag="LOC_AMT_NO_CITY" Language="zh_Hans_CN">
+            <Text>请先选择一座城市。</Text>
+        </Replace>
+        <Replace Tag="LOC_AMT_NO_DISTRICTS" Language="zh_Hans_CN">
+            <Text>请至少选择一个区域。</Text>
+        </Replace>
+        <Replace Tag="LOC_AMT_CATEGORY_DISTRICTS" Language="zh_Hans_CN"><Text>区域</Text></Replace>
+        <Replace Tag="LOC_AMT_CATEGORY_IMPROVEMENTS" Language="zh_Hans_CN"><Text>改良设施</Text></Replace>
+        <Replace Tag="LOC_AMT_CATEGORY_WONDERS" Language="zh_Hans_CN"><Text>奇观</Text></Replace>
+        <Replace Tag="LOC_AMT_VICTORY_GOAL_LABEL" Language="zh_Hans_CN"><Text>本局着力点：</Text></Replace>
+        <Replace Tag="LOC_AMT_GOAL_BALANCED" Language="zh_Hans_CN"><Text>均衡发展</Text></Replace>
+        <Replace Tag="LOC_AMT_GOAL_SCIENCE" Language="zh_Hans_CN"><Text>科技胜利</Text></Replace>
+        <Replace Tag="LOC_AMT_GOAL_CULTURE" Language="zh_Hans_CN"><Text>文化胜利</Text></Replace>
+        <Replace Tag="LOC_AMT_GOAL_RELIGION" Language="zh_Hans_CN"><Text>宗教胜利</Text></Replace>
+        <Replace Tag="LOC_AMT_GOAL_DOMINATION" Language="zh_Hans_CN"><Text>征服胜利</Text></Replace>
+        <Replace Tag="LOC_AMT_GOAL_DIPLOMACY" Language="zh_Hans_CN"><Text>外交/经济</Text></Replace>
+        <Replace Tag="LOC_AMT_UNIQUE_DIRECTION" Language="zh_Hans_CN"><Text>优先文明特色区域</Text></Replace>
+        <Replace Tag="LOC_AMT_UNIQUE_DIRECTION_DYNAMIC" Language="zh_Hans_CN"><Text>优先文明特色区域：{1_List}</Text></Replace>
+        <Replace Tag="LOC_AMT_UNIQUE_DIRECTION_TOOLTIP" Language="zh_Hans_CN"><Text>应用着力点或自动勾选时，会把本文明的替代区域提前并给予额外战略加分；之后仍可用箭头手动调整。</Text></Replace>
+        <Replace Tag="LOC_AMT_NO_UNIQUE_DISTRICT" Language="zh_Hans_CN"><Text>本文明无特色区域</Text></Replace>
+        <Replace Tag="LOC_AMT_UNIQUE_DISTRICT_BADGE" Language="zh_Hans_CN"><Text>文明特色区域</Text></Replace>
+        <Replace Tag="LOC_AMT_UNIQUE_DISTRICT_TOOLTIP" Language="zh_Hans_CN"><Text>替代{1_District}的文明特色区域。</Text></Replace>
+        <Replace Tag="LOC_AMT_PRESERVE_PLANNING" Language="zh_Hans_CN"><Text>规划保护区</Text></Replace>
+        <Replace Tag="LOC_AMT_PRESERVE_PLANNING_TOOLTIP" Language="zh_Hans_CN"><Text>默认关闭。启用后会专门评估魅力、相邻六格是否保持无改良，以及树林、资源和负魅力来源，而不是只看普通相邻加成。</Text></Replace>
+        <Replace Tag="LOC_AMT_PRESERVE_DISABLED_TOOLTIP" Language="zh_Hans_CN"><Text>请先勾选“规划保护区”。保护区的价值取决于周围六格未来是否保持无改良。</Text></Replace>
+        <Replace Tag="LOC_AMT_DISTRICT_PRIORITY_LABEL" Language="zh_Hans_CN"><Text>专业区域建设顺序</Text></Replace>
+        <Replace Tag="LOC_AMT_DISTRICT_PRIORITY_HINT" Language="zh_Hans_CN"><Text>用箭头决定人口受限区域的预留顺序。越靠前越早拍下；下方同时显示通常所需的人口节点。</Text></Replace>
+        <Replace Tag="LOC_AMT_PRIORITY_EDIT_TOOLTIP" Language="zh_Hans_CN"><Text>点击填写该区域的优先级（1～99）。</Text></Replace>
+        <Replace Tag="LOC_AMT_SPECIALTY_MILESTONE" Language="zh_Hans_CN"><Text>人口 {1_Amount} 节点</Text></Replace>
+        <Replace Tag="LOC_AMT_ERA_GROUP_LABEL" Language="zh_Hans_CN"><Text>{1_Era}（{2_Amount}）</Text></Replace>
+        <Replace Tag="LOC_AMT_SELECT_ERA" Language="zh_Hans_CN"><Text>全选本时代</Text></Replace>
+        <Replace Tag="LOC_AMT_CLEAR_ERA" Language="zh_Hans_CN"><Text>清除本时代</Text></Replace>
+        <Replace Tag="LOC_AMT_CATEGORY_DISTRICTS_HINT" Language="zh_Hans_CN"><Text>单击专业区域即可加入或移出右侧编号槽位；拖动已填槽位可调整顺序。</Text></Replace>
+        <Replace Tag="LOC_AMT_CATEGORY_IMPROVEMENTS_HINT" Language="zh_Hans_CN"><Text>按时代选择可能需要的设施；算法只在合法地块中挑选，不会把所有可用地块铺满。</Text></Replace>
+        <Replace Tag="LOC_AMT_CATEGORY_WONDERS_HINT" Language="zh_Hans_CN"><Text>手动选择具体奇观或通用占位图标；通用图标只预留位置，不指定奇观。</Text></Replace>
+        <Replace Tag="LOC_AMT_CATEGORY_DISTRICTS_KEY_RULE" Language="zh_Hans_CN"><Text>关键规则：右侧槽位越靠前，越优先占用高价值地块。</Text></Replace>
+        <Replace Tag="LOC_AMT_CATEGORY_IMPROVEMENTS_KEY_RULE" Language="zh_Hans_CN"><Text>规划人口 {1_Population} → 目标 {2_Target} 个有效改良地块；已有改良另行扣除。</Text></Replace>
+        <Replace Tag="LOC_AMT_CATEGORY_WONDERS_KEY_RULE" Language="zh_Hans_CN"><Text>关键规则：奇观不会自动全选；每个手选奇观最多规划一次。</Text></Replace>
+        <Replace Tag="LOC_AMT_LONG_TERM" Language="zh_Hans_CN"><Text>长期蓝图</Text></Replace>
+        <Replace Tag="LOC_AMT_CURRENT_BUILDABLE" Language="zh_Hans_CN"><Text>按现状规划</Text></Replace>
+        <Replace Tag="LOC_AMT_LONG_TERM_TOOLTIP" Language="zh_Hans_CN"><Text>可使用未来解锁项目，以及本城可工作范围内已经探索但尚未拥有的地块。</Text></Replace>
+        <Replace Tag="LOC_AMT_CURRENT_CONDITIONS_TOOLTIP" Language="zh_Hans_CN"><Text>只使用当前已解锁项目和本城已经拥有的已探索地块；不代表本回合能够立即开工。</Text></Replace>
+        <Replace Tag="LOC_AMT_ACTIVE_SUFFIX" Language="zh_Hans_CN"><Text>●</Text></Replace>
+        <Replace Tag="LOC_AMT_CLEAR_CATEGORY" Language="zh_Hans_CN"><Text>清空</Text></Replace>
+        <Replace Tag="LOC_AMT_SELECTION_COUNT" Language="zh_Hans_CN"><Text>已选：{1_Amount}</Text></Replace>
+        <Replace Tag="LOC_AMT_AUTO_COUNT" Language="zh_Hans_CN"><Text>数量：按人口自动计算</Text></Replace>
+        <Replace Tag="LOC_AMT_POPULATION_BUDGET_LABEL" Language="zh_Hans_CN"><Text>规划人口</Text></Replace>
+        <Replace Tag="LOC_AMT_POPULATION_BUDGET_TOOLTIP" Language="zh_Hans_CN"><Text>当前人口 {1_Current}；人口 {2_Required} 可容纳已设置的全部专业区域槽位。</Text></Replace>
+        <Replace Tag="LOC_AMT_POPULATION_BUDGET_WARNING" Language="zh_Hans_CN"><Text>人口 {1_Budget} 不足：{3_Slots} 格需 {2_Required}</Text></Replace>
+        <Replace Tag="LOC_AMT_POPULATION_BUDGET_WARNING_TOOLTIP" Language="zh_Hans_CN"><Text>计算时只会放置规划人口能够容纳的专业区域。当前设置 {1_Slots} 个槽位，通常需要人口 {2_Required}。</Text></Replace>
+        <Replace Tag="LOC_AMT_WONDER_NO_SELECT_ALL_TOOLTIP" Language="zh_Hans_CN"><Text>奇观不会被自动勾选，请手动选择具体奇观或通用奇观占位图标。</Text></Replace>
+        <Replace Tag="LOC_AMT_NO_SUBJECTS" Language="zh_Hans_CN"><Text>请至少选择一个区域、改良设施或奇观。</Text></Replace>
+        <Replace Tag="LOC_AMT_WONDER_REQUIRES_SELECTED_DISTRICT" Language="zh_Hans_CN"><Text>“{1_Wonder}”需要“{2_District}”。请先手动勾选该区域，再开始规划。</Text></Replace>
+        <Replace Tag="LOC_AMT_REASON_ALREADY_EXISTS" Language="zh_Hans_CN"><Text>已经建成或已有地图钉，无需重复规划</Text></Replace>
+        <Replace Tag="LOC_AMT_REASON_LOWER_PRIORITY" Language="zh_Hans_CN"><Text>兼容地块不足，已优先保留更高优先级区域</Text></Replace>
+        <Replace Tag="LOC_AMT_REASON_POPULATION_LIMIT" Language="zh_Hans_CN"><Text>在目标人口 {1_Amount} 前没有剩余专业区域名额，已优先预留顺序更靠前的区域</Text></Replace>
+        <Replace Tag="LOC_AMT_REASON_IMPROVEMENT_BUDGET" Language="zh_Hans_CN"><Text>未进入按人口计算的改良设施预算（目标共保留 {1_Amount} 个有效改良地块，其中已有 {2_Existing} 个）</Text></Replace>
+        <Replace Tag="LOC_AMT_REASON_COVERAGE_SATISFIED" Language="zh_Hans_CN"><Text>联动城市群已获得辐射覆盖，无需重复规划</Text></Replace>
+        <Replace Tag="LOC_AMT_REASON_TRADE_ROUTE_REDUNDANCY" Language="zh_Hans_CN"><Text>本城已规划商业中心或港口；重复建设通常不会增加第二条贸易路线容量</Text></Replace>
+        <Replace Tag="LOC_AMT_PREVIEW_SPECIALTY_SLOT" Language="zh_Hans_CN"><Text>第 {1_Index} 个专业区域名额 · 通常在人口 {2_Amount} 解锁</Text></Replace>
+        <Replace Tag="LOC_AMT_PREVIEW_PRESERVE_SCORE" Language="zh_Hans_CN"><Text>评分已计入魅力和相邻六格的未来状态。</Text></Replace>
+        <Replace Tag="LOC_AMT_PREVIEW_CONTEXT" Language="zh_Hans_CN"><Text>着力点：{1_Goal} · 规划范围：{2_Horizon}</Text></Replace>
+        <Replace Tag="LOC_AMT_PREVIEW_SKIPPED_ENTRY" Language="zh_Hans_CN"><Text>未放置：{1_City}—{2_Subject}[NEWLINE]{3_Reason}</Text></Replace>
+        <Replace Tag="LOC_AMT_REPORT_SUMMARY" Language="zh_Hans_CN"><Text>结论：已规划 {1_Planned} 项｜未放置 {2_Skipped} 项[NEWLINE]规划人口 {3_Population}｜{4_Horizon}｜尚未改动地图钉</Text></Replace>
+        <Replace Tag="LOC_AMT_REPORT_SKIPPED_SECTION" Language="zh_Hans_CN"><Text>需要处理：未放置（{1_Amount}）</Text></Replace>
+        <Replace Tag="LOC_AMT_REPORT_PLANNED_SECTION" Language="zh_Hans_CN"><Text>已规划（{1_Amount}）</Text></Replace>
+        <Replace Tag="LOC_AMT_REPORT_NONE_SKIPPED" Language="zh_Hans_CN"><Text>全部选项均已安排。</Text></Replace>
+        <Replace Tag="LOC_AMT_REPORT_SKIPPED_ENTRY" Language="zh_Hans_CN"><Text>{1_Subject}｜{2_City}[NEWLINE]原因：{3_Reason}</Text></Replace>
+        <Replace Tag="LOC_AMT_DIAG_COUNTS" Language="zh_Hans_CN"><Text>扫描{1_Scanned} / 可用{2_Eligible} / 基础{3_Base} / 配套{4_Support} / 完整检查{5_Full} / DMT通过{6_Dmt} / 最终{7_Accepted}</Text></Replace>
+        <Replace Tag="LOC_AMT_DIAG_FIRST_FAILURE" Language="zh_Hans_CN"><Text>[{1_Stage}] {2_Subject}（{3_X},{4_Y}）：{5_Detail}</Text></Replace>
+        <Replace Tag="LOC_AMT_DIAG_NO_DETAIL" Language="zh_Hans_CN"><Text>检查未返回详细原因。</Text></Replace>
+        <Replace Tag="LOC_AMT_PLANNER_FOOTNOTE" Language="zh_Hans_CN"><Text>可预先放置区域、改良、奇观及“删除地貌 / 移除资源 / 种植树林”地图钉来指挥规划；每座城市会分别记住设置。解锁科技或市政后重新预览，即会按最新规则刷新规划。</Text></Replace>
+
+        <!-- Full Traditional Chinese UI, mechanically converted from the maintained Simplified Chinese strings. -->
+        <Replace Tag="LOC_AMT_V60_MOD_NAME" Language="zh_Hant_HK"><Text>自動地圖釘規劃</Text></Replace>
+        <Replace Tag="LOC_AMT_V60_MOD_TEASER" Language="zh_Hant_HK"><Text>根據人口預算，為單座城市規劃區域、改良設施和奇觀。</Text></Replace>
+        <Replace Tag="LOC_AMT_V60_MOD_DESCRIPTION" Language="zh_Hant_HK"><Text>為所選單座城市規劃區域、改良設施和奇觀，結合人口預算進行啟發式組合優化，並在放置前生成完整規劃報告。[v60]</Text></Replace>
+        <Replace Tag="LOC_AMT_OPTIONS_HOTKEY_CATEGORY" Language="zh_Hant_HK"><Text>自動地圖釘</Text></Replace>
+        <Replace Tag="LOC_AMT_OPTIONS_HOTKEY_AUTO_PLAN" Language="zh_Hant_HK"><Text>打開自動規劃界面</Text></Replace>
+        <Replace Tag="LOC_AMT_ENTRY_BUTTON" Language="zh_Hant_HK"><Text>自動地圖釘</Text></Replace>
+        <Replace Tag="LOC_AMT_ENTRY_TOOLTIP" Language="zh_Hant_HK"><Text>自動地圖釘規劃開關；快捷鍵：Shift+P</Text></Replace>
+        <Replace Tag="LOC_AMT_RULES_REFRESHED" Language="zh_Hant_HK"><Text>科技或市政已完成：已保留本城選項，并按最新規則刷新。</Text></Replace>
+        <Replace Tag="LOC_AMT_POPUP_TITLE" Language="zh_Hant_HK"><Text>自動地圖釘規劃</Text></Replace>
+        <Replace Tag="LOC_AMT_TARGET_CITY_LABEL" Language="zh_Hant_HK"><Text>目標城市：</Text></Replace>
+        <Replace Tag="LOC_AMT_TARGET_CITY_NONE" Language="zh_Hant_HK"><Text>未選擇城市</Text></Replace>
+        <Replace Tag="LOC_AMT_DISTRICTS_LABEL" Language="zh_Hant_HK"><Text>選擇需要規劃的區域</Text></Replace>
+        <Replace Tag="LOC_AMT_DISTRICTS_HINT" Language="zh_Hant_HK"><Text>包含水渠、堤壩、運河等用于組合加成的輔助區域</Text></Replace>
+        <Replace Tag="LOC_AMT_VISIBILITY_HINT" Language="zh_Hant_HK"><Text>只計算已探索地塊；探索新地塊后可勾選清除并重新規劃</Text></Replace>
+        <Replace Tag="LOC_AMT_FIXED_ANCHOR_HINT" Language="zh_Hant_HK"><Text>手動區域釘默認受保護并作為固定位置參與評分；限量區域自動遵守上限</Text></Replace>
+        <Replace Tag="LOC_AMT_LIMIT_ONE_PER_PLAYER" Language="zh_Hant_HK"><Text>每個文明限建 1 個；已建區域和已有地圖釘都會占用名額</Text></Replace>
+        <Replace Tag="LOC_AMT_LIMIT_PER_PLAYER" Language="zh_Hant_HK"><Text>每個文明限建 {1_Amount} 個；已建區域和已有地圖釘都會占用名額</Text></Replace>
+        <Replace Tag="LOC_AMT_WEIGHTS_LABEL" Language="zh_Hant_HK"><Text>產出權重</Text></Replace>
+        <Replace Tag="LOC_AMT_OVERWRITE" Language="zh_Hant_HK"><Text>允許覆蓋自動生成的地圖釘</Text></Replace>
+        <Replace Tag="LOC_AMT_OVERWRITE_TOOLTIP" Language="zh_Hant_HK"><Text>新方案可以替換自動地圖釘模組生成的釘；玩家手動放置的地圖釘始終受到保護。</Text></Replace>
+        <Replace Tag="LOC_AMT_CLEAR" Language="zh_Hant_HK"><Text>規劃前清除本城市的自動地圖釘</Text></Replace>
+        <Replace Tag="LOC_AMT_CLEAR_TOOLTIP" Language="zh_Hant_HK"><Text>只刪除歸屬于當前城市的自動地圖釘，并兼容舊版本生成的釘；其他城市的釘不會受影響。</Text></Replace>
+        <Replace Tag="LOC_AMT_CLEAR_MANUAL" Language="zh_Hant_HK"><Text>同時清除本城市的手動釘</Text></Replace>
+        <Replace Tag="LOC_AMT_CLEAR_MANUAL_TOOLTIP" Language="zh_Hant_HK"><Text>可選：同時刪除歸屬于當前城市的手動地圖釘；只要位置未被占用，“撤銷上次規劃”就會恢復它們。</Text></Replace>
+        <Replace Tag="LOC_AMT_MULTI_CITY" Language="zh_Hant_HK"><Text>聯動規劃附近城市（6格內，最多4城）</Text></Replace>
+        <Replace Tag="LOC_AMT_MULTI_CITY_TOOLTIP" Language="zh_Hant_HK"><Text>會為附近城市重復規劃所選區域，并按整個城市群的相鄰加成總和選擇布局。</Text></Replace>
+        <Replace Tag="LOC_AMT_CALCULATING" Language="zh_Hant_HK"><Text>正在計算最佳組合布局……</Text></Replace>
+        <Replace Tag="LOC_AMT_CALCULATION_HINT" Language="zh_Hant_HK"><Text>組合規劃計算量較大，勾選項目越多耗時越長；點擊后請耐心等待。</Text></Replace>
+        <Replace Tag="LOC_AMT_CALCULATING_LONG" Language="zh_Hant_HK"><Text>正在計算完整的最優規劃……[NEWLINE]項目較多時可能需要一些時間，請耐心等待，不要重復點擊。</Text></Replace>
+        <Replace Tag="LOC_AMT_CALCULATION_SCAN" Language="zh_Hant_HK"><Text>正在檢查已探索地塊是否合法……{1_Current}/{2_Total}</Text></Replace>
+        <Replace Tag="LOC_AMT_CALCULATION_CANDIDATES" Language="zh_Hant_HK"><Text>正在比較候選位置……{1_Current}/{2_Total}</Text></Replace>
+        <Replace Tag="LOC_AMT_CALCULATION_SEARCH" Language="zh_Hant_HK"><Text>正在優化完整組合……{1_Current}/{2_Total}</Text></Replace>
+        <Replace Tag="LOC_AMT_CANCEL_CALCULATION" Language="zh_Hant_HK"><Text>取消計算</Text></Replace>
+        <Replace Tag="LOC_AMT_CALCULATION_CANCELLED" Language="zh_Hant_HK"><Text>計算已取消；設置已保留，地圖釘沒有發生變化。</Text></Replace>
+        <Replace Tag="LOC_AMT_ONE_CLICK_PLAN" Language="zh_Hant_HK"><Text>一鍵規劃</Text></Replace>
+        <Replace Tag="LOC_AMT_ONE_CLICK_PLAN_TOOLTIP" Language="zh_Hant_HK"><Text>按照當前規劃范圍自動選擇區域，并加入目前已解鎖的規劃型改良設施；保留玩家手動選擇的奇觀，然后直接生成完整預覽。未經確認不會放置地圖釘。</Text></Replace>
+        <Replace Tag="LOC_AMT_AUTO_SUPPLEMENT" Language="zh_Hant_HK"><Text>自動補充勾選</Text></Replace>
+        <Replace Tag="LOC_AMT_AUTO_SUPPLEMENT_TOOLTIP" Language="zh_Hant_HK"><Text>按照當前產出側重點填充空余專業區域槽位，并勾選目前已解鎖且可能有幫助的改良設施。只調整設置，不會開始計算。</Text></Replace>
+        <Replace Tag="LOC_AMT_HIGH_ADJACENCY_ANALYSIS" Language="zh_Hant_HK"><Text>高加成專業區域分析</Text></Replace>
+        <Replace Tag="LOC_AMT_HIGH_ADJACENCY_ANALYSIS_TOOLTIP" Language="zh_Hant_HK"><Text>逐項獨立分析當前城市各個人口受限專業區域，并嘗試能直接提高該區域自身相鄰加成的合法相鄰改良。點擊報告條目可在地圖上切換預覽。只生成報告，不會更改勾選、槽位順序或地圖釘。</Text></Replace>
+        <Replace Tag="LOC_AMT_HIGH_ADJACENCY_TITLE" Language="zh_Hant_HK"><Text>高加成專業區域分析</Text></Replace>
+        <Replace Tag="LOC_AMT_HIGH_ADJACENCY_CALCULATING" Language="zh_Hant_HK"><Text>正在分析當前城市的高加成專業區域，請稍候……</Text></Replace>
+        <Replace Tag="LOC_AMT_HIGH_ADJACENCY_SUMMARY" Language="zh_Hant_HK"><Text>{1_City}：已分析 {2_Available} 種專業區域，另有 {3_Unavailable} 種不可用。各結果相互獨立，最佳地塊可以重復；點擊任一條目可切換地圖預覽。</Text></Replace>
+        <Replace Tag="LOC_AMT_HIGH_ADJACENCY_AVAILABLE_SECTION" Language="zh_Hant_HK"><Text>最高可達加成（{1_Amount}）</Text></Replace>
+        <Replace Tag="LOC_AMT_HIGH_ADJACENCY_UNAVAILABLE_SECTION" Language="zh_Hant_HK"><Text>不可用或已有安排（{1_Amount}）</Text></Replace>
+        <Replace Tag="LOC_AMT_HIGH_ADJACENCY_ENTRY" Language="zh_Hant_HK"><Text>{1_Index}. {2_District}[NEWLINE]最佳地塊（{3_X}, {4_Y}）  {5_Yields}[NEWLINE]{6_Status}；{7_Support}</Text></Replace>
+        <Replace Tag="LOC_AMT_HIGH_ADJACENCY_UNAVAILABLE_ENTRY" Language="zh_Hant_HK"><Text>{1_District}[NEWLINE]{2_Reason}</Text></Replace>
+        <Replace Tag="LOC_AMT_HIGH_ADJACENCY_CURRENT" Language="zh_Hant_HK"><Text>按當前規則可用</Text></Replace>
+        <Replace Tag="LOC_AMT_HIGH_ADJACENCY_FUTURE" Language="zh_Hant_HK"><Text>未來可用：所需科技或市政尚未解鎖</Text></Replace>
+        <Replace Tag="LOC_AMT_HIGH_ADJACENCY_ALREADY_BUILT" Language="zh_Hant_HK"><Text>本城市已經修建該專業區域</Text></Replace>
+        <Replace Tag="LOC_AMT_HIGH_ADJACENCY_ALREADY_PLANNED" Language="zh_Hant_HK"><Text>本城市已經有該專業區域地圖釘</Text></Replace>
+        <Replace Tag="LOC_AMT_HIGH_ADJACENCY_NO_LEGAL_TILE" Language="zh_Hant_HK"><Text>在當前已探索地圖與規劃范圍內沒有合法地塊</Text></Replace>
+        <Replace Tag="LOC_AMT_HIGH_ADJACENCY_NO_SUPPORT" Language="zh_Hant_HK"><Text>無需輔助改良</Text></Replace>
+        <Replace Tag="LOC_AMT_HIGH_ADJACENCY_SUPPORT" Language="zh_Hant_HK"><Text>輔助改良：{1_List}</Text></Replace>
+        <Replace Tag="LOC_AMT_HIGH_ADJACENCY_SUPPORT_BADGE" Language="zh_Hant_HK"><Text>輔助</Text></Replace>
+        <Replace Tag="LOC_AMT_HIGH_ADJACENCY_SELECT_TOOLTIP" Language="zh_Hant_HK"><Text>只在地圖上預覽此區域及其輔助改良</Text></Replace>
+        <Replace Tag="LOC_AMT_YIELD_FOCUS_LABEL" Language="zh_Hant_HK"><Text>產出側重點（點擊切換）：</Text></Replace>
+        <Replace Tag="LOC_AMT_YIELD_FOCUS_NEUTRAL" Language="zh_Hant_HK"><Text>普通考慮</Text></Replace>
+        <Replace Tag="LOC_AMT_YIELD_FOCUS_PRIORITY" Language="zh_Hant_HK"><Text>優先考慮</Text></Replace>
+        <Replace Tag="LOC_AMT_YIELD_FOCUS_IGNORE" Language="zh_Hant_HK"><Text>不考慮</Text></Replace>
+        <Replace Tag="LOC_AMT_YIELD_FOCUS_TOOLTIP" Language="zh_Hant_HK"><Text>{1_Yield}：{2_State}[NEWLINE]點擊一次設為優先考慮，再點一次設為不考慮，第三次恢復普通考慮。</Text></Replace>
+        <Replace Tag="LOC_AMT_YIELD_FOCUS_SUMMARY" Language="zh_Hant_HK"><Text>產出側重點：{1_List}</Text></Replace>
+        <Replace Tag="LOC_AMT_SPECIALTY_SLOTS_LABEL" Language="zh_Hant_HK"><Text>專業區域預留槽位</Text></Replace>
+        <Replace Tag="LOC_AMT_SPECIALTY_SLOTS_HINT" Language="zh_Hant_HK"><Text>每座城市獨立設置。單擊專業區域即可加入或移除；拖動右側已填槽位可調整順序。越靠前越優先保留高加成地塊。</Text></Replace>
+        <Replace Tag="LOC_AMT_SLOT_COUNT" Language="zh_Hant_HK"><Text>{1_Amount} 格</Text></Replace>
+        <Replace Tag="LOC_AMT_SPECIALTY_SLOT_COUNT_LABEL" Language="zh_Hant_HK"><Text>專業區域數量</Text></Replace>
+        <Replace Tag="LOC_AMT_SLOT_ADD" Language="zh_Hant_HK"><Text>+</Text></Replace>
+        <Replace Tag="LOC_AMT_SLOT_REMOVE" Language="zh_Hant_HK"><Text>-</Text></Replace>
+        <Replace Tag="LOC_AMT_SLOT_CLEAR" Language="zh_Hant_HK"><Text>清</Text></Replace>
+        <Replace Tag="LOC_AMT_SLOT_EMPTY" Language="zh_Hant_HK"><Text>空專業區域槽位</Text></Replace>
+        <Replace Tag="LOC_AMT_SLOT_LOCKED" Language="zh_Hant_HK"><Text>{1_District}（已鎖定）</Text></Replace>
+        <Replace Tag="LOC_AMT_SLOT_LOCKED_TOOLTIP" Language="zh_Hant_HK"><Text>{1_District} 已在本城市拍下地基或建成，位置無法更改，并占用這一專業區域槽位。</Text></Replace>
+        <Replace Tag="LOC_AMT_SLOT_FULL" Language="zh_Hant_HK"><Text>專業區域槽位已滿，請先增加槽位或清空一格。</Text></Replace>
+        <Replace Tag="LOC_AMT_DISTRICT_GROUP_SPECIALTY" Language="zh_Hant_HK"><Text>受人口限制的專業區域</Text></Replace>
+        <Replace Tag="LOC_AMT_DISTRICT_GROUP_SUPPORT" Language="zh_Hant_HK"><Text>不受人口數量限制的區域</Text></Replace>
+        <Replace Tag="LOC_AMT_AUTO_SUPPLEMENT_RESULT" Language="zh_Hant_HK"><Text>已補充設置：填入 {1_Slots} 個專業區域槽位，并勾選 {2_Improvements} 種目前可用的規劃型改良設施。請檢查后再預覽。</Text></Replace>
+        <Replace Tag="LOC_AMT_MOVE_UP" Language="zh_Hant_HK"><Text>上</Text></Replace>
+        <Replace Tag="LOC_AMT_MOVE_DOWN" Language="zh_Hant_HK"><Text>下</Text></Replace>
+        <Replace Tag="LOC_AMT_OK" Language="zh_Hant_HK"><Text>開始規劃</Text></Replace>
+        <Replace Tag="LOC_AMT_PREVIEW_PLAN" Language="zh_Hant_HK"><Text>預覽規劃</Text></Replace>
+        <Replace Tag="LOC_AMT_CONFIRM_PLAN" Language="zh_Hant_HK"><Text>確認放置</Text></Replace>
+        <Replace Tag="LOC_AMT_PREVIEW_TITLE" Language="zh_Hant_HK"><Text>規劃報告</Text></Replace>
+        <Replace Tag="LOC_AMT_PREVIEW_BADGE" Language="zh_Hant_HK"><Text>預覽</Text></Replace>
+        <Replace Tag="LOC_AMT_PREVIEW_LIST_LABEL" Language="zh_Hant_HK"><Text>擬放置位置</Text></Replace>
+        <Replace Tag="LOC_AMT_PREVIEW_ENTRY" Language="zh_Hant_HK"><Text>{1_Index}. {2_City}—{3_District}[NEWLINE]地塊（{4_X}, {5_Y}）  {6_Yields}</Text></Replace>
+        <Replace Tag="LOC_AMT_PREVIEW_READY" Language="zh_Hant_HK"><Text>預覽完成：計劃放置 {1_Amount} 個地圖釘；目前尚未改動任何地圖釘。</Text></Replace>
+        <Replace Tag="LOC_AMT_PREVIEW_READY_PARTIAL" Language="zh_Hant_HK"><Text>預覽：計劃放置 {1_Amount} 個；部分項目未能規劃：{2_List}。目前尚未改動地圖釘。</Text></Replace>
+        <Replace Tag="LOC_AMT_PREVIEW_MAP_HINT" Language="zh_Hant_HK"><Text>地圖圖標是擬放置位置；點擊“已規劃”項目可定位，確認后才會改動地圖釘。</Text></Replace>
+        <Replace Tag="LOC_AMT_PREVIEW_FOCUS_TOOLTIP" Language="zh_Hant_HK"><Text>將鏡頭移到這個擬放置位置。</Text></Replace>
+        <Replace Tag="LOC_AMT_PREVIEW_BACK" Language="zh_Hant_HK"><Text>返回設置</Text></Replace>
+        <Replace Tag="LOC_AMT_PREVIEW_CANCELLED" Language="zh_Hant_HK"><Text>已取消預覽，沒有改動任何地圖釘。</Text></Replace>
+        <Replace Tag="LOC_AMT_PREVIEW_STALE" Language="zh_Hant_HK"><Text>預覽后地圖釘發生了變化，請檢查設置并重新預覽。</Text></Replace>
+        <Replace Tag="LOC_AMT_NO_ADJACENCY" Language="zh_Hant_HK"><Text>無相鄰加成</Text></Replace>
+        <Replace Tag="LOC_AMT_CANCEL" Language="zh_Hant_HK"><Text>取消</Text></Replace>
+        <Replace Tag="LOC_AMT_UNDO" Language="zh_Hant_HK"><Text>撤銷上次規劃</Text></Replace>
+        <Replace Tag="LOC_AMT_UNDO_NONE" Language="zh_Hant_HK"><Text>沒有可以撤銷的自動規劃操作。</Text></Replace>
+        <Replace Tag="LOC_AMT_UNDO_RESULT" Language="zh_Hant_HK"><Text>撤銷完成：刪除 {1_Removed} 個新釘，恢復 {2_Restored} 個被替換的釘。</Text></Replace>
+        <Replace Tag="LOC_AMT_UNDO_PARTIAL" Language="zh_Hant_HK"><Text>部分撤銷：刪除 {1_Removed} 個，恢復 {2_Restored} 個；另有 {3_Blocked} 個位置已被占用。</Text></Replace>
+        <Replace Tag="LOC_AMT_RESULT_NONE" Language="zh_Hant_HK"><Text>沒有找到合法的放置位置。</Text></Replace>
+        <Replace Tag="LOC_AMT_RESULT_NO_BENEFIT" Language="zh_Hant_HK"><Text>合法候選位置中沒有能提升當前權重總收益的方案，因此自動規劃數量為 0。</Text></Replace>
+        <Replace Tag="LOC_AMT_RESULT_SATISFIED" Language="zh_Hant_HK"><Text>無需補充：所選區域已經建成，或已有地圖釘占用了相應位置與名額。</Text></Replace>
+        <Replace Tag="LOC_AMT_RESULT_PLACED" Language="zh_Hant_HK"><Text>已放置 {1_Amount} 個地圖釘。</Text></Replace>
+        <Replace Tag="LOC_AMT_RESULT_ERROR" Language="zh_Hant_HK"><Text>規劃器遇到錯誤，已停止本次規劃。</Text></Replace>
+        <Replace Tag="LOC_AMT_RESULT_UNAVAILABLE" Language="zh_Hant_HK"><Text>未能規劃：{1_List}。</Text></Replace>
+        <Replace Tag="LOC_AMT_RESULT_PARTIAL" Language="zh_Hant_HK"><Text>已放置 {1_Amount} 個；未能規劃：{2_List}。</Text></Replace>
+        <Replace Tag="LOC_AMT_REASON_NO_LEGAL_TILE" Language="zh_Hant_HK"><Text>沒有合法地塊</Text></Replace>
+        <Replace Tag="LOC_AMT_REASON_INCOMPATIBLE" Language="zh_Hant_HK"><Text>與所選布局不兼容</Text></Replace>
+        <Replace Tag="LOC_AMT_REASON_MUTUALLY_EXCLUSIVE" Language="zh_Hant_HK"><Text>與{1_District}互斥</Text></Replace>
+        <Replace Tag="LOC_AMT_LINKED_CITIES" Language="zh_Hant_HK"><Text>聯動城市群</Text></Replace>
+        <Replace Tag="LOC_AMT_MORE_ITEMS" Language="zh_Hant_HK"><Text>另有 {1_Amount} 項</Text></Replace>
+        <Replace Tag="LOC_AMT_NO_CITY" Language="zh_Hant_HK"><Text>請先選擇一座城市。</Text></Replace>
+        <Replace Tag="LOC_AMT_NO_DISTRICTS" Language="zh_Hant_HK"><Text>請至少選擇一個區域。</Text></Replace>
+        <Replace Tag="LOC_AMT_CATEGORY_DISTRICTS" Language="zh_Hant_HK"><Text>區域</Text></Replace>
+        <Replace Tag="LOC_AMT_CATEGORY_IMPROVEMENTS" Language="zh_Hant_HK"><Text>改良設施</Text></Replace>
+        <Replace Tag="LOC_AMT_CATEGORY_WONDERS" Language="zh_Hant_HK"><Text>奇觀</Text></Replace>
+        <Replace Tag="LOC_AMT_VICTORY_GOAL_LABEL" Language="zh_Hant_HK"><Text>本局著力點：</Text></Replace>
+        <Replace Tag="LOC_AMT_GOAL_BALANCED" Language="zh_Hant_HK"><Text>均衡發展</Text></Replace>
+        <Replace Tag="LOC_AMT_GOAL_SCIENCE" Language="zh_Hant_HK"><Text>科技勝利</Text></Replace>
+        <Replace Tag="LOC_AMT_GOAL_CULTURE" Language="zh_Hant_HK"><Text>文化勝利</Text></Replace>
+        <Replace Tag="LOC_AMT_GOAL_RELIGION" Language="zh_Hant_HK"><Text>宗教勝利</Text></Replace>
+        <Replace Tag="LOC_AMT_GOAL_DOMINATION" Language="zh_Hant_HK"><Text>征服勝利</Text></Replace>
+        <Replace Tag="LOC_AMT_GOAL_DIPLOMACY" Language="zh_Hant_HK"><Text>外交/經濟</Text></Replace>
+        <Replace Tag="LOC_AMT_UNIQUE_DIRECTION" Language="zh_Hant_HK"><Text>優先文明特色區域</Text></Replace>
+        <Replace Tag="LOC_AMT_UNIQUE_DIRECTION_DYNAMIC" Language="zh_Hant_HK"><Text>優先文明特色區域：{1_List}</Text></Replace>
+        <Replace Tag="LOC_AMT_UNIQUE_DIRECTION_TOOLTIP" Language="zh_Hant_HK"><Text>應用著力點或自動勾選時，會把本文明的替代區域提前并給予額外戰略加分；之后仍可用箭頭手動調整。</Text></Replace>
+        <Replace Tag="LOC_AMT_NO_UNIQUE_DISTRICT" Language="zh_Hant_HK"><Text>本文明無特色區域</Text></Replace>
+        <Replace Tag="LOC_AMT_UNIQUE_DISTRICT_BADGE" Language="zh_Hant_HK"><Text>文明特色區域</Text></Replace>
+        <Replace Tag="LOC_AMT_UNIQUE_DISTRICT_TOOLTIP" Language="zh_Hant_HK"><Text>替代{1_District}的文明特色區域。</Text></Replace>
+        <Replace Tag="LOC_AMT_PRESERVE_PLANNING" Language="zh_Hant_HK"><Text>規劃保護區</Text></Replace>
+        <Replace Tag="LOC_AMT_PRESERVE_PLANNING_TOOLTIP" Language="zh_Hant_HK"><Text>默認關閉。啟用后會專門評估魅力、相鄰六格是否保持無改良，以及樹林、資源和負魅力來源，而不是只看普通相鄰加成。</Text></Replace>
+        <Replace Tag="LOC_AMT_PRESERVE_DISABLED_TOOLTIP" Language="zh_Hant_HK"><Text>請先勾選“規劃保護區”。保護區的價值取決于周圍六格未來是否保持無改良。</Text></Replace>
+        <Replace Tag="LOC_AMT_DISTRICT_PRIORITY_LABEL" Language="zh_Hant_HK"><Text>專業區域建設順序</Text></Replace>
+        <Replace Tag="LOC_AMT_DISTRICT_PRIORITY_HINT" Language="zh_Hant_HK"><Text>用箭頭決定人口受限區域的預留順序。越靠前越早拍下；下方同時顯示通常所需的人口節點。</Text></Replace>
+        <Replace Tag="LOC_AMT_PRIORITY_EDIT_TOOLTIP" Language="zh_Hant_HK"><Text>點擊填寫該區域的優先級（1～99）。</Text></Replace>
+        <Replace Tag="LOC_AMT_SPECIALTY_MILESTONE" Language="zh_Hant_HK"><Text>人口 {1_Amount} 節點</Text></Replace>
+        <Replace Tag="LOC_AMT_ERA_GROUP_LABEL" Language="zh_Hant_HK"><Text>{1_Era}（{2_Amount}）</Text></Replace>
+        <Replace Tag="LOC_AMT_SELECT_ERA" Language="zh_Hant_HK"><Text>全選本時代</Text></Replace>
+        <Replace Tag="LOC_AMT_CLEAR_ERA" Language="zh_Hant_HK"><Text>清除本時代</Text></Replace>
+        <Replace Tag="LOC_AMT_CATEGORY_DISTRICTS_HINT" Language="zh_Hant_HK"><Text>單擊專業區域即可加入或移出右側編號槽位；拖動已填槽位可調整順序。</Text></Replace>
+        <Replace Tag="LOC_AMT_CATEGORY_IMPROVEMENTS_HINT" Language="zh_Hant_HK"><Text>按時代選擇可能需要的設施；算法只在合法地塊中挑選，不會把所有可用地塊鋪滿。</Text></Replace>
+        <Replace Tag="LOC_AMT_CATEGORY_WONDERS_HINT" Language="zh_Hant_HK"><Text>手動選擇具體奇觀或通用占位圖標；通用圖標只預留位置，不指定奇觀。</Text></Replace>
+        <Replace Tag="LOC_AMT_CATEGORY_DISTRICTS_KEY_RULE" Language="zh_Hant_HK"><Text>關鍵規則：右側槽位越靠前，越優先占用高價值地塊。</Text></Replace>
+        <Replace Tag="LOC_AMT_CATEGORY_IMPROVEMENTS_KEY_RULE" Language="zh_Hant_HK"><Text>規劃人口 {1_Population} → 目標 {2_Target} 個有效改良地塊；已有改良另行扣除。</Text></Replace>
+        <Replace Tag="LOC_AMT_CATEGORY_WONDERS_KEY_RULE" Language="zh_Hant_HK"><Text>關鍵規則：奇觀不會自動全選；每個手選奇觀最多規劃一次。</Text></Replace>
+        <Replace Tag="LOC_AMT_LONG_TERM" Language="zh_Hant_HK"><Text>長期藍圖</Text></Replace>
+        <Replace Tag="LOC_AMT_CURRENT_BUILDABLE" Language="zh_Hant_HK"><Text>按現狀規劃</Text></Replace>
+        <Replace Tag="LOC_AMT_LONG_TERM_TOOLTIP" Language="zh_Hant_HK"><Text>可使用未來解鎖項目，以及本城可工作范圍內已經探索但尚未擁有的地塊。</Text></Replace>
+        <Replace Tag="LOC_AMT_CURRENT_CONDITIONS_TOOLTIP" Language="zh_Hant_HK"><Text>只使用當前已解鎖項目和本城已經擁有的已探索地塊；不代表本回合能夠立即開工。</Text></Replace>
+        <Replace Tag="LOC_AMT_ACTIVE_SUFFIX" Language="zh_Hant_HK"><Text>●</Text></Replace>
+        <Replace Tag="LOC_AMT_CLEAR_CATEGORY" Language="zh_Hant_HK"><Text>清空</Text></Replace>
+        <Replace Tag="LOC_AMT_SELECTION_COUNT" Language="zh_Hant_HK"><Text>已選：{1_Amount}</Text></Replace>
+        <Replace Tag="LOC_AMT_AUTO_COUNT" Language="zh_Hant_HK"><Text>數量：按人口自動計算</Text></Replace>
+        <Replace Tag="LOC_AMT_POPULATION_BUDGET_LABEL" Language="zh_Hant_HK"><Text>規劃人口</Text></Replace>
+        <Replace Tag="LOC_AMT_POPULATION_BUDGET_TOOLTIP" Language="zh_Hant_HK"><Text>當前人口 {1_Current}；人口 {2_Required} 可容納已設置的全部專業區域槽位。</Text></Replace>
+        <Replace Tag="LOC_AMT_POPULATION_BUDGET_WARNING" Language="zh_Hant_HK"><Text>人口 {1_Budget} 不足：{3_Slots} 格需 {2_Required}</Text></Replace>
+        <Replace Tag="LOC_AMT_POPULATION_BUDGET_WARNING_TOOLTIP" Language="zh_Hant_HK"><Text>計算時只會放置規劃人口能夠容納的專業區域。當前設置 {1_Slots} 個槽位，通常需要人口 {2_Required}。</Text></Replace>
+        <Replace Tag="LOC_AMT_WONDER_NO_SELECT_ALL_TOOLTIP" Language="zh_Hant_HK"><Text>奇觀不會被自動勾選，請手動選擇具體奇觀或通用奇觀占位圖標。</Text></Replace>
+        <Replace Tag="LOC_AMT_NO_SUBJECTS" Language="zh_Hant_HK"><Text>請至少選擇一個區域、改良設施或奇觀。</Text></Replace>
+        <Replace Tag="LOC_AMT_WONDER_REQUIRES_SELECTED_DISTRICT" Language="zh_Hant_HK"><Text>「{1_Wonder}」需要「{2_District}」。請先手動勾選該區域，再開始規劃。</Text></Replace>
+        <Replace Tag="LOC_AMT_REASON_ALREADY_EXISTS" Language="zh_Hant_HK"><Text>已經建成或已有地圖釘，無需重復規劃</Text></Replace>
+        <Replace Tag="LOC_AMT_REASON_LOWER_PRIORITY" Language="zh_Hant_HK"><Text>兼容地塊不足，已優先保留更高優先級區域</Text></Replace>
+        <Replace Tag="LOC_AMT_REASON_POPULATION_LIMIT" Language="zh_Hant_HK"><Text>在目標人口 {1_Amount} 前沒有剩余專業區域名額，已優先預留順序更靠前的區域</Text></Replace>
+        <Replace Tag="LOC_AMT_REASON_IMPROVEMENT_BUDGET" Language="zh_Hant_HK"><Text>未進入按人口計算的改良設施預算（目標共保留 {1_Amount} 個有效改良地塊，其中已有 {2_Existing} 個）</Text></Replace>
+        <Replace Tag="LOC_AMT_REASON_COVERAGE_SATISFIED" Language="zh_Hant_HK"><Text>聯動城市群已獲得輻射覆蓋，無需重復規劃</Text></Replace>
+        <Replace Tag="LOC_AMT_REASON_TRADE_ROUTE_REDUNDANCY" Language="zh_Hant_HK"><Text>本城已規劃商業中心或港口；重復建設通常不會增加第二條貿易路線容量</Text></Replace>
+        <Replace Tag="LOC_AMT_PREVIEW_SPECIALTY_SLOT" Language="zh_Hant_HK"><Text>第 {1_Index} 個專業區域名額 · 通常在人口 {2_Amount} 解鎖</Text></Replace>
+        <Replace Tag="LOC_AMT_PREVIEW_PRESERVE_SCORE" Language="zh_Hant_HK"><Text>評分已計入魅力和相鄰六格的未來狀態。</Text></Replace>
+        <Replace Tag="LOC_AMT_PREVIEW_CONTEXT" Language="zh_Hant_HK"><Text>著力點：{1_Goal} · 規劃范圍：{2_Horizon}</Text></Replace>
+        <Replace Tag="LOC_AMT_PREVIEW_SKIPPED_ENTRY" Language="zh_Hant_HK"><Text>未放置：{1_City}—{2_Subject}[NEWLINE]{3_Reason}</Text></Replace>
+        <Replace Tag="LOC_AMT_REPORT_SUMMARY" Language="zh_Hant_HK"><Text>結論：已規劃 {1_Planned} 項｜未放置 {2_Skipped} 項[NEWLINE]規劃人口 {3_Population}｜{4_Horizon}｜尚未改動地圖釘</Text></Replace>
+        <Replace Tag="LOC_AMT_REPORT_SKIPPED_SECTION" Language="zh_Hant_HK"><Text>需要處理：未放置（{1_Amount}）</Text></Replace>
+        <Replace Tag="LOC_AMT_REPORT_PLANNED_SECTION" Language="zh_Hant_HK"><Text>已規劃（{1_Amount}）</Text></Replace>
+        <Replace Tag="LOC_AMT_REPORT_NONE_SKIPPED" Language="zh_Hant_HK"><Text>全部選項均已安排。</Text></Replace>
+        <Replace Tag="LOC_AMT_REPORT_SKIPPED_ENTRY" Language="zh_Hant_HK"><Text>{1_Subject}｜{2_City}[NEWLINE]原因：{3_Reason}</Text></Replace>
+        <Replace Tag="LOC_AMT_DIAG_COUNTS" Language="zh_Hant_HK"><Text>掃描{1_Scanned} / 可用{2_Eligible} / 基礎{3_Base} / 配套{4_Support} / 完整檢查{5_Full} / DMT通過{6_Dmt} / 最終{7_Accepted}</Text></Replace>
+        <Replace Tag="LOC_AMT_DIAG_FIRST_FAILURE" Language="zh_Hant_HK"><Text>[{1_Stage}] {2_Subject}（{3_X},{4_Y}）：{5_Detail}</Text></Replace>
+        <Replace Tag="LOC_AMT_DIAG_NO_DETAIL" Language="zh_Hant_HK"><Text>檢查未返回詳細原因。</Text></Replace>
+        <Replace Tag="LOC_AMT_PLANNER_FOOTNOTE" Language="zh_Hant_HK"><Text>可預先放置區域、改良、奇觀及“刪除地貌 / 移除資源 / 種植樹林”地圖釘來指揮規劃；每座城市會分別記住設置。解鎖科技或市政后重新預覽，即會按最新規則刷新規劃。</Text></Replace>
+    </LocalizedText>
+</GameData>

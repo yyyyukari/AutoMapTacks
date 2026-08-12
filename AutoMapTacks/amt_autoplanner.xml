@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Context ColorSet="Beige_Black" FontStyle="Shadow">
+
+  <Container ID="PreviewWorldIcons"/>
+
+  <Box ID="SettingsBlocker" Color="0,0,0,140" Size="parent,parent" ConsumeMouse="1">
+    <Grid ID="AMTBackground" Anchor="C,C" Size="930,720" Style="WindowFrameTitle" ConsumeMouse="1">
+      <Label ID="AMTTitle" Anchor="C,T" Offset="0,12" Style="WindowHeader" String="{LOC_AMT_POPUP_TITLE:upper}"/>
+
+      <Label Anchor="L,T" Offset="24,52" Style="FontNormal14" String="LOC_AMT_TARGET_CITY_LABEL"/>
+      <Label ID="CityName" Anchor="L,T" Offset="135,52" Style="FontNormal14" String="LOC_AMT_TARGET_CITY_NONE"/>
+
+      <Label Anchor="L,T" Offset="24,78" Style="FontNormal14" String="LOC_AMT_YIELD_FOCUS_LABEL"/>
+      <Stack ID="YieldFocusButtons" Anchor="L,T" Offset="24,101" StackGrowth="Right" Padding="5">
+        <Grid Style="CityPanelFilterGrid">
+          <CheckBox ID="ScienceFocusButton" Style="CityPanelCBScience" String="[ICON_Science]"/>
+          <Button ID="ScienceFocusIgnore" Style="CityPanelIgnoreYieldButton"/>
+        </Grid>
+        <Grid Style="CityPanelFilterGrid">
+          <CheckBox ID="CultureFocusButton" Style="CityPanelCBCulture" String="[ICON_Culture]"/>
+          <Button ID="CultureFocusIgnore" Style="CityPanelIgnoreYieldButton"/>
+        </Grid>
+        <Grid Style="CityPanelFilterGrid">
+          <CheckBox ID="GoldFocusButton" Style="CityPanelCBGold" String="[ICON_Gold]"/>
+          <Button ID="GoldFocusIgnore" Style="CityPanelIgnoreYieldButton"/>
+        </Grid>
+        <Grid Style="CityPanelFilterGrid">
+          <CheckBox ID="FaithFocusButton" Style="CityPanelCBFaith" String="[ICON_Faith]"/>
+          <Button ID="FaithFocusIgnore" Style="CityPanelIgnoreYieldButton"/>
+        </Grid>
+        <Grid Style="CityPanelFilterGrid">
+          <CheckBox ID="ProductionFocusButton" Style="CityPanelCBProduction" String="[ICON_Production]"/>
+          <Button ID="ProductionFocusIgnore" Style="CityPanelIgnoreYieldButton"/>
+        </Grid>
+        <Grid Style="CityPanelFilterGrid">
+          <CheckBox ID="FoodFocusButton" Style="CityPanelCBFood" String="[ICON_Food]"/>
+          <Button ID="FoodFocusIgnore" Style="CityPanelIgnoreYieldButton"/>
+        </Grid>
+      </Stack>
+      <CheckBox ID="UniqueDirectionCheck" Anchor="R,T" Offset="24,79" Size="270,24" Style="MainCheckBox" ColorSet="Beige_Black"
+                BoxOnLeft="1" String="LOC_AMT_UNIQUE_DIRECTION" ToolTip="LOC_AMT_UNIQUE_DIRECTION_TOOLTIP" ButtonSize="20,20" CheckSize="20,20"/>
+      <CheckBox ID="PreservePlanningCheck" Anchor="R,T" Offset="24,111" Size="270,24" Style="MainCheckBox" ColorSet="Beige_Black"
+                BoxOnLeft="1" String="LOC_AMT_PRESERVE_PLANNING" ToolTip="LOC_AMT_PRESERVE_PLANNING_TOOLTIP" ButtonSize="20,20" CheckSize="20,20"/>
+
+      <Stack ID="CategoryTabs" Anchor="L,T" Offset="24,148" StackGrowth="Right" Padding="8">
+        <GridButton ID="DistrictTabButton" Size="180,36" Style="MainButton" FontStyle="Shadow" String="LOC_AMT_CATEGORY_DISTRICTS"/>
+        <GridButton ID="ImprovementTabButton" Size="180,36" Style="MainButton" FontStyle="Shadow" String="LOC_AMT_CATEGORY_IMPROVEMENTS"/>
+        <GridButton ID="WonderTabButton" Size="180,36" Style="MainButton" FontStyle="Shadow" String="LOC_AMT_CATEGORY_WONDERS"/>
+      </Stack>
+
+      <Label ID="CategoryHint" Anchor="L,T" Offset="24,195" Size="615,34" WrapWidth="615" Style="FontNormal14" String=""/>
+      <Grid ID="RuleBanner" Anchor="L,T" Offset="24,233" Size="615,32" Color="26,74,99,210">
+        <Label ID="AutoCountLabel" Anchor="L,C" Offset="12,0" Size="591,28" Style="FontNormal16" FontStyle="Glow"
+               Color="255,229,151,255" String=""/>
+      </Grid>
+      <Stack Anchor="L,T" Offset="24,273" StackGrowth="Right" Padding="8">
+        <GridButton ID="LongTermButton" Size="145,32" Style="MainButton" FontStyle="Shadow" String="LOC_AMT_LONG_TERM"/>
+        <GridButton ID="CurrentBuildableButton" Size="145,32" Style="MainButton" FontStyle="Shadow" String="LOC_AMT_CURRENT_BUILDABLE"/>
+        <GridButton ID="ClearCategoryButton" Size="65,32" Style="ButtonRed" FontStyle="Shadow" String="LOC_AMT_CLEAR_CATEGORY"/>
+        <Label ID="SelectionCount" Anchor="L,C" Offset="2,0" Size="110,28" Style="FontNormal14" String=""/>
+      </Stack>
+
+      <ScrollPanel ID="ItemScroll" Anchor="L,T" Offset="24,312" Size="615,225" Style="ScrollPanelWithRightBar">
+        <Stack ID="ItemGrid" Anchor="L,T" Size="585,0" StackGrowth="Right" WrapGrowth="Down" WrapWidth="585" Padding="5"/>
+      </ScrollPanel>
+
+      <Label ID="SelectionHint" Anchor="L,T" Offset="24,544" Size="615,52" WrapWidth="615" Style="FontNormal12" String="LOC_AMT_PLANNER_FOOTNOTE"/>
+
+      <Label Anchor="R,T" Offset="34,154" Style="FontNormal14" String="LOC_AMT_SPECIALTY_SLOTS_LABEL"/>
+      <Label Anchor="R,T" Offset="28,181" Size="250,68" WrapWidth="250" Style="FontNormal12" String="LOC_AMT_SPECIALTY_SLOTS_HINT"/>
+      <ScrollPanel ID="PriorityScroll" Anchor="R,T" Offset="24,253" Size="270,276" Style="ScrollPanelWithRightBar">
+        <Stack ID="WeightStack" Anchor="L,T" Size="240,0" StackGrowth="Down" Padding="5"/>
+      </ScrollPanel>
+      <Stack Anchor="R,T" Offset="24,536" StackGrowth="Right" Padding="4">
+        <Label Anchor="L,C" Size="120,28" Align="Right" Style="FontNormal14" String="LOC_AMT_SPECIALTY_SLOT_COUNT_LABEL"/>
+        <GridButton ID="RemoveSlotButton" Size="36,30" Style="MainButton" FontStyle="Shadow" String="LOC_AMT_SLOT_REMOVE"/>
+        <Label ID="SlotCountLabel" Anchor="L,C" Size="42,28" Align="Center" Style="FontNormal16"/>
+        <GridButton ID="AddSlotButton" Size="36,30" Style="MainButton" FontStyle="Shadow" String="LOC_AMT_SLOT_ADD"/>
+      </Stack>
+      <Stack Anchor="R,T" Offset="24,574" StackGrowth="Right" Padding="4">
+        <Image ID="PopulationIcon" Anchor="L,C" Size="22,22"/>
+        <Label Anchor="L,C" Size="114,28" Align="Right" Style="FontNormal14" String="LOC_AMT_POPULATION_BUDGET_LABEL"/>
+        <GridButton ID="RemovePopulationButton" Size="36,30" Style="MainButton" FontStyle="Shadow" String="LOC_AMT_SLOT_REMOVE"/>
+        <Label ID="PopulationBudgetLabel" Anchor="L,C" Size="42,28" Align="Center" Style="FontNormal16"/>
+        <GridButton ID="AddPopulationButton" Size="36,30" Style="MainButton" FontStyle="Shadow" String="LOC_AMT_SLOT_ADD"/>
+      </Stack>
+      <Label ID="PopulationWarning" Anchor="R,T" Offset="24,605" Size="270,16" WrapWidth="270"
+             Style="FontNormal12" Color="255,197,92,255" String="" Hidden="1"/>
+
+      <CheckBox ID="MultiCityCheck" Anchor="L,B" Offset="24,105" Size="850,25" Style="MainCheckBox" ColorSet="Beige_Black" Hidden="1"
+                BoxOnLeft="1" String="LOC_AMT_MULTI_CITY" ToolTip="LOC_AMT_MULTI_CITY_TOOLTIP" ButtonSize="20,20" CheckSize="20,20"/>
+
+      <CheckBox ID="OverwriteCheck" Anchor="L,B" Offset="24,73" Size="270,25" Style="MainCheckBox" ColorSet="Beige_Black"
+                BoxOnLeft="1" String="LOC_AMT_OVERWRITE" ToolTip="LOC_AMT_OVERWRITE_TOOLTIP" ButtonSize="20,20" CheckSize="20,20"/>
+      <CheckBox ID="ClearCheck" Anchor="L,B" Offset="315,73" Size="270,25" Style="MainCheckBox" ColorSet="Beige_Black"
+                BoxOnLeft="1" String="LOC_AMT_CLEAR" ToolTip="LOC_AMT_CLEAR_TOOLTIP" ButtonSize="20,20" CheckSize="20,20"/>
+      <CheckBox ID="ClearManualCheck" Anchor="L,B" Offset="600,73" Size="260,25" Style="MainCheckBox" ColorSet="Beige_Black"
+                BoxOnLeft="1" String="LOC_AMT_CLEAR_MANUAL" ToolTip="LOC_AMT_CLEAR_MANUAL_TOOLTIP" ButtonSize="20,20" CheckSize="20,20"/>
+
+      <Label ID="ResultText" Anchor="L,B" Offset="24,47" Size="870,22" WrapWidth="870" Style="FontNormal14" String=""/>
+      <Label ID="WarningText" Anchor="L,B" Offset="24,44" Size="870,28" WrapWidth="870" Style="FontNormal16"
+             Color="255,56,48,255" Hidden="1" String=""/>
+
+      <GridButton ID="UndoButton" Anchor="L,B" Offset="12,10" Size="180,36" Style="MainButton" FontStyle="Shadow" String="LOC_AMT_UNDO"/>
+      <GridButton ID="OneClickButton" Anchor="R,B" Offset="320,10" Size="180,36" Style="MainButton" FontStyle="Shadow"
+                  String="LOC_AMT_HIGH_ADJACENCY_ANALYSIS" ToolTip="LOC_AMT_HIGH_ADJACENCY_ANALYSIS_TOOLTIP"/>
+      <GridButton ID="OkButton" Anchor="R,B" Offset="170,10" Size="150,36" Style="MainButton" FontStyle="Shadow" String="LOC_AMT_OK"/>
+      <GridButton ID="CancelButton" Anchor="R,B" Offset="12,10" Size="150,36" Style="ButtonRed" FontStyle="Shadow" String="LOC_AMT_CANCEL"/>
+      <Box ID="PlanningOverlay" Anchor="C,C" Size="parent,parent" Color="0,0,0,185" Hidden="1" ConsumeMouse="1">
+        <Grid Anchor="C,C" Size="560,174" Style="WindowFrameTitle">
+          <AlphaAnim Anchor="C,T" Offset="0,24" Size="520,88" Cycle="Bounce" Speed="1.2" AlphaStart="1" AlphaEnd="0.55">
+            <Label ID="PlanningStatus" Anchor="C,C" Size="500,76" WrapWidth="500" Align="Center" Style="FontNormal18"
+                   String="LOC_AMT_CALCULATING_LONG"/>
+          </AlphaAnim>
+          <GridButton ID="PlanningCancelButton" Anchor="C,B" Offset="0,16" Size="160,36" Style="ButtonRed" FontStyle="Shadow"
+                      String="LOC_AMT_CANCEL_CALCULATION"/>
+        </Grid>
+      </Box>
+    </Grid>
+  </Box>
+
+  <Grid ID="PreviewPanel" Anchor="R,C" Offset="20,0" Size="450,650" Style="WindowFrameTitle" Hidden="1" ConsumeMouse="1">
+    <Label ID="PreviewTitle" Anchor="C,T" Offset="0,12" Style="WindowHeader" String="{LOC_AMT_PREVIEW_TITLE:upper}"/>
+    <Label ID="PreviewSummary" Anchor="L,T" Offset="20,55" Size="410,54" WrapWidth="410" Style="FontNormal14" String=""/>
+    <Label ID="SkippedLabel" Anchor="L,T" Offset="20,116" Size="410,24" Style="FontNormal16"
+           FontStyle="Glow" Color="255,197,92,255" String=""/>
+    <Label ID="SkippedEmptyLabel" Anchor="L,T" Offset="20,145" Size="410,28" Style="FontNormal14"
+           Color="93,167,104,255" String="LOC_AMT_REPORT_NONE_SKIPPED" Hidden="1"/>
+    <ScrollPanel ID="SkippedScroll" Anchor="L,T" Offset="20,144" Size="410,155" Style="ScrollPanelWithRightBar" Hidden="1">
+      <Stack ID="SkippedStack" Anchor="L,T" Size="385,0" StackGrowth="Bottom" Padding="4"/>
+    </ScrollPanel>
+    <Label ID="PreviewLabel" Anchor="L,T" Offset="20,309" Size="410,24" Style="FontNormal16" FontStyle="Glow" String=""/>
+    <ScrollPanel ID="PreviewScroll" Anchor="L,T" Offset="20,337" Size="410,205" Style="ScrollPanelWithRightBar" Hidden="1">
+      <Stack ID="PreviewStack" Anchor="L,T" Size="385,0" StackGrowth="Bottom" Padding="4"/>
+    </ScrollPanel>
+    <Label Anchor="L,B" Offset="20,62" Size="410,38" WrapWidth="410" Style="FontNormal12" String="LOC_AMT_PREVIEW_MAP_HINT"/>
+    <GridButton ID="PreviewBackButton" Anchor="L,B" Offset="12,10" Size="120,36" Style="MainButton" FontStyle="Shadow" String="LOC_AMT_PREVIEW_BACK"/>
+    <GridButton ID="PreviewConfirmButton" Anchor="C,B" Offset="30,10" Size="150,36" Style="MainButton" FontStyle="Shadow" String="LOC_AMT_CONFIRM_PLAN"/>
+    <GridButton ID="PreviewCancelButton" Anchor="R,B" Offset="12,10" Size="120,36" Style="ButtonRed" FontStyle="Shadow" String="LOC_AMT_CANCEL"/>
+  </Grid>
+
+  <Instance Name="PlannerIconEntry">
+    <Container ID="Top" Size="43,43">
+      <GridButton ID="IconButton" Anchor="C,C" Size="40,40" Style="ButtonControl">
+        <Image ID="Icon" Anchor="C,C" Size="34,34"/>
+        <Box ID="SelectedOverlay" Anchor="C,C" Size="38,38" Color="40,175,255,95" Hidden="1"/>
+        <Label ID="SelectedMark" Anchor="R,B" Offset="2,1" Style="FontNormal18" String="*" Color="255,255,255,255" Hidden="1"/>
+        <Drag ID="IconDrag" Anchor="C,C" Size="40,40" Buttons="L" SnapBackSpeed="0" DragThreshold="8" Hidden="1"/>
+      </GridButton>
+      <Grid ID="EraGroup" Anchor="L,C" Size="575,34" Hidden="1">
+        <Box Anchor="C,C" Size="parent,parent" Color="15,48,72,160"/>
+        <Label ID="EraLabel" Anchor="L,C" Offset="12,0" Size="365,30" Style="FontNormal16"/>
+        <GridButton ID="EraSelectButton" Anchor="R,C" Offset="4,0" Size="180,30" Style="MainButton" FontStyle="Shadow"/>
+      </Grid>
+    </Container>
+  </Instance>
+
+  <Instance Name="PriorityEntry">
+    <Container ID="Top" Size="240,56">
+      <Label ID="OrderIndex" Anchor="L,C" Offset="3,0" Size="28,28" Style="FontNormal18"/>
+      <Grid ID="SlotFrame" Anchor="R,C" Offset="2,0" Size="204,52" Style="Grid9MainButton">
+        <Image ID="SlotIcon" Anchor="L,C" Offset="8,0" Size="38,38" Hidden="1"/>
+        <Label ID="SlotName" Anchor="L,C" Offset="52,0" Size="112,42" WrapWidth="112" Style="FontNormal14"/>
+        <Box ID="DropHighlight" Anchor="C,C" Size="200,48" Color="40,175,255,110" Hidden="1"/>
+        <Drag ID="SlotDrag" Anchor="C,C" Size="204,52" Buttons="L" SnapBackSpeed="0" DragThreshold="8"/>
+        <GridButton ID="ClearSlotButton" Anchor="R,C" Offset="5,0" Size="30,30" Style="ButtonControl"
+                    FontStyle="Shadow" String="LOC_AMT_SLOT_CLEAR"/>
+      </Grid>
+    </Container>
+  </Instance>
+
+  <Instance Name="PreviewEntry">
+    <Container ID="Top" Size="365,72">
+      <GridButton ID="SelectButton" Anchor="L,T" Size="365,70" Style="ButtonControl" TextColor="0,0,0,0">
+        <Image ID="SubjectIcon" Anchor="L,C" Offset="8,0" Size="34,34"/>
+        <Label ID="DetailText" Anchor="L,C" Offset="50,0" Size="305,64" WrapWidth="305" Style="FontNormal14"/>
+      </GridButton>
+    </Container>
+  </Instance>
+
+  <Instance Name="SkippedEntry">
+    <Container ID="Top" Size="365,122">
+      <GridButton ID="SelectButton" Anchor="L,T" Size="365,120" Style="ButtonControl" TextColor="0,0,0,0">
+        <Image ID="SubjectIcon" Anchor="L,C" Offset="8,0" Size="34,34"/>
+        <Label ID="DetailText" Anchor="L,C" Offset="50,0" Size="305,114" WrapWidth="305" Style="FontNormal14"/>
+      </GridButton>
+    </Container>
+  </Instance>
+
+  <Instance Name="PreviewMapIcon">
+    <WorldAnchor ID="Anchor">
+      <Container ID="FlagRoot" Anchor="C,B" Size="48,48">
+        <Container Anchor="C,C" Size="50,50">
+          <Image Size="59,79" Texture="MapPin" Anchor="C,T" Offset="1,-16"/>
+          <Image Size="50,50" TextureOffset="0,0" Texture="MapPinFlag" Anchor="C,T"/>
+          <Image Size="50,50" TextureOffset="150,0" Texture="MapPinFlag" Anchor="C,T"/>
+          <Image Size="50,50" TextureOffset="0,100" Texture="MapPinFlag" Anchor="C,T">
+            <AlphaAnim AlphaStart="0.35" AlphaEnd="1" Cycle="Bounce" Pause="0" Speed="1.5"/>
+          </Image>
+          <Image ID="SubjectIcon" Anchor="C,T" Offset="0,9" Size="32,32"/>
+          <Image Texture="Controls_DropShadow4" Color="0,0,0,175" Size="auto,20" Anchor="C,T" AnchorSide="I,O"
+                 StretchMode="Fill" AutoSizePadding="12,6" Offset="0,-8">
+            <Label Anchor="C,C" String="LOC_AMT_PREVIEW_BADGE" Style="FontNormal12" FontStyle="Glow" ColorSet="BodyTextBright"/>
+          </Image>
+          <Grid ID="YieldContainer" Style="YieldBacking" Size="auto,24" Anchor="C,B" Color="0,0,0,180" Offset="1,-17">
+            <Label ID="YieldText" Anchor="C,C" Style="YieldBonusText"/>
+          </Grid>
+        </Container>
+      </Container>
+    </WorldAnchor>
+  </Instance>
+
+</Context>

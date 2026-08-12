@@ -1,0 +1,27 @@
+# Development and local test packages
+AutoMapTacksTest/
+CivSelectLagProfiler/
+backup-before-*/
+
+# Local game and diagnostic data
+Mods.sqlite*
+*.log
+*.tmp
+
+# Internal project operations
+.agents/
+.codex/
+AGENTS.md
+HANDOVER.md
+PLANNING_MODEL_V16.md
+PUBLISHING_CHECKLIST.md
+TEST_PERFORMANCE_MONITORING.md
+WORKSHOP_DESCRIPTION.txt
+
+# Workshop staging and generated release archives
+release/
+
+# Internal one-off release helpers and Python cache
+tools/__pycache__/
+tools/finalize_*.py
+tools/promote_*.py
