@@ -3080,7 +3080,7 @@ function ImprovementPlacement.AnyRuleUnlocked(ruleList, playerID)
     return false;
 end
 
-function ImprovementPlacement.CanPlan(item, playerID)
+function ImprovementPlacement.CanPlan(item, playerID, runCache)
     if item.subjectType == MAP_PIN_TYPE_DISTRICT then
         local resource = ImprovementPlacement.GetActualVisibleResource(
             item.plot, playerID
@@ -3109,6 +3109,14 @@ function ImprovementPlacement.CanPlan(item, playerID)
     if row.Domain == "DOMAIN_SEA" and not isWater then return false; end
     if row.Domain ~= "DOMAIN_SEA" and isWater then return false; end
 
+    local runtimeTerrainMatch = false;
+    if AMT_RuntimeImprovementRules
+        and AMT_RuntimeImprovementRules.CanUseTerrain then
+        runtimeTerrainMatch = AMT_RuntimeImprovementRules.CanUseTerrain(
+            runCache, item, playerID
+        );
+    end
+
     local engineResult = nil;
     if ImprovementBuilder and ImprovementBuilder.CanHaveImprovement then
         local ok, result = pcall(
@@ -3118,7 +3126,8 @@ function ImprovementPlacement.CanPlan(item, playerID)
         if ok then engineResult = result; end
         -- The engine helper only sees the current plot.  A manual operation
         -- tack can intentionally describe a future cleared/planted state.
-        if engineResult == false and not directive then return false; end
+        if engineResult == false and not directive
+            and not runtimeTerrainMatch then return false; end
     end
 
     -- Detailed Map Tacks intentionally leaves improvement-specific placement
@@ -3223,6 +3232,7 @@ function ImprovementPlacement.CanPlan(item, playerID)
         and ImprovementPlacement.AnyRuleUnlocked(
             rules.terrains[terrain.TerrainType], playerID
         ) or false;
+    matchesTerrain = matchesTerrain or runtimeTerrainMatch;
     local matchesFeature = feature
         and ImprovementPlacement.AnyRuleUnlocked(
             rules.features[feature.FeatureType], playerID
@@ -3233,8 +3243,12 @@ function ImprovementPlacement.CanPlan(item, playerID)
     -- and must also be in the appropriate land/sea terrain set.  Ordinary
     -- farms and mines intentionally keep the usual resource-or-terrain rules.
     if IsTrue(row.EnforceTerrain) then
-        if rules.hasResources and not matchesResource then return false; end
-        if rules.hasTerrains and not matchesTerrain then return false; end
+        if rules.hasResources and not matchesResource then
+            return false;
+        end
+        if rules.hasTerrains and not matchesTerrain then
+            return false;
+        end
         if rules.hasResources or rules.hasTerrains then return true; end
     end
 
@@ -4429,6 +4443,570 @@ function AMT_InfluenceScope.LocalYieldCacheIsSafe(runCache, target, items)
     return true, "local";
 end
 
+-- Runtime improvement rules are used by both the base game and balance mods.
+-- The static Improvement_Valid* and Improvement_Yield* tables do not contain
+-- abilities such as Canada's tundra farms or BBG Mali's desert farms.  Compile
+-- the small active subset once per planning run, then keep candidate checks at
+-- indexed-table cost.  Unknown requirement types never grant legality or
+-- yields; they retain the existing conservative behavior.
+AMT_RuntimeImprovementRules = AMT_RuntimeImprovementRules or {};
+
+function AMT_RuntimeImprovementRules.AddRequirementSet(
+    target, seen, setID
+)
+    if setID and not seen[setID] then
+        seen[setID] = true;
+        table.insert(target, setID);
+    end
+end
+
+function AMT_RuntimeImprovementRules.ExtractImprovementTypes(
+    runCache, setID, result, seen
+)
+    result = result or {};
+    seen = seen or {};
+    if not setID or seen[setID] then return result; end
+    seen[setID] = true;
+    local set = runCache.influenceRequirementSets
+        and runCache.influenceRequirementSets[setID] or nil;
+    if not set then return result; end
+    for _, requirement in ipairs(set.requirements or {}) do
+        local requirementType = requirement.requirementType;
+        local args = requirement.arguments or {};
+        if requirementType == "REQUIREMENT_PLOT_IMPROVEMENT_TYPE_MATCHES"
+            and args.ImprovementType then
+            result[args.ImprovementType] = true;
+        elseif requirementType == "REQUIREMENT_REQUIREMENTSET_IS_MET" then
+            AMT_RuntimeImprovementRules.ExtractImprovementTypes(
+                runCache,
+                args.RequirementSetId or args.RequirementSet,
+                result, seen
+            );
+        end
+    end
+    return result;
+end
+
+function AMT_RuntimeImprovementRules.BuildIndexes(runCache)
+    if not runCache then return nil; end
+    if runCache.runtimeImprovementRules then
+        return runCache.runtimeImprovementRules;
+    end
+    if AMT_InfluenceScope and AMT_InfluenceScope.EnsureIndexes then
+        AMT_InfluenceScope.EnsureIndexes(runCache);
+    end
+    local index = {
+        terrain = {},
+        terrainDedupe = {},
+        yields = {},
+        yieldDedupe = {},
+        unknownRequirementTypes = {},
+        terrainRuleCount = 0,
+        yieldRuleCount = 0,
+    };
+    runCache.runtimeImprovementRules = index;
+
+    local function AddTerrainRule(
+        modifierID, modifier, args, activeRuntime
+    )
+        local improvementType = args.ImprovementType;
+        local terrainType = args.TerrainType;
+        if not improvementType or not terrainType then return; end
+        local dedupeKey = improvementType .. "@" .. terrainType;
+        index.terrainDedupe[dedupeKey] =
+            index.terrainDedupe[dedupeKey] or {};
+        if index.terrainDedupe[dedupeKey][modifierID] then return; end
+        index.terrainDedupe[dedupeKey][modifierID] = true;
+        index.terrain[improvementType] =
+            index.terrain[improvementType] or {};
+        index.terrain[improvementType][terrainType] =
+            index.terrain[improvementType][terrainType] or {};
+        local sets = {};
+        if not activeRuntime and modifier.OwnerRequirementSetId then
+            table.insert(sets, modifier.OwnerRequirementSetId);
+        end
+        if modifier.SubjectRequirementSetId then
+            table.insert(sets, modifier.SubjectRequirementSetId);
+        end
+        table.insert(index.terrain[improvementType][terrainType], {
+            modifierID = modifierID,
+            requirementSetIDs = sets,
+            activeRuntime = activeRuntime == true,
+        });
+        index.terrainRuleCount = index.terrainRuleCount + 1;
+    end
+
+    local function AddYieldRule(
+        improvementType, modifierID, modifier, args, requirementSetIDs,
+        activeRuntime
+    )
+        local yieldType = args.YieldType;
+        local amount = tonumber(args.Amount);
+        if not improvementType or not yieldType or amount == nil then return; end
+        index.yieldDedupe[improvementType] =
+            index.yieldDedupe[improvementType] or {};
+        if index.yieldDedupe[improvementType][modifierID] then return; end
+        index.yieldDedupe[improvementType][modifierID] = true;
+        index.yields[improvementType] = index.yields[improvementType] or {};
+        table.insert(index.yields[improvementType], {
+            modifierID = modifierID,
+            yieldType = yieldType,
+            amount = amount,
+            requirementSetIDs = requirementSetIDs or {},
+            activeRuntime = activeRuntime == true,
+        });
+        index.yieldRuleCount = index.yieldRuleCount + 1;
+    end
+
+    -- A modifier owned by the planned improvement is a potential rule even
+    -- before the improvement has a runtime GameEffects object.
+    local function AddImprovementModifier(
+        improvementType, modifierID, inheritedSets, seen
+    )
+        if not improvementType or not modifierID then return; end
+        seen = seen or {};
+        if seen[modifierID] then return; end
+        seen[modifierID] = true;
+        local modifier = GameInfo.Modifiers
+            and GameInfo.Modifiers[modifierID] or nil;
+        local dynamic = modifier and GameInfo.DynamicModifiers
+            and GameInfo.DynamicModifiers[modifier.ModifierType] or nil;
+        if not modifier or not dynamic then return; end
+        local sets = {};
+        local setSeen = {};
+        for _, setID in ipairs(inheritedSets or {}) do
+            AMT_RuntimeImprovementRules.AddRequirementSet(
+                sets, setSeen, setID
+            );
+        end
+        AMT_RuntimeImprovementRules.AddRequirementSet(
+            sets, setSeen, modifier.OwnerRequirementSetId
+        );
+        AMT_RuntimeImprovementRules.AddRequirementSet(
+            sets, setSeen, modifier.SubjectRequirementSetId
+        );
+        local args = runCache.influenceModifierArguments[modifierID] or {};
+        if dynamic.EffectType == "EFFECT_ATTACH_MODIFIER" then
+            AddImprovementModifier(
+                improvementType,
+                args.ModifierId or args.ModifierID,
+                sets, seen
+            );
+        elseif dynamic.EffectType == "EFFECT_ADJUST_PLOT_YIELD" then
+            AddYieldRule(
+                improvementType, modifierID, modifier, args, sets, false
+            );
+        end
+    end
+
+    if GameInfo.ImprovementModifiers then
+        for row in GameInfo.ImprovementModifiers() do
+            AddImprovementModifier(
+                row.ImprovementType,
+                row.ModifierId or row.ModifierID,
+                {}, {}
+            );
+        end
+    end
+
+    -- Player traits are known without consulting runtime objects.  Indexing
+    -- their rules also preserves long-term planning for civic/technology-gated
+    -- abilities whose GameEffects object has no current subjects yet.
+    local playerTraits = MapTacks.PlayerTraits(runCache.playerID);
+    if GameInfo.TraitModifiers then
+        for row in GameInfo.TraitModifiers() do
+            if playerTraits[row.TraitType] then
+                local modifierID = row.ModifierId or row.ModifierID;
+                local modifier = modifierID and GameInfo.Modifiers
+                    and GameInfo.Modifiers[modifierID] or nil;
+                local dynamic = modifier and GameInfo.DynamicModifiers
+                    and GameInfo.DynamicModifiers[modifier.ModifierType] or nil;
+                local args = modifierID
+                    and runCache.influenceModifierArguments[modifierID] or {};
+                if modifier and dynamic then
+                    if dynamic.EffectType
+                        == "EFFECT_ADJUST_IMPROVEMENT_VALID_TERRAIN" then
+                        AddTerrainRule(
+                            modifierID, modifier, args, false
+                        );
+                    elseif dynamic.EffectType
+                        == "EFFECT_ADJUST_PLOT_YIELD" then
+                        local improvementTypes =
+                            AMT_RuntimeImprovementRules.ExtractImprovementTypes(
+                                runCache, modifier.SubjectRequirementSetId,
+                                {}, {}
+                            );
+                        for improvementType in pairs(improvementTypes) do
+                            local sets = {};
+                            if modifier.OwnerRequirementSetId then
+                                table.insert(
+                                    sets, modifier.OwnerRequirementSetId
+                                );
+                            end
+                            if modifier.SubjectRequirementSetId then
+                                table.insert(
+                                    sets, modifier.SubjectRequirementSetId
+                                );
+                            end
+                            AddYieldRule(
+                                improvementType, modifierID, modifier, args,
+                                sets, false
+                            );
+                        end
+                    end
+                end
+            end
+        end
+    end
+
+    -- Active player/leader/belief/building modifiers can grant valid terrain
+    -- or extra yields to a matching hypothetical improvement.
+    for modifierID in pairs(
+        runCache.influenceRuntimeRelevantModifierIDs or {}
+    ) do
+        local modifier = GameInfo.Modifiers
+            and GameInfo.Modifiers[modifierID] or nil;
+        local dynamic = modifier and GameInfo.DynamicModifiers
+            and GameInfo.DynamicModifiers[modifier.ModifierType] or nil;
+        local args = runCache.influenceModifierArguments[modifierID] or {};
+        if modifier and dynamic then
+            if dynamic.EffectType
+                == "EFFECT_ADJUST_IMPROVEMENT_VALID_TERRAIN" then
+                AddTerrainRule(modifierID, modifier, args, true);
+            elseif dynamic.EffectType == "EFFECT_ADJUST_PLOT_YIELD" then
+                local improvementTypes =
+                    AMT_RuntimeImprovementRules.ExtractImprovementTypes(
+                        runCache, modifier.SubjectRequirementSetId, {}, {}
+                    );
+                for improvementType in pairs(improvementTypes) do
+                    local sets = {};
+                    if modifier.SubjectRequirementSetId then
+                        table.insert(sets, modifier.SubjectRequirementSetId);
+                    end
+                    AddYieldRule(
+                        improvementType, modifierID, modifier, args,
+                        sets, true
+                    );
+                end
+            end
+        end
+    end
+
+    return index;
+end
+
+function AMT_RuntimeImprovementRules.GetContext(
+    runCache, subject, playerID
+)
+    local x = subject.x or subject.X;
+    local y = subject.y or subject.Y;
+    local plot = subject.plot or (x and y and Map.GetPlot(x, y)) or nil;
+    if not plot then return nil; end
+    local terrain = GameInfo.Terrains[plot:GetTerrainType()];
+    local terrainType = terrain and terrain.TerrainType or nil;
+    local featureType = nil;
+    local resourceType = nil;
+    if GetPlotFeatureTypes then
+        local _, realizedFeature, _, _, _, realizedResource =
+            GetPlotFeatureTypes(plot, playerID);
+        featureType = realizedFeature;
+        resourceType = realizedResource;
+    else
+        local featureIndex = plot:GetFeatureType();
+        local feature = featureIndex and featureIndex >= 0
+            and GameInfo.Features[featureIndex] or nil;
+        featureType = feature and feature.FeatureType or nil;
+        local resource = ImprovementPlacement.GetVisibleResource(
+            plot, playerID
+        );
+        resourceType = resource and resource.ResourceType or nil;
+    end
+    local cityID = subject.cityID or subject.CityID;
+    local player = Players[playerID];
+    local city = player and cityID ~= nil
+        and player:GetCities():FindID(cityID) or nil;
+    if not city then city = AMT_GetPlotPurchaseCity(plot); end
+    return {
+        runCache = runCache,
+        playerID = playerID,
+        player = player,
+        city = city,
+        plot = plot,
+        x = x,
+        y = y,
+        improvementType = subject.subjectKey or subject.Key,
+        terrainType = terrainType,
+        featureType = featureType,
+        resourceType = resourceType,
+    };
+end
+
+function AMT_RuntimeImprovementRules.GetResourceClass(context)
+    local resource = context.resourceType and GameInfo.Resources[
+        context.resourceType
+    ] or nil;
+    return resource and resource.ResourceClassType or nil;
+end
+
+function AMT_RuntimeImprovementRules.HasAdjacent(context, kind, target)
+    if not context.plot or target == nil then return nil; end
+    for direction = 0, DirectionTypes.NUM_DIRECTION_TYPES - 1 do
+        local plot = Map.GetAdjacentPlot(
+            context.x, context.y, direction
+        );
+        if plot then
+            local terrainType, featureType, improvementType,
+                wonderType, districtType, resourceType;
+            if GetPlotFeatureTypes then
+                terrainType, featureType, improvementType,
+                    wonderType, districtType, resourceType =
+                    GetPlotFeatureTypes(plot, context.playerID);
+            else
+                local terrain = GameInfo.Terrains[plot:GetTerrainType()];
+                terrainType = terrain and terrain.TerrainType or nil;
+                local featureIndex = plot:GetFeatureType();
+                local feature = featureIndex and featureIndex >= 0
+                    and GameInfo.Features[featureIndex] or nil;
+                featureType = feature and feature.FeatureType or nil;
+                local improvementIndex = plot:GetImprovementType();
+                local improvement = improvementIndex
+                    and improvementIndex >= 0
+                    and GameInfo.Improvements[improvementIndex] or nil;
+                improvementType = improvement
+                    and improvement.ImprovementType or nil;
+                local districtIndex = plot:GetDistrictType();
+                local district = districtIndex and districtIndex >= 0
+                    and GameInfo.Districts[districtIndex] or nil;
+                districtType = district and district.DistrictType or nil;
+                local resource = ImprovementPlacement.GetVisibleResource(
+                    plot, context.playerID
+                );
+                resourceType = resource and resource.ResourceType or nil;
+            end
+            local value = kind == "TERRAIN" and terrainType
+                or (kind == "FEATURE" and featureType)
+                or (kind == "IMPROVEMENT" and improvementType)
+                or (kind == "WONDER" and wonderType)
+                or (kind == "DISTRICT" and districtType)
+                or (kind == "RESOURCE" and resourceType)
+                or nil;
+            if value == target then return true; end
+        end
+    end
+    return false;
+end
+
+function AMT_RuntimeImprovementRules.EvaluateRequirement(
+    context, requirement, setSeen
+)
+    local requirementType = requirement.requirementType;
+    local args = requirement.arguments or {};
+    local result = nil;
+    if requirementType == "REQUIREMENT_PLAYER_HAS_CIVIC" then
+        local civic = args.CivicType
+            and GameInfo.Civics[args.CivicType] or nil;
+        if m_PlanningHorizon ~= "CURRENT" then
+            result = civic ~= nil;
+        elseif civic and context.player then
+            result = context.player:GetCulture():HasCivic(civic.Index);
+        end
+    elseif requirementType == "REQUIREMENT_PLAYER_HAS_TECHNOLOGY" then
+        local technology = args.TechnologyType
+            and GameInfo.Technologies[args.TechnologyType] or nil;
+        if m_PlanningHorizon ~= "CURRENT" then
+            result = technology ~= nil;
+        elseif technology and context.player then
+            result = context.player:GetTechs():HasTech(technology.Index);
+        end
+    elseif requirementType == "REQUIREMENT_PLOT_TERRAIN_TYPE_MATCHES" then
+        result = context.terrainType == args.TerrainType;
+    elseif requirementType == "REQUIREMENT_PLOT_FEATURE_TYPE_MATCHES" then
+        result = context.featureType == args.FeatureType;
+    elseif requirementType == "REQUIREMENT_PLOT_IMPROVEMENT_TYPE_MATCHES" then
+        result = context.improvementType == args.ImprovementType;
+    elseif requirementType == "REQUIREMENT_PLOT_RESOURCE_TYPE_MATCHES" then
+        result = context.resourceType == args.ResourceType;
+    elseif requirementType
+        == "REQUIREMENT_PLOT_RESOURCE_CLASS_TYPE_MATCHES" then
+        result = AMT_RuntimeImprovementRules.GetResourceClass(context)
+            == args.ResourceClassType;
+    elseif requirementType
+        == "REQUIREMENT_PLOT_IMPROVED_RESOURCE_CLASS_TYPE_MATCHES" then
+        result = context.improvementType ~= nil
+            and AMT_RuntimeImprovementRules.GetResourceClass(context)
+                == args.ResourceClassType;
+    elseif requirementType == "REQUIREMENT_PLOT_HAS_ANY_IMPROVEMENT" then
+        result = context.improvementType ~= nil;
+    elseif requirementType
+        == "REQUIREMENT_PLOT_ADJACENT_IMPROVEMENT_TYPE_MATCHES" then
+        result = AMT_RuntimeImprovementRules.HasAdjacent(
+            context, "IMPROVEMENT", args.ImprovementType
+        );
+    elseif requirementType
+        == "REQUIREMENT_PLOT_ADJACENT_FEATURE_TYPE_MATCHES" then
+        result = AMT_RuntimeImprovementRules.HasAdjacent(
+            context, "FEATURE", args.FeatureType
+        );
+    elseif requirementType
+        == "REQUIREMENT_PLOT_ADJACENT_DISTRICT_TYPE_MATCHES" then
+        result = AMT_RuntimeImprovementRules.HasAdjacent(
+            context, "DISTRICT", args.DistrictType
+        );
+    elseif requirementType
+        == "REQUIREMENT_PLOT_ADJACENT_RESOURCE_TYPE_MATCHES" then
+        result = AMT_RuntimeImprovementRules.HasAdjacent(
+            context, "RESOURCE", args.ResourceType
+        );
+    elseif requirementType == "REQUIREMENT_PLOT_ADJACENT_TO_RIVER"
+        or requirementType == "REQUIREMENT_PLOT_IS_RIVER" then
+        local ok, value = pcall(function()
+            return context.plot:IsRiver();
+        end);
+        if ok then result = value == true; end
+    elseif requirementType == "REQUIREMENT_PLOT_IS_FRESH_WATER" then
+        local ok, value = pcall(function()
+            return context.plot:IsFreshWater();
+        end);
+        if ok then result = value == true; end
+    elseif requirementType == "REQUIREMENT_CITY_HAS_BUILDING" then
+        local building = args.BuildingType
+            and GameInfo.Buildings[args.BuildingType] or nil;
+        local buildings = context.city and context.city:GetBuildings() or nil;
+        if building and buildings then
+            local ok, value = pcall(
+                buildings.HasBuilding, buildings, building.Index
+            );
+            if ok then result = value == true; end
+        end
+    elseif requirementType == "REQUIREMENT_CITY_HAS_DISTRICT" then
+        local district = args.DistrictType
+            and GameInfo.Districts[args.DistrictType] or nil;
+        local districts = context.city and context.city:GetDistricts() or nil;
+        if district and districts then
+            local ok, value = pcall(
+                districts.HasDistrict, districts, district.Index
+            );
+            if ok then result = value == true; end
+        end
+    elseif requirementType == "REQUIREMENT_REQUIREMENTSET_IS_MET" then
+        result = AMT_RuntimeImprovementRules.EvaluateSet(
+            context,
+            args.RequirementSetId or args.RequirementSet,
+            setSeen
+        );
+    end
+    if result == nil then
+        local index = context.runCache.runtimeImprovementRules;
+        local unknownType = tostring(requirementType or "UNKNOWN");
+        if not index.unknownRequirementTypes[unknownType] then
+            index.unknownRequirementTypes[unknownType] = true;
+        end
+        return nil;
+    end
+    if requirement.inverse then result = not result; end
+    return result;
+end
+
+function AMT_RuntimeImprovementRules.EvaluateSet(context, setID, seen)
+    if not setID then return true; end
+    seen = seen or {};
+    if seen[setID] then return nil; end
+    seen[setID] = true;
+    local set = context.runCache.influenceRequirementSets
+        and context.runCache.influenceRequirementSets[setID] or nil;
+    if not set then
+        seen[setID] = nil;
+        return nil;
+    end
+    local testAny = set.setType == "REQUIREMENTSET_TEST_ANY";
+    local sawUnknown = false;
+    for _, requirement in ipairs(set.requirements or {}) do
+        local result = AMT_RuntimeImprovementRules.EvaluateRequirement(
+            context, requirement, seen
+        );
+        if result == nil then
+            sawUnknown = true;
+        elseif testAny and result then
+            seen[setID] = nil;
+            return true;
+        elseif not testAny and not result then
+            seen[setID] = nil;
+            return false;
+        end
+    end
+    seen[setID] = nil;
+    if sawUnknown then return nil; end
+    return testAny and false or true;
+end
+
+function AMT_RuntimeImprovementRules.RuleApplies(context, rule)
+    for _, setID in ipairs(rule.requirementSetIDs or {}) do
+        local result = AMT_RuntimeImprovementRules.EvaluateSet(
+            context, setID, {}
+        );
+        if result ~= true then return false, result == nil; end
+    end
+    return true, false;
+end
+
+function AMT_RuntimeImprovementRules.CanUseTerrain(
+    runCache, item, playerID
+)
+    if not runCache then return false; end
+    local index = AMT_RuntimeImprovementRules.BuildIndexes(runCache);
+    local terrain = item.plot
+        and GameInfo.Terrains[item.plot:GetTerrainType()] or nil;
+    local rules = terrain and index.terrain[item.subjectKey]
+        and index.terrain[item.subjectKey][terrain.TerrainType] or nil;
+    if not rules then return false; end
+    local context = AMT_RuntimeImprovementRules.GetContext(
+        runCache, item, playerID
+    );
+    if not context then return false; end
+    for _, rule in ipairs(rules) do
+        local applies, unknown =
+            AMT_RuntimeImprovementRules.RuleApplies(context, rule);
+        if applies then
+            return true;
+        elseif unknown then
+        end
+    end
+    return false;
+end
+
+function AMT_RuntimeImprovementRules.AddYieldChanges(
+    runCache, playerID, subject, yields
+)
+    if not runCache or not subject then return yields; end
+    local subjectType = subject.subjectType or subject.Type;
+    if subjectType ~= MAP_PIN_TYPE_IMPROVEMENT then return yields; end
+    local improvementType = subject.subjectKey or subject.Key;
+    local index = AMT_RuntimeImprovementRules.BuildIndexes(runCache);
+    local rules = index.yields[improvementType];
+    if not rules then return yields; end
+    local context = AMT_RuntimeImprovementRules.GetContext(
+        runCache, subject, playerID
+    );
+    if not context then return yields; end
+    for _, rule in ipairs(rules) do
+        local applies, unknown =
+            AMT_RuntimeImprovementRules.RuleApplies(context, rule);
+        if applies then
+            yields[rule.yieldType] = (yields[rule.yieldType] or 0)
+                + rule.amount;
+        elseif unknown then
+        end
+    end
+    return yields;
+end
+
+function AMT_GetPlannerBonusYields(playerID, subject, runCache)
+    local yields = GetBonusYields(playerID, subject) or {};
+    return AMT_RuntimeImprovementRules.AddYieldChanges(
+        runCache, playerID, subject, yields
+    );
+end
+
 local function EvaluatePlan(
     playerID, items, weights, ignoredKeys, fixedSubjects, runCache
 )
@@ -4460,7 +5038,7 @@ local function EvaluatePlan(
         for _, item in ipairs(items) do
             local subject = overlay[Key(item.x, item.y)];
             local locallyLegal = item.placementLegal
-                or ImprovementPlacement.CanPlan(item, playerID);
+                or ImprovementPlacement.CanPlan(item, playerID, runCache);
             if not locallyLegal then
                 return -math.huge, nil, {
                     stage = "LOCAL_PLACEMENT_REJECT",
@@ -4552,7 +5130,9 @@ local function EvaluatePlan(
             local yields = yieldEntry and yieldEntry.yields or nil;
             if yields then
             else
-                yields = GetBonusYields(playerID, subject);
+                yields = AMT_GetPlannerBonusYields(
+                    playerID, subject, runCache
+                );
                 yieldEntry = {
                     yields = yields,
                     weightedScores = {},
@@ -4603,7 +5183,9 @@ local function EvaluatePlan(
                 local yields = yieldEntry and yieldEntry.yields or nil;
                 if yields then
                 else
-                    yields = GetBonusYields(playerID, subject);
+                    yields = AMT_GetPlannerBonusYields(
+                        playerID, subject, runCache
+                    );
                     yieldEntry = {
                         yields = yields,
                         weightedScores = {},
@@ -4831,7 +5413,9 @@ local function BuildWonderSupportItem(
     item.hasVisibleResource = visibleResource ~= nil;
     item.resourceClass = visibleResource
         and visibleResource.ResourceClassType or nil;
-    if not ImprovementPlacement.CanPlan(item, playerID) then return nil; end
+    if not ImprovementPlacement.CanPlan(item, playerID, runCache) then
+        return nil;
+    end
     if not AMT_PlotDirectives[key] then
         local checkOK, canPlace = pcall(
             CanPlacePin, playerID, MakePinSubject(item)
@@ -5148,7 +5732,9 @@ local function BuildRawCandidates(
                     end
                     if passesPlacementRules == nil then
                         passesPlacementRules =
-                            ImprovementPlacement.CanPlan(item, playerID);
+                            ImprovementPlacement.CanPlan(
+                                item, playerID, runCache
+                            );
                         if runCache then
                             runCache.placementRules[placementKey] =
                                 passesPlacementRules;
@@ -5451,7 +6037,9 @@ function AMT_FindDirectDistrictSupport(
                     and runCache.placementRules[placementKey] or nil;
                 if placementLegal == nil then
                     placementLegal =
-                        ImprovementPlacement.CanPlan(support, playerID);
+                        ImprovementPlacement.CanPlan(
+                            support, playerID, runCache
+                        );
                     if runCache then
                         runCache.placementRules[placementKey] =
                             placementLegal;
