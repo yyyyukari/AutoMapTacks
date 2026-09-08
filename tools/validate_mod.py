@@ -253,9 +253,9 @@ def main() -> int:
         }
         if test_mode
         else {
-            "LOC_AMT_V60_MOD_NAME",
-            "LOC_AMT_V60_MOD_TEASER",
-            "LOC_AMT_V60_MOD_DESCRIPTION",
+            "LOC_AMT_R40_MOD_NAME",
+            "LOC_AMT_R40_MOD_TEASER",
+            "LOC_AMT_R40_MOD_DESCRIPTION",
         }
     )
     supported_languages = {
@@ -305,6 +305,19 @@ def main() -> int:
     }
     control_refs = set(re.findall(r"\bControls\.([A-Za-z_][A-Za-z0-9_]*)", lua))
     missing_controls = sorted(control_refs - ids)
+    # r40 retains an optional legacy overlay. Every reference must remain
+    # inside its exact nil guard; do not generally waive missing controls.
+    optional_overlay = re.sub(
+        r'if Controls\.MCApplyOverlay then\s+Controls\.MCApplyOverlay:SetHide\(true\);\s+end',
+        '', lua,
+    )
+    optional_overlay = re.sub(
+        r'elseif Controls\.MCApplyOverlay\s+and not Controls\.MCApplyOverlay:IsHidden\(\) then\s+'
+        r'Controls\.MCApplyOverlay:SetHide\(true\);\s+AMT_MC_M3State.pendingDiff = nil;\s+AMT_MC_SetPhase\(3\);',
+        '', optional_overlay,
+    )
+    if 'MCApplyOverlay' in missing_controls and 'Controls.MCApplyOverlay' not in optional_overlay:
+        missing_controls.remove('MCApplyOverlay')
     if missing_controls:
         errors.append("Missing controls: " + ", ".join(missing_controls))
     else:
@@ -518,8 +531,8 @@ def main() -> int:
             "2d7cc51a-3d0f-4d98-83f6-0dc24b9c7a45"
         ):
             errors.append("Test modinfo does not use the isolated RC UUID")
-        if modinfo_root.attrib.get("version") != "60":
-            errors.append("Test modinfo version must be 60")
+        if modinfo_root.attrib.get("version") != "40":
+            errors.append("Test modinfo version must be 40")
         for field, expected in expected_test_metadata.items():
             actual = modinfo_root.findtext(f"./Properties/{field}")
             if actual != expected:
@@ -539,9 +552,9 @@ def main() -> int:
             "LOC_AMT_V59_MOD_NAME",
             "LOC_AMT_V59_MOD_TEASER",
             "LOC_AMT_V59_MOD_DESCRIPTION",
-            "LOC_AMT_V60_MOD_NAME",
-            "LOC_AMT_V60_MOD_TEASER",
-            "LOC_AMT_V60_MOD_DESCRIPTION",
+            "LOC_AMT_R40_MOD_NAME",
+            "LOC_AMT_R40_MOD_TEASER",
+            "LOC_AMT_R40_MOD_DESCRIPTION",
         }
         leaked_metadata = sorted(forbidden_public_metadata & tags)
         if leaked_metadata:
@@ -557,17 +570,17 @@ def main() -> int:
                 "Release package must not contain test performance instrumentation"
             )
         expected_metadata = {
-            "Name": "LOC_AMT_V60_MOD_NAME",
-            "Teaser": "LOC_AMT_V60_MOD_TEASER",
-            "Description": "LOC_AMT_V60_MOD_DESCRIPTION",
+            "Name": "LOC_AMT_R40_MOD_NAME",
+            "Teaser": "LOC_AMT_R40_MOD_TEASER",
+            "Description": "LOC_AMT_R40_MOD_DESCRIPTION",
             "Authors": "yyyyukari",
         }
         if modinfo_root.attrib.get("id") != (
             "a3f7d2e1-9c4b-4e8a-bb13-7d11f9c2a04e"
         ):
             errors.append("Release modinfo does not use the canonical UUID")
-        if modinfo_root.attrib.get("version") != "60":
-            errors.append("Release modinfo version must be 60")
+        if modinfo_root.attrib.get("version") != "40":
+            errors.append("Release modinfo version must be 40")
         for field, expected in expected_metadata.items():
             actual = modinfo_root.findtext(f"./Properties/{field}")
             if actual != expected:
@@ -582,6 +595,11 @@ def main() -> int:
         ))
 
         forbidden_patterns = {
+            "test instrumentation or multicity test identity": re.compile(
+                r"AMT_Perf|\[AMTPERF\]|TEST PERF|MC EXP|LOC_AMT_MC_RC_|"
+                r"DebugExport|debugExport|DEBUG_EXPORT|"
+                r"7f4a9b2c-e819-4d36-a52e-6c8f01b7d945"
+            ),
             "test marker": re.compile(r"TEST\s+v\d+"),
             "diagnostic marker": re.compile(r"DIAGNOSTIC|诊断版|診斷版"),
             "stale v44 marker": re.compile(r"v44"),
@@ -600,23 +618,23 @@ def main() -> int:
         metadata_descriptions = [
             element
             for element in text_root.iter()
-            if element.attrib.get("Tag") == "LOC_AMT_V60_MOD_DESCRIPTION"
+            if element.attrib.get("Tag") == "LOC_AMT_R40_MOD_DESCRIPTION"
         ]
         for element in metadata_descriptions:
             text = "".join(element.itertext()).strip()
             language = element.attrib.get("Language", "en_US")
-            if not text.endswith("[v60]"):
+            if not text.endswith("[r40]"):
                 errors.append(
-                    "Release description must end with [v60]: " + language
+                    "Release description must end with [r40]: " + language
                 )
         inline_description = modinfo_root.find(
-            "./LocalizedText/Text[@id='LOC_AMT_V60_MOD_DESCRIPTION']"
+            "./LocalizedText/Text[@id='LOC_AMT_R40_MOD_DESCRIPTION']"
         )
         if inline_description is not None:
             for element in list(inline_description):
-                if not (element.text or "").strip().endswith("[v60]"):
+                if not (element.text or "").strip().endswith("[r40]"):
                     errors.append(
-                        "Inline release description must end with [v60]: "
+                        "Inline release description must end with [r40]: "
                         + element.tag
                     )
         if not errors:

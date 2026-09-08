@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <GameData>
-  <Instance Name="AMTEntryButtonInstance">
+  <Instance Name="AMTMCEntryButtonInstance">
     <Button ID="OpenPlannerButton"
             Anchor="L,C"
             Size="49,49"
@@ -17,7 +17,7 @@
     </Button>
   </Instance>
 
-  <Instance Name="AMTEntryPinInstance">
+  <Instance Name="AMTMCEntryPinInstance">
     <Image ID="Pin"
            Anchor="L,C"
            Offset="0,-2"

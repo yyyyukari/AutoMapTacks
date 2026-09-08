@@ -1,4 +1,4 @@
-print("[AMT] amt_wonderplanner.lua LOAD START v58");
+
 
 AMT_WonderPlanner = AMT_WonderPlanner or {};
 

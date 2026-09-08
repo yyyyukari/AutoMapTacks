@@ -1,9 +1,220 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <GameData>
     <EnglishText>
-        <Row Tag="LOC_AMT_V60_MOD_NAME"><Text>Auto Map Tacks Planner</Text></Row>
-        <Row Tag="LOC_AMT_V60_MOD_TEASER"><Text>Plan one selected city's districts, improvements, and wonders with population-aware optimization.</Text></Row>
-        <Row Tag="LOC_AMT_V60_MOD_DESCRIPTION"><Text>Plan one selected city's districts, improvements, and wonders with population-aware heuristic optimization and a full preview report. [v60]</Text></Row>
+
+        <Row Tag="LOC_AMT_MC_MODE_TITLE"><Text>Choose Planning Mode</Text></Row>
+        <Row Tag="LOC_AMT_MC_MODE_SINGLE"><Text>Single-City Planning</Text></Row>
+        <Row Tag="LOC_AMT_MC_MODE_MULTI"><Text>Four-City Planning (Test)</Text></Row>
+        <Row Tag="LOC_AMT_MC_MODE_UNAVAILABLE"><Text>Multi-city modules unavailable. Single-city planning is still available.</Text></Row>
+        <Row Tag="LOC_AMT_MC_MODE_BACK"><Text>Back</Text></Row>
+        <Row Tag="LOC_AMT_MC_CURRENT_CITY"><Text>Planning city</Text></Row>
+        <Row Tag="LOC_AMT_MC_PREVIOUS_CITY"><Text>〈</Text></Row>
+        <Row Tag="LOC_AMT_MC_NEXT_CITY"><Text>〉</Text></Row>
+        <Row Tag="LOC_AMT_MC_PREVIOUS_CITY_TOOLTIP"><Text>Previous planning city</Text></Row>
+        <Row Tag="LOC_AMT_MC_NEXT_CITY_TOOLTIP"><Text>Next planning city</Text></Row>
+        <Row Tag="LOC_AMT_MC_REAL_CITY"><Text>[ICON_Capital] City</Text></Row>
+        <Row Tag="LOC_AMT_MC_FUTURE_CITY"><Text>[ICON_MapPin] Future city</Text></Row>
+        <Row Tag="LOC_AMT_MC_STATUS_UNSET"><Text>○ Not configured</Text></Row>
+        <Row Tag="LOC_AMT_MC_STATUS_DIRTY"><Text>● Unsaved changes</Text></Row>
+        <Row Tag="LOC_AMT_MC_STATUS_SAVED"><Text>✓ Saved</Text></Row>
+        <Row Tag="LOC_AMT_MC_STATUS_REOPTIMIZE"><Text>↻ Can re-optimize</Text></Row>
+        <Row Tag="LOC_AMT_MC_STATUS_REVIEW"><Text>! Needs review</Text></Row>
+        <Row Tag="LOC_AMT_MC_CLEAR_SETTINGS"><Text>Clear current settings</Text></Row>
+        <Row Tag="LOC_AMT_MC_SAVE_SETTINGS"><Text>Save settings</Text></Row>
+        <Row Tag="LOC_AMT_MC_SOLVE"><Text>Solve</Text></Row>
+        <Row Tag="LOC_AMT_MC_CLOSE"><Text>Close</Text></Row>
+        <Row Tag="LOC_AMT_MC_AUTO_SELECT_IMPROVEMENTS"><Text>Auto-select</Text></Row>
+        <Row Tag="LOC_AMT_MC_UNDO_AUTO_SELECT"><Text>Undo auto</Text></Row>
+        <Row Tag="LOC_AMT_MC_SAVE_LIMIT"><Text>Four real cities already have saved settings. Clear one before saving another.</Text></Row>
+        <Row Tag="LOC_AMT_MC_SAVE_OK"><Text>Settings saved as revision r{1_Revision}.</Text></Row>
+        <Row Tag="LOC_AMT_MC_CLEAR_OK"><Text>Current city's saved settings were cleared. No map pins were changed.</Text></Row>
+        <Row Tag="LOC_AMT_MC_AUTO_SELECT_RESULT"><Text>Checked {1_Resources} revealed bonus/strategic resource types and added {2_Improvements} improvement types to this draft.</Text></Row>
+        <Row Tag="LOC_AMT_MC_AUTO_SELECT_UNDONE"><Text>Restored the improvement selection from before auto-select.</Text></Row>
+        <Row Tag="LOC_AMT_MC_QUICK_SETUP_LABEL"><Text>Quick setup</Text></Row>
+        <Row Tag="LOC_AMT_MC_QUICK_TEMPLATE_DEFAULT"><Text>Default (commerce first)</Text></Row>
+        <Row Tag="LOC_AMT_MC_QUICK_TEMPLATE_SCIENCE"><Text>Science victory</Text></Row>
+        <Row Tag="LOC_AMT_MC_QUICK_TEMPLATE_CULTURE"><Text>Culture victory</Text></Row>
+        <Row Tag="LOC_AMT_MC_QUICK_TEMPLATE_RELIGION"><Text>Religious victory</Text></Row>
+        <Row Tag="LOC_AMT_MC_QUICK_TEMPLATE_NAVAL"><Text>Naval civilization</Text></Row>
+        <Row Tag="LOC_AMT_MC_QUICK_TEMPLATE_MILITARY"><Text>Early war</Text></Row>
+        <Row Tag="LOC_AMT_MC_QUICK_SETUP_DONE"><Text>Quick setup drafted {1_Count} cities. Review them, then use Save all and continue.</Text></Row>
+        <Row Tag="LOC_AMT_MC_QUICK_SETUP_DONE_FULL"><Text>Quick setup drafted {1_Count} cities: Government Plaza locked to the anchor city, and {2_Resources} revealed resource types auto-selected {3_Improvements} improvement types (not saved yet).</Text></Row>
+        <Row Tag="LOC_AMT_MC_QUICK_SETUP_NO_CITY"><Text>Select a city first, then choose a quick setup template.</Text></Row>
+        <Row Tag="LOC_AMT_MC_QUICK_SETUP_UNAVAILABLE"><Text>Quick setup module is unavailable.</Text></Row>
+        <Row Tag="LOC_AMT_MC_SCOPE_TITLE"><Text>Confirm solve scope</Text></Row>
+        <Row Tag="LOC_AMT_MC_SCOPE_NOTICE"><Text>Confirm which saved city settings this run will use.</Text></Row>
+        <Row Tag="LOC_AMT_MC_SCOPE_CITY_HINT"><Text>Joint planning usually only needs 2-4 core cities; you do not have to link more cities than that.</Text></Row>
+        <Row Tag="LOC_AMT_MC_M3_SOLVING_CAVEAT"><Text>Calculated from the current snapshot only: district bonuses as they stand now. War risk, Great People points and spy slots are not considered.</Text></Row>
+        <Row Tag="LOC_AMT_MC_SCOPE_INCLUDED"><Text>This run includes</Text></Row>
+        <Row Tag="LOC_AMT_MC_SCOPE_EXCLUDED"><Text>This run excludes</Text></Row>
+        <Row Tag="LOC_AMT_MC_SCOPE_PROFILE"><Text>future population {1_Population} · {2_Slots} specialty slots</Text></Row>
+        <Row Tag="LOC_AMT_MC_SCOPE_CITY_HEADER"><Text>【{1_City}】</Text></Row>
+        <Row Tag="LOC_AMT_MC_SCOPE_DISTRICTS"><Text>districts: {1_Names}</Text></Row>
+        <Row Tag="LOC_AMT_MC_SCOPE_IMPROVEMENTS"><Text>improvement types: {1_Count} ({2_Names})</Text></Row>
+        <Row Tag="LOC_AMT_MC_SCOPE_WONDERS"><Text>wonders: {1_Names}</Text></Row>
+        <Row Tag="LOC_AMT_MC_SCOPE_HORIZON"><Text>planning horizon: {1_Horizon}</Text></Row>
+        <Row Tag="LOC_AMT_MC_SCOPE_USES_SAVED"><Text>uses saved revision; current draft is not used</Text></Row>
+        <Row Tag="LOC_AMT_MC_SCOPE_NONE"><Text>None</Text></Row>
+        <Row Tag="LOC_AMT_MC_SCOPE_REASON_REVIEW"><Text>settings need review</Text></Row>
+        <Row Tag="LOC_AMT_MC_SCOPE_REASON_UNSET"><Text>no saved settings</Text></Row>
+        <Row Tag="LOC_AMT_MC_SCOPE_REASON_UNSELECTED"><Text>saved, but not selected for this run</Text></Row>
+        <Row Tag="LOC_AMT_MC_SCOPE_EMPTY"><Text>Save settings for at least one city before solving.</Text></Row>
+        <Row Tag="LOC_AMT_MC_SCOPE_BACK"><Text>Back to settings</Text></Row>
+        <Row Tag="LOC_AMT_MC_SCOPE_CONFIRM"><Text>Start solving</Text></Row>
+        <Row Tag="LOC_AMT_MC_SCOPE_STALE"><Text>Saved settings changed after this page opened. Return and confirm the scope again.</Text></Row>
+        <Row Tag="LOC_AMT_MC_SNAPSHOT_FAILED"><Text>Snapshot failed: {1_Reason}</Text></Row>
+        <Row Tag="LOC_AMT_MC_DRY_RUN_REPORT_TITLE"><Text>M2 settings snapshot report</Text></Row>
+        <Row Tag="LOC_AMT_MC_REPORT_SUMMARY"><Text>Cluster summary</Text></Row>
+        <Row Tag="LOC_AMT_MC_REPORT_SIGNATURE"><Text>snapshot signature</Text></Row>
+        <Row Tag="LOC_AMT_MC_REPORT_PARTICIPANTS"><Text>saved real cities</Text></Row>
+        <Row Tag="LOC_AMT_MC_REPORT_PER_CITY"><Text>Per-city report</Text></Row>
+        <Row Tag="LOC_AMT_MC_REPORT_FUTURE_POP"><Text>future population</Text></Row>
+        <Row Tag="LOC_AMT_MC_REPORT_INTERNAL_POP"><Text>captured current population</Text></Row>
+        <Row Tag="LOC_AMT_MC_REPORT_SLOTS"><Text>existing / normalized slots</Text></Row>
+        <Row Tag="LOC_AMT_MC_REPORT_ORDER"><Text>normalized order:</Text></Row>
+        <Row Tag="LOC_AMT_MC_REPORT_SAVED_PROJECTS"><Text>saved projects:</Text></Row>
+        <Row Tag="LOC_AMT_MC_REPORT_RECOMMENDATIONS"><Text>auto-select basis:</Text></Row>
+        <Row Tag="LOC_AMT_MC_REPORT_NO_RECOMMENDATIONS"><Text>Auto-select was not used for this saved revision.</Text></Row>
+        <Row Tag="LOC_AMT_MC_REPORT_NONE"><Text>none</Text></Row>
+        <Row Tag="LOC_AMT_MC_REPORT_CLEAR"><Text>Dry-run cleanup differences by city</Text></Row>
+        <Row Tag="LOC_AMT_MC_REPORT_CLEAR_COUNT"><Text>{1_Count} map pins would be included in cleanup.</Text></Row>
+        <Row Tag="LOC_AMT_MC_REPORT_NO_PLACEMENT"><Text>No map pins were placed or removed. Joint solving is preview-only in this test package.</Text></Row>
+        <Row Tag="LOC_AMT_MC_M3_SOLVING_TITLE"><Text>Joint solve (M6)</Text></Row>
+        <Row Tag="LOC_AMT_MC_M3_SOLVING_NOTICE"><Text>Computing the full joint plan (districts, coverage, wonders, improvements). Nothing will be placed.</Text></Row>
+        <Row Tag="LOC_AMT_MC_M3_PREVIEW_TITLE"><Text>Joint plan preview (M6 full scope)</Text></Row>
+        <Row Tag="LOC_AMT_MC_M3_PREVIEW_NOTICE"><Text>Preview only: no map pins were placed or removed. Switch plan tabs to compare layouts.</Text></Row>
+        <Row Tag="LOC_AMT_MC_M7_CONFIRM_APPLY"><Text>Confirm and apply plan</Text></Row>
+        <Row Tag="LOC_AMT_MC_M7_APPLY_TITLE"><Text>Apply plan</Text></Row>
+        <Row Tag="LOC_AMT_MC_M7_APPLY_SUMMARY"><Text>Add {1_Add} automatic pin(s), remove {2_Remove} old automatic pin(s), manual pins to remove: {3_Manual}.</Text></Row>
+        <Row Tag="LOC_AMT_MC_M7_APPLY_BODY"><Text>{1_Body}</Text></Row>
+        <Row Tag="LOC_AMT_MC_M7_APPLY_BACK"><Text>Back to plans</Text></Row>
+        <Row Tag="LOC_AMT_MC_M7_APPLY_CONFIRM"><Text>Confirm and apply</Text></Row>
+        <Row Tag="LOC_AMT_MC_M7_APPLY_OK"><Text>Plan applied. Undo restores the previous multi-city pins in one step.</Text></Row>
+        <Row Tag="LOC_AMT_MC_M7_APPLY_ROLLED_BACK"><Text>Apply failed and was rolled back. No map pins or settings were changed.</Text></Row>
+        <Row Tag="LOC_AMT_MC_M7_APPLY_STALE"><Text>Settings or map changed after solving. Return and solve again.</Text></Row>
+        <Row Tag="LOC_AMT_MC_M7_APPLY_CITY_LINE"><Text>【{1_City}】add {2_Add} / remove {3_Remove}</Text></Row>
+        <Row Tag="LOC_AMT_MC_M7_APPLY_ADD_LINE"><Text>add {1_Subject} at ({2_X}, {3_Y})</Text></Row>
+        <Row Tag="LOC_AMT_MC_M7_APPLY_REMOVE_LINE"><Text>remove {1_Subject} at ({2_X}, {3_Y})</Text></Row>
+        <Row Tag="LOC_AMT_MC_M7_APPLY_MANUAL_HEADER"><Text>Manual pins to remove: {1_Count}</Text></Row>
+        <Row Tag="LOC_AMT_MC_M7_UNDO_OK"><Text>Undone the last multi-city plan: removed {1_Removed} new pin(s), restored {2_Restored} previous pin(s).</Text></Row>
+        <Row Tag="LOC_AMT_MC_M7_UNDO_PARTIAL"><Text>Undo partially completed: removed {1_Removed} new pin(s), restored {2_Restored} previous pin(s), {3_Blocked} pin(s) are blocked by newer changes.</Text></Row>
+        <Row Tag="LOC_AMT_MC_M3_PARTIAL_PREVIEW_TITLE"><Text>Relaxed plan preview (incomplete)</Text></Row>
+        <Row Tag="LOC_AMT_MC_M3_PARTIAL_PREVIEW_NOTICE"><Text>Preview only: not every required project could be placed. See the report for skipped projects.</Text></Row>
+        <Row Tag="LOC_AMT_MC_M3_PLANS_LABEL"><Text>Plans shown: {1_Count}</Text></Row>
+        <Row Tag="LOC_AMT_MC_M3_PLAN_TAB"><Text>Plan {1_Index}</Text></Row>
+        <Row Tag="LOC_AMT_MC_M3_RECOMMENDED"><Text>(recommended)</Text></Row>
+        <Row Tag="LOC_AMT_MC_M3_REPORT_SUMMARY"><Text>M6 joint preview · {1_Cities} cities · {2_Evaluations} full evaluations · {3_Components} components</Text></Row>
+        <Row Tag="LOC_AMT_MC_M3_REPORT_PARTIAL_BANNER"><Text>Relaxed plan (incomplete): not every required project could be placed together.</Text></Row>
+        <Row Tag="LOC_AMT_MC_M3_REPORT_PARTIAL_UNPLACED"><Text>Not placed this run:</Text></Row>
+        <Row Tag="LOC_AMT_MC_M3_REPORT_PARTIAL_UNKNOWN_REASON"><Text>no combination of legal plots found</Text></Row>
+        <Row Tag="LOC_AMT_MC_M3_REPORT_PER_CITY"><Text>Per-city plan</Text></Row>
+        <Row Tag="LOC_AMT_MC_M3_REPORT_PLANNED"><Text>planned: {1_Names}</Text></Row>
+        <Row Tag="LOC_AMT_MC_M3_REPORT_SLOTS"><Text>slot fulfillment: {1_Fulfilled}/{2_Slots}</Text></Row>
+        <Row Tag="LOC_AMT_MC_M3_REPORT_UNPLACED"><Text>unplaced (required): {1_Names}</Text></Row>
+        <Row Tag="LOC_AMT_MC_M3_REPORT_CROSS"><Text>cross-city adjacency: {1_Count} adjacent pairs</Text></Row>
+        <Row Tag="LOC_AMT_MC_M3_REPORT_SKIPPED"><Text>Skipped items</Text></Row>
+        <Row Tag="LOC_AMT_MC_M3_REPORT_DISTRICT_ONLY"><Text>M6 full preview scope: districts, coverage, wonders with same-city support, per-city improvement budgets, and player-unique districts.</Text></Row>
+        <Row Tag="LOC_AMT_MC_M3_REPORT_NO_PLACEMENT"><Text>This was a preview: no map pins were placed or removed.</Text></Row>
+        <Row Tag="LOC_AMT_MC_M3_BUDGET_EXCEEDED"><Text>The evaluation budget was exhausted. No plan was produced; reduce the selected projects and retry.</Text></Row>
+        <Row Tag="LOC_AMT_MC_M3_NO_PLAN"><Text>No legal layout was found for the selected projects.</Text></Row>
+        <Row Tag="LOC_AMT_MC_M3_SKIP_LOCKED"><Text>{1_Name} of {2_City} is already founded or manually pinned and was skipped.</Text></Row>
+        <Row Tag="LOC_AMT_MC_M3_SKIP_PLAYER_LIMIT"><Text>{1_Name} of {2_City} reached the player-wide limit and was skipped.</Text></Row>
+        <Row Tag="LOC_AMT_MC_M3_SKIP_NO_TILE"><Text>{1_Name} of {2_City} has no legal tile and was skipped.</Text></Row>
+        <Row Tag="LOC_AMT_MC_M3_SKIP_REQUIRED_DROPPED"><Text>{1_Name} of {2_City} is required but unplaceable; the preview continues without it.</Text></Row>
+        <Row Tag="LOC_AMT_MC_M4_REPORT_COVERAGE"><Text>Coverage</Text></Row>
+        <Row Tag="LOC_AMT_MC_M4_REPORT_COVERAGE_SERVICE"><Text>{1_Name}: {2_Covered}/{3_Total} participant cities covered · {4_Overlap} redundant overlaps</Text></Row>
+        <Row Tag="LOC_AMT_MC_M4_COVERAGE_CITIES"><Text>participant cluster</Text></Row>
+        <Row Tag="LOC_AMT_MC_M5_REPORT_WONDERS"><Text>Wonders</Text></Row>
+        <Row Tag="LOC_AMT_MC_M5_REPORT_WONDER_ITEM"><Text>{1_Wonder} (support: {2_Supports})</Text></Row>
+        <Row Tag="LOC_AMT_MC_M5_SKIP_PINNED"><Text>{1_Wonder} is already pinned and was skipped.</Text></Row>
+        <Row Tag="LOC_AMT_MC_M5_SKIP_BUILT"><Text>{1_Wonder} is already built and was skipped.</Text></Row>
+        <Row Tag="LOC_AMT_MC_M5_SKIP_CROSS_CITY"><Text>{1_Wonder} of {2_City} has a cross-city support and was skipped.</Text></Row>
+        <Row Tag="LOC_AMT_MC_M5_SKIP_NO_SUPPORT"><Text>{1_Wonder} has no legal placement (missing support or tiles) and was skipped.</Text></Row>
+        <Row Tag="LOC_AMT_MC_M6_REPORT_BUDGET"><Text>improvement budget used: {1_Used}/{2_Budget}</Text></Row>
+        <Row Tag="LOC_AMT_MC_M6_REPORT_STRATEGIC"><Text>strategic resources developed: {1_Count}</Text></Row>
+        <Row Tag="LOC_AMT_MC_M6_SKIP_NO_BUDGET"><Text>{2_City} has no improvement budget left (future population {1_Pop}); improvement requests were skipped.</Text></Row>
+        <Row Tag="LOC_AMT_MC_M6_NO_PLAN_DETAIL"><Text>No legal layout was found. Details:</Text></Row>
+        <Row Tag="LOC_AMT_MC_M6_UNFULFILLED"><Text>required items that could not be placed: {1_Names}</Text></Row>
+        <Row Tag="LOC_AMT_MC_M6_UNFULFILLED_CITY"><Text>cannot place for {1_City}: {2_Names}</Text></Row>
+        <Row Tag="LOC_AMT_MC_M6_UNFULFILLED_GLOBAL"><Text>shared or global items that could not be placed: {1_Names}</Text></Row>
+        <Row Tag="LOC_AMT_MC_M6_DIAG_HEADER"><Text>main rejection reasons (occurrences)</Text></Row>
+        <Row Tag="LOC_AMT_MC_M6_DIAG_ITEM"><Text>{1_Reason}: {2_Count}</Text></Row>
+        <Row Tag="LOC_AMT_MC_M6_DIAG_PLOT_OCCUPIED"><Text>plot already occupied</Text></Row>
+        <Row Tag="LOC_AMT_MC_M6_DIAG_SLOTS_EXHAUSTED"><Text>population slots exhausted</Text></Row>
+        <Row Tag="LOC_AMT_MC_M6_DIAG_SLOT_INDEX"><Text>slot already filled by another district</Text></Row>
+        <Row Tag="LOC_AMT_MC_M6_DIAG_STRATEGY_LIMIT"><Text>one-per-city limit</Text></Row>
+        <Row Tag="LOC_AMT_MC_M6_DIAG_EXCLUSION"><Text>districts are mutually exclusive</Text></Row>
+        <Row Tag="LOC_AMT_MC_M6_DIAG_LIMIT_REACHED"><Text>player/world quantity limit reached</Text></Row>
+        <Row Tag="LOC_AMT_MC_M6_DIAG_REQUEST_MAX"><Text>request already satisfied to its maximum</Text></Row>
+        <Row Tag="LOC_AMT_MC_M6_DIAG_BUDGET"><Text>improvement budget exhausted</Text></Row>
+        <Row Tag="LOC_AMT_MC_M6_DIAG_SUPPORT"><Text>wonder support conflict</Text></Row>
+        <Row Tag="LOC_AMT_MC_M6_DIAG_OTHER"><Text>other: {1_Reason}</Text></Row>
+        <Row Tag="LOC_AMT_MC_M6_INPUT_ERROR"><Text>solve input error: {1_Reason}</Text></Row>
+        <Row Tag="LOC_AMT_MC_M6_REPORT_UNPLACED_LIMIT"><Text>not placed (player unique limit): {1_Names}</Text></Row>
+        <Row Tag="LOC_AMT_MC_UNIQUE_TAB"><Text>Player unique</Text></Row>
+        <Row Tag="LOC_AMT_MC_UNIQUE_GROUP_HEADER"><Text>Player-unique districts</Text></Row>
+        <Row Tag="LOC_AMT_MC_UNIQUE_DROPDOWN_UNAVAILABLE"><Text>Mode dropdown unavailable; open and re-enter the planner.</Text></Row>
+        <Row Tag="LOC_AMT_MC_UNIQUE_TAB_HINT"><Text>Player-unique districts are one shared plan for the whole run. Choose "auto choose city", lock it to the city shown in the top navigator, or do not plan it. A valid manual map pin always wins and is shown as a read-only state.</Text></Row>
+        <Row Tag="LOC_AMT_MC_UNIQUE_FOOTNOTE"><Text>The right list still shows the current planning city. Switching cities changes only which city "lock to this city" refers to; it never moves an existing lock.</Text></Row>
+        <Row Tag="LOC_AMT_MC_UNIQUE_OFF"><Text>Do not plan</Text></Row>
+        <Row Tag="LOC_AMT_MC_UNIQUE_AUTO"><Text>Auto city</Text></Row>
+        <Row Tag="LOC_AMT_MC_UNIQUE_LOCK"><Text>Lock this city</Text></Row>
+        <Row Tag="LOC_AMT_MC_UNIQUE_OFF_TOOLTIP"><Text>No request is generated for this district.</Text></Row>
+        <Row Tag="LOC_AMT_MC_UNIQUE_AUTO_TOOLTIP"><Text>The joint solve picks both the city and the tile among the saved participant cities. No city slot is reserved beforehand.</Text></Row>
+        <Row Tag="LOC_AMT_MC_UNIQUE_LOCK_TOOLTIP"><Text>Lock this project to the current planning city. It immediately enters that city's specialty order and occupies a real slot; the algorithm still picks the tile.</Text></Row>
+        <Row Tag="LOC_AMT_MC_UNIQUE_RELOCK_TOOLTIP"><Text>Move the lock from its current city to the city shown in the top navigator.</Text></Row>
+        <Row Tag="LOC_AMT_MC_UNIQUE_LOCKED_CITY"><Text>Locked: {1_City}</Text></Row>
+        <Row Tag="LOC_AMT_MC_UNIQUE_LOCKED_SHORT"><Text>Locked</Text></Row>
+        <Row Tag="LOC_AMT_MC_UNIQUE_RELOCK"><Text>Re-lock here ({1_City})</Text></Row>
+        <Row Tag="LOC_AMT_MC_UNIQUE_MANUAL_PIN_EXISTS"><Text>A map pin already exists</Text></Row>
+        <Row Tag="LOC_AMT_MC_UNIQUE_MANUAL_PIN_DETAIL"><Text>Manual pin exists ({1_City} · {2_X},{3_Y})</Text></Row>
+        <Row Tag="LOC_AMT_MC_UNIQUE_MANUAL_PIN_TOOLTIP"><Text>A valid manual district pin is the highest-priority guidance. It stays fixed; the full DMT projection still validates it.</Text></Row>
+        <Row Tag="LOC_AMT_MC_UNIQUE_MANUAL_CONFLICT"><Text>Conflict: {1_Count} manual pins found; solving stops for this project.</Text></Row>
+        <Row Tag="LOC_AMT_MC_UNIQUE_MANUAL_INVALID"><Text>Manual pin is invalid; solving stops for this project.</Text></Row>
+        <Row Tag="LOC_AMT_MC_UNIQUE_BUILT"><Text>Built: {1_City}</Text></Row>
+        <Row Tag="LOC_AMT_MC_UNIQUE_FOUNDED"><Text>Founded: {1_City}</Text></Row>
+        <Row Tag="LOC_AMT_MC_UNIQUE_OLD_AUTO_PIN_MARK"><Text>(old auto pin ×{1_Count})</Text></Row>
+        <Row Tag="LOC_AMT_MC_UNIQUE_UNSAVED_MARK"><Text>· unsaved</Text></Row>
+        <Row Tag="LOC_AMT_MC_UNIQUE_DRAFT_CHANGED"><Text>Player-unique draft changed. Use "Save settings" to commit it.</Text></Row>
+        <Row Tag="LOC_AMT_MC_UNIQUE_LOCK_NEEDS_CITY"><Text>Select a real planning city first; future-city locking is not part of M6U.</Text></Row>
+        <Row Tag="LOC_AMT_MC_UNIQUE_CITY_UNAVAILABLE"><Text>The city for this lock is no longer available.</Text></Row>
+        <Row Tag="LOC_AMT_MC_UNIQUE_LOCK_UNSAVED_CITY"><Text>These player-unique projects are locked to a city without valid saved settings: {1_Names}. Return to settings and save that city, or change the lock.</Text></Row>
+        <Row Tag="LOC_AMT_MC_UNIQUE_LOCK_INVALID_SAVE"><Text>Cannot save: lock target is invalid for {1_Names}.</Text></Row>
+        <Row Tag="LOC_AMT_MC_STATUS_SHARED_DIRTY"><Text>○ Shared settings have unsaved changes</Text></Row>
+        <Row Tag="LOC_AMT_MC_STATUS_BOTH_DIRTY"><Text>● This city and shared settings have unsaved changes</Text></Row>
+        <Row Tag="LOC_AMT_MC_SAVE_OK_WITH_SHARED"><Text>Saved city revision r{1_Revision} and {2_Shared} player-unique draft(s).</Text></Row>
+        <Row Tag="LOC_AMT_MC_CLEAR_UNIQUE_CONFIRM_TITLE"><Text>Clear city settings</Text></Row>
+        <Row Tag="LOC_AMT_MC_CLEAR_UNIQUE_CONFIRM_BODY"><Text>Clearing this city's settings also cancels the following player-unique locks: {1_Names}. Continue?</Text></Row>
+        <Row Tag="LOC_AMT_MC_CLEAR_UNIQUE_CONFIRM"><Text>Clear and cancel locks</Text></Row>
+        <Row Tag="LOC_AMT_MC_CLEAR_UNIQUE_CANCEL"><Text>Cancel</Text></Row>
+        <Row Tag="LOC_AMT_MC_SCOPE_UNIQUE_HEADER"><Text>Player-unique districts</Text></Row>
+        <Row Tag="LOC_AMT_MC_SCOPE_UNIQUE_AUTO"><Text>{1_Name}: auto choose city (candidates: {2_Cities})</Text></Row>
+        <Row Tag="LOC_AMT_MC_SCOPE_UNIQUE_LOCKED"><Text>{1_Name}: locked to {2_City}</Text></Row>
+        <Row Tag="LOC_AMT_MC_SCOPE_UNIQUE_OFF"><Text>{1_Name}: not planned</Text></Row>
+        <Row Tag="LOC_AMT_MC_M6U_REPORT_HEADER"><Text>Player-unique districts</Text></Row>
+        <Row Tag="LOC_AMT_MC_M6U_REPORT_ITEM"><Text>{1_Name}: chosen {2_City}, specialty slot {3_Slot}</Text></Row>
+        <Row Tag="LOC_AMT_MC_M6U_REPORT_UNPLACED"><Text>{1_Name}: not placed ({2_City})</Text></Row>
+        <Row Tag="LOC_AMT_MC_M6U_REPORT_DEFERRED"><Text>deferred past the slot budget: {1_Names}</Text></Row>
+        <Row Tag="LOC_AMT_MC_M6U_SKIP_HANDLED_BY_UNIQUE"><Text>{1_Name} is managed on the player-unique page and was skipped here.</Text></Row>
+        <Row Tag="LOC_AMT_MC_M6U_SKIP_BUILT"><Text>{1_Name} is already built and was skipped.</Text></Row>
+        <Row Tag="LOC_AMT_MC_M6U_SKIP_FOUNDED"><Text>{1_Name} already has a foundation and was skipped.</Text></Row>
+        <Row Tag="LOC_AMT_MC_M6U_SKIP_MANUAL"><Text>{1_Name} has one valid manual pin; the fixed pin satisfies the request.</Text></Row>
+        <Row Tag="LOC_AMT_MC_M6U_SKIP_MANUAL_CONFLICT"><Text>{1_Name} has multiple manual pins; solving stops for this project.</Text></Row>
+        <Row Tag="LOC_AMT_MC_M6U_SKIP_MANUAL_INVALID"><Text>{1_Name} has an invalid manual pin; solving stops for this project.</Text></Row>
+        <Row Tag="LOC_AMT_MC_M6U_SKIP_LOCKED_MISSING"><Text>{1_Name} is locked to a city that is not participating; solving stops for this project.</Text></Row>
+        <Row Tag="LOC_AMT_MC_M6U_SKIP_PLAYER_LIMIT"><Text>{1_Name} reached the player-wide limit and was skipped.</Text></Row>
+        <Row Tag="LOC_AMT_MC_M6U_SKIP_NO_TILE"><Text>{1_Name} has no legal tile for {2_City}.</Text></Row>
+        <Row Tag="LOC_AMT_MC_M6U_AUTO_CITIES"><Text>the candidate cities</Text></Row>
+        <Row Tag="LOC_AMT_MC_M6U_SNAPSHOT_STALE"><Text>The frozen snapshot no longer matches the current map pins or city states. Return and confirm the scope again.</Text></Row>
+        <Row Tag="LOC_AMT_MC_M6U_SNAPSHOT_STALE_RETURN"><Text>No preview was produced and no settings were changed.</Text></Row>
+        <Row Tag="LOC_AMT_MC_UNIQUE_DEFERRED_MARK"><Text>·</Text></Row>
+        <Row Tag="LOC_AMT_MC_UNIQUE_DEFERRED_ROW"><Text>{1_District} (deferred)</Text></Row>
+        <Row Tag="LOC_AMT_MC_UNIQUE_DEFERRED_TOOLTIP"><Text>This district is past the current specialty slot budget. It stays visible in the order and is placed only when a real slot becomes available.</Text></Row>
+        <Row Tag="LOC_AMT_MC_UNSAVED_TITLE"><Text>Unsaved city settings</Text></Row>
+        <Row Tag="LOC_AMT_MC_UNSAVED_BODY"><Text>One or more cities have draft changes, or the shared player-unique district settings have draft changes. Save all valid drafts, discard draft changes, or cancel closing.</Text></Row>
+        <Row Tag="LOC_AMT_MC_UNSAVED_SAVE"><Text>Save and close</Text></Row>
+        <Row Tag="LOC_AMT_MC_UNSAVED_DISCARD"><Text>Discard drafts</Text></Row>
+        <Row Tag="LOC_AMT_MC_UNSAVED_CANCEL"><Text>Cancel closing</Text></Row>
         <Row Tag="LOC_AMT_OPTIONS_HOTKEY_CATEGORY">
             <Text>Auto Map Tacks</Text>
         </Row>
@@ -11,7 +222,7 @@
             <Text>Open Auto-Plan Popup</Text>
         </Row>
         <Row Tag="LOC_AMT_ENTRY_BUTTON"><Text>Auto Planner</Text></Row>
-        <Row Tag="LOC_AMT_ENTRY_TOOLTIP"><Text>Auto Map Tacks Planner toggle. Shortcut: Shift+P.</Text></Row>
+        <Row Tag="LOC_AMT_ENTRY_TOOLTIP"><Text>Choose single-city or experimental four-city planning; restore an open planner. Shortcut: Shift+P.</Text></Row>
         <Row Tag="LOC_AMT_RULES_REFRESHED"><Text>Technology or civic completed. Options were preserved and planning rules were refreshed.</Text></Row>
         <Row Tag="LOC_AMT_POPUP_TITLE">
             <Text>Auto Map Tacks Planner</Text>
@@ -293,42 +504,114 @@
         <Row Tag="LOC_AMT_DIAG_FIRST_FAILURE"><Text>[{1_Stage}] {2_Subject} ({3_X},{4_Y}): {5_Detail}</Text></Row>
         <Row Tag="LOC_AMT_DIAG_NO_DETAIL"><Text>No detailed reason returned.</Text></Row>
         <Row Tag="LOC_AMT_PLANNER_FOOTNOTE"><Text>Pre-place district, improvement, wonder, Remove Feature, Harvest Resource or Plant Forest tacks to direct the planner. Each city remembers its own settings. Re-preview after a technology or civic unlock to use the latest rules.</Text></Row>
-    </EnglishText>
+        <Row Tag="LOC_AMT_MC_CLUSTER_TITLE"><Text>Multi-City Cluster Snapshot (Dry Run)</Text></Row>
+        <Row Tag="LOC_AMT_MC_CLUSTER_PRIMARY_LABEL"><Text>Primary city:</Text></Row>
+        <Row Tag="LOC_AMT_MC_CLUSTER_PICK_LABEL"><Text>Participating cities (2-4):</Text></Row>
+        <Row Tag="LOC_AMT_MC_CLUSTER_TEMPLATE_LABEL"><Text>Template parameters:</Text></Row>
+        <Row Tag="LOC_AMT_MC_CLUSTER_TEMPLATE_SLOTS"><Text>Specialty slots:</Text></Row>
+        <Row Tag="LOC_AMT_MC_CLUSTER_HORIZON"><Text>Horizon:</Text></Row>
+        <Row Tag="LOC_AMT_MC_CLUSTER_HORIZON_CURRENT"><Text>CURRENT</Text></Row>
+        <Row Tag="LOC_AMT_MC_CLUSTER_HORIZON_LONG"><Text>LONG_TERM</Text></Row>
+        <Row Tag="LOC_AMT_MC_CLUSTER_DRY_RUN"><Text>Generate Dry-Run Report</Text></Row>
+        <Row Tag="LOC_AMT_MC_CLUSTER_CLOSE"><Text>Close</Text></Row>
+        <Row Tag="LOC_AMT_MC_CLUSTER_REPORT_LABEL"><Text>Dry-run report:</Text></Row>
+        <Row Tag="LOC_AMT_MC_CLUSTER_NO_PLACEMENT"><Text>Dry run only: no map pins are placed or removed.</Text></Row>
+        <Row Tag="LOC_AMT_MC_CLUSTER_DISTANCE"><Text>distance</Text></Row>
+        <Row Tag="LOC_AMT_MC_CLUSTER_POPULATION"><Text>pop</Text></Row>
+        <Row Tag="LOC_AMT_MC_CLUSTER_REPORT_SUMMARY"><Text>Cluster summary</Text></Row>
+        <Row Tag="LOC_AMT_MC_CLUSTER_PARTICIPANTS"><Text>participants</Text></Row>
+        <Row Tag="LOC_AMT_MC_CLUSTER_RUN_ID"><Text>runID</Text></Row>
+        <Row Tag="LOC_AMT_MC_CLUSTER_SELECTION"><Text>selectionSource</Text></Row>
+        <Row Tag="LOC_AMT_MC_CLUSTER_SNAPSHOT_SIG"><Text>snapshotSignature</Text></Row>
+        <Row Tag="LOC_AMT_MC_CLUSTER_REPORT_PER_CITY"><Text>Per-city report</Text></Row>
+        <Row Tag="LOC_AMT_MC_CLUSTER_SLOTS_EXISTING"><Text>existing slots</Text></Row>
+        <Row Tag="LOC_AMT_MC_CLUSTER_SLOTS_CURRENT"><Text>current allowed</Text></Row>
+        <Row Tag="LOC_AMT_MC_CLUSTER_SLOTS_PLANNED"><Text>planned</Text></Row>
+        <Row Tag="LOC_AMT_MC_CLUSTER_OWNED_HASH"><Text>ownedPlotHash</Text></Row>
+        <Row Tag="LOC_AMT_MC_CLUSTER_DISTRICT_HASH"><Text>districtStateHash</Text></Row>
+        <Row Tag="LOC_AMT_MC_CLUSTER_REPORT_CLEAR"><Text>Clear scope</Text></Row>
+        <Row Tag="LOC_AMT_MC_CLUSTER_CLEAR_SCOPE"><Text>scope</Text></Row>
+        <Row Tag="LOC_AMT_MC_CLUSTER_CLEAR_AUTO"><Text>clearAutoPins</Text></Row>
+        <Row Tag="LOC_AMT_MC_CLUSTER_CLEAR_MANUAL"><Text>clearManualPins</Text></Row>
+        <Row Tag="LOC_AMT_MC_CLUSTER_REPORT_SIGNATURES"><Text>Invalidation signatures</Text></Row>
+    <Row Tag="LOC_AMT_MC_CLUSTER_NEED_TWO_CITIES"><Text>Select at least two cities.</Text></Row>
+    <Row Tag="LOC_AMT_MC_CLUSTER_TOO_MANY_CITIES"><Text>Select no more than four cities.</Text></Row>
+    <Row Tag="LOC_AMT_MC_CLUSTER_TEMPLATE_FAILED"><Text>Could not read the primary-city template.</Text></Row>
+    <Row Tag="LOC_AMT_MC_CLUSTER_TEMPLATE_LOADING"><Text>Reading the primary-city template...</Text></Row>
+    <Row Tag="LOC_AMT_MC_CLUSTER_SNAPSHOT_FAILED"><Text>Snapshot failed:</Text></Row>
+        <Row Tag="LOC_AMT_MC_UI_STEP_SETTINGS"><Text>① City settings</Text></Row>
+        <Row Tag="LOC_AMT_MC_UI_STEP_SCOPE"><Text>② Solve scope</Text></Row>
+        <Row Tag="LOC_AMT_MC_UI_STEP_COMPARE"><Text>③ Compare plans</Text></Row>
+        <Row Tag="LOC_AMT_MC_UI_STEP_APPLY"><Text>④ Apply</Text></Row>
+        <Row Tag="LOC_AMT_MC_UI_QUICK_START"><Text>Quick setup (recommended)</Text></Row>
+        <Row Tag="LOC_AMT_MC_UI_QUICK_CHOOSE"><Text>Choose a beginner template</Text></Row>
+        <Row Tag="LOC_AMT_MC_UI_QUICK_OFF"><Text>Quick setup: Off</Text></Row>
+        <Row Tag="LOC_AMT_MC_UI_QUICK_APPLIED"><Text>{1_Template} · drafted for {2_Count} cities</Text></Row>
+        <Row Tag="LOC_AMT_MC_UI_QUICK_CANCEL"><Text>Undo quick setup</Text></Row>
+        <Row Tag="LOC_AMT_MC_UI_QUICK_CANCELLED"><Text>Quick setup was undone.</Text></Row>
+        <Row Tag="LOC_AMT_MC_UI_ADVANCED_OPEN"><Text>Advanced preferences</Text></Row>
+        <Row Tag="LOC_AMT_MC_UI_ADVANCED_TITLE"><Text>Advanced preferences</Text></Row>
+        <Row Tag="LOC_AMT_MC_UI_ADVANCED_CLOSE"><Text>Collapse</Text></Row>
+        <Row Tag="LOC_AMT_MC_UI_HIDE_PANEL"><Text>Hide panel</Text></Row>
+        <Row Tag="LOC_AMT_MC_UI_HIDE_PANEL_TOOLTIP"><Text>Temporarily hide this settings panel to inspect and compare the game map. Your drafts stay open.</Text></Row>
+        <Row Tag="LOC_AMT_MC_UI_RESTORE_PANEL"><Text>Restore planning panel</Text></Row>
+        <Row Tag="LOC_AMT_MC_UI_RESTORE_PANEL_TOOLTIP"><Text>Return to the open multi-city settings session.</Text></Row>
+        <Row Tag="LOC_AMT_MC_UI_CARD_UNSET"><Text>Not configured</Text></Row>
+        <Row Tag="LOC_AMT_MC_UI_CARD_DIRTY"><Text>Unsaved</Text></Row>
+        <Row Tag="LOC_AMT_MC_UI_CARD_SAVED"><Text>Saved</Text></Row>
+        <Row Tag="LOC_AMT_MC_UI_CARD_REOPTIMIZE"><Text>Can re-optimize</Text></Row>
+        <Row Tag="LOC_AMT_MC_UI_CARD_REVIEW"><Text>Needs review</Text></Row>
+        <Row Tag="LOC_AMT_MC_UI_SAVE_ALL_CONTINUE"><Text>Save all and continue</Text></Row>
+        <Row Tag="LOC_AMT_MC_UI_CONFIRM_SCOPE"><Text>Confirm solve scope</Text></Row>
+        <Row Tag="LOC_AMT_MC_UI_SAVE_ALL_OK"><Text>Saved settings for {1_Count} cities.</Text></Row>
+        <Row Tag="LOC_AMT_MC_UI_STAGE_PREPARE"><Text>Prepare planning data</Text></Row>
+        <Row Tag="LOC_AMT_MC_UI_STAGE_DISTRICTS"><Text>Combine district layouts</Text></Row>
+        <Row Tag="LOC_AMT_MC_UI_STAGE_IMPROVEMENTS"><Text>Coordinate improvements and coverage</Text></Row>
+        <Row Tag="LOC_AMT_MC_UI_STAGE_VERIFY"><Text>Verify final legality</Text></Row>
+        <Row Tag="LOC_AMT_MC_UI_SOLVING_STAGE"><Text>Planning: {1_Stage}</Text></Row>
+        <Row Tag="LOC_AMT_MC_UI_SOLVE_TIP"><Text>Tip: place manual pins beforehand to guide automatic planning.</Text></Row>
+        <Row Tag="LOC_AMT_MC_UI_CANCEL"><Text>Cancel</Text></Row>
+        <Row Tag="LOC_AMT_MC_UI_COMPARE_TITLE"><Text>Compare plans</Text></Row>
+        <Row Tag="LOC_AMT_MC_UI_COMPARE_HINT"><Text>Select a plan to compare on the map. Hover Apply for per-city changes.</Text></Row>
+        <Row Tag="LOC_AMT_MC_UI_ISSUES_TITLE"><Text>Issues and omissions</Text></Row>
+        <Row Tag="LOC_AMT_MC_UI_NO_ISSUES"><Text>No issues need your attention.</Text></Row>
+        <Row Tag="LOC_AMT_MC_UI_ISSUE_UNPLACED"><Text>{1_City}'s {2_Subject} was not placed: {3_Reason}.</Text></Row>
+        <Row Tag="LOC_AMT_MC_UI_BACK_SETTINGS"><Text>Settings</Text></Row>
+        <Row Tag="LOC_AMT_MC_UI_APPLY_SELECTED"><Text>Apply selected</Text></Row>
+        <Row Tag="LOC_AMT_MC_UI_APPLY_INTRO"><Text>Review the map-pin changes before applying this plan.</Text></Row>
+        <Row Tag="LOC_AMT_MC_UI_APPLY_ADD"><Text>Add automatic pins</Text></Row>
+        <Row Tag="LOC_AMT_MC_UI_APPLY_REMOVE"><Text>Remove or replace old pins</Text></Row>
+        <Row Tag="LOC_AMT_MC_UI_APPLY_MANUAL"><Text>Manual pins to remove</Text></Row>
+        <Row Tag="LOC_AMT_MC_UI_SHOW_DETAILS"><Text>Show per-city details</Text></Row>
+        <Row Tag="LOC_AMT_MC_UI_HIDE_DETAILS"><Text>Hide per-city details</Text></Row>
+        <Row Tag="LOC_AMT_MC_UI_MANUAL_RISK"><Text>This plan will remove manual pins. Confirm this separately before applying.</Text></Row>
+        <Row Tag="LOC_AMT_MC_UI_MANUAL_CONFIRM"><Text>Allow removal of these manual pins</Text></Row>
+        <Row Tag="LOC_AMT_MC_UI_MANUAL_RISK_COMPACT"><Text>This plan will remove {1_Count} manual pins. Confirm before applying.</Text></Row>
+        <Row Tag="LOC_AMT_MC_UNIQUE_LOCKED_HERE"><Text>Locked to this city</Text></Row>
+        <Row Tag="LOC_AMT_MC_UNIQUE_LOCKED_OTHER"><Text>Locked to {1_City}</Text></Row>
+        <Row Tag="LOC_AMT_MC_UI_UNDO_HINT"><Text>You can undo this application from the planner afterward.</Text></Row>
+        <Row Tag="LOC_AMT_MC_M7_RECOVERY_REQUIRED"><Text>Recovery is incomplete. Applying plans is blocked to protect existing pins and undo history. Return to settings and use Undo to retry recovery. If it still fails, keep this save and Lua.log; do not edit the affected pins.</Text></Row>
+        <Row Tag="LOC_AMT_MC_M7_RECOVERY_OK"><Text>Recovered the interrupted transaction. Your previous undo action is still available.</Text></Row>
+        <Row Tag="LOC_AMT_MC_UI_SHARED"><Text>Shared / global</Text></Row>
+        <Row Tag="LOC_AMT_MC_UI_MORE_ISSUES"><Text>{1_Count} more issues are not shown here. Return to settings to review all city requests.</Text></Row>
+        <Row Tag="LOC_AMT_MC_UI_YIELDS_UNAVAILABLE"><Text>Preview yields unavailable (not zero)</Text></Row>
+        <Row Tag="LOC_AMT_MC_M7_UNDO_BLOCKED"><Text>Undo was not applied: a target pin changed or a restoration plot is occupied. Your pins and undo record were kept. Resolve the conflict before retrying.</Text></Row>
+        <Row Tag="LOC_AMT_MC_M7_UNDO_FAILED"><Text>Undo failed; the state before undo was restored. Your original undo record is still available to retry.</Text></Row>
+    <Row Tag="LOC_AMT_R40_MOD_NAME"><Text>Auto Map Tacks Planner [r40]</Text></Row>
+        <Row Tag="LOC_AMT_R40_MOD_TEASER"><Text>Choose single-city planning or linked planning for up to four cities (test) from one entry. Preview, apply and undo district, improvement and wonder plans. [r40]</Text></Row>
+        <Row Tag="LOC_AMT_R40_MOD_DESCRIPTION"><Text>Choose single-city planning or linked planning for up to four cities (test) from one entry. Preview, apply and undo district, improvement and wonder plans. [r40]</Text></Row>
+        </EnglishText>
     <LocalizedText>
-        <Replace Tag="LOC_AMT_V60_MOD_NAME" Language="zh_Hans_CN"><Text>自动地图钉规划</Text></Replace>
-        <Replace Tag="LOC_AMT_V60_MOD_TEASER" Language="zh_Hans_CN"><Text>根据人口预算，为单座城市规划区域、改良设施和奇观。</Text></Replace>
-        <Replace Tag="LOC_AMT_V60_MOD_DESCRIPTION" Language="zh_Hans_CN"><Text>为所选单座城市规划区域、改良设施和奇观，结合人口预算进行启发式组合优化，并在放置前生成完整规划报告。[v60]</Text></Replace>
-        <!-- Front-end mod metadata does not reliably fall back to English in
-             Traditional Chinese, so provide explicit entries for the mod list. -->
-        <!-- Keep the mod identifiable in every other officially supported
-             language. The full UI continues to use its English fallback. -->
-        <Replace Tag="LOC_AMT_V60_MOD_NAME" Language="de_DE"><Text>Auto Map Tacks Planner</Text></Replace>
-        <Replace Tag="LOC_AMT_V60_MOD_TEASER" Language="de_DE"><Text>Plan one selected city's districts, improvements, and wonders with population-aware optimization.</Text></Replace>
-        <Replace Tag="LOC_AMT_V60_MOD_DESCRIPTION" Language="de_DE"><Text>Plan one selected city's districts, improvements, and wonders with population-aware heuristic optimization and a full preview report. [v60]</Text></Replace>
-        <Replace Tag="LOC_AMT_V60_MOD_NAME" Language="es_ES"><Text>Auto Map Tacks Planner</Text></Replace>
-        <Replace Tag="LOC_AMT_V60_MOD_TEASER" Language="es_ES"><Text>Plan one selected city's districts, improvements, and wonders with population-aware optimization.</Text></Replace>
-        <Replace Tag="LOC_AMT_V60_MOD_DESCRIPTION" Language="es_ES"><Text>Plan one selected city's districts, improvements, and wonders with population-aware heuristic optimization and a full preview report. [v60]</Text></Replace>
-        <Replace Tag="LOC_AMT_V60_MOD_NAME" Language="fr_FR"><Text>Auto Map Tacks Planner</Text></Replace>
-        <Replace Tag="LOC_AMT_V60_MOD_TEASER" Language="fr_FR"><Text>Plan one selected city's districts, improvements, and wonders with population-aware optimization.</Text></Replace>
-        <Replace Tag="LOC_AMT_V60_MOD_DESCRIPTION" Language="fr_FR"><Text>Plan one selected city's districts, improvements, and wonders with population-aware heuristic optimization and a full preview report. [v60]</Text></Replace>
-        <Replace Tag="LOC_AMT_V60_MOD_NAME" Language="it_IT"><Text>Auto Map Tacks Planner</Text></Replace>
-        <Replace Tag="LOC_AMT_V60_MOD_TEASER" Language="it_IT"><Text>Plan one selected city's districts, improvements, and wonders with population-aware optimization.</Text></Replace>
-        <Replace Tag="LOC_AMT_V60_MOD_DESCRIPTION" Language="it_IT"><Text>Plan one selected city's districts, improvements, and wonders with population-aware heuristic optimization and a full preview report. [v60]</Text></Replace>
-        <Replace Tag="LOC_AMT_V60_MOD_NAME" Language="ja_JP"><Text>Auto Map Tacks Planner</Text></Replace>
-        <Replace Tag="LOC_AMT_V60_MOD_TEASER" Language="ja_JP"><Text>Plan one selected city's districts, improvements, and wonders with population-aware optimization.</Text></Replace>
-        <Replace Tag="LOC_AMT_V60_MOD_DESCRIPTION" Language="ja_JP"><Text>Plan one selected city's districts, improvements, and wonders with population-aware heuristic optimization and a full preview report. [v60]</Text></Replace>
-        <Replace Tag="LOC_AMT_V60_MOD_NAME" Language="ko_KR"><Text>Auto Map Tacks Planner</Text></Replace>
-        <Replace Tag="LOC_AMT_V60_MOD_TEASER" Language="ko_KR"><Text>Plan one selected city's districts, improvements, and wonders with population-aware optimization.</Text></Replace>
-        <Replace Tag="LOC_AMT_V60_MOD_DESCRIPTION" Language="ko_KR"><Text>Plan one selected city's districts, improvements, and wonders with population-aware heuristic optimization and a full preview report. [v60]</Text></Replace>
-        <Replace Tag="LOC_AMT_V60_MOD_NAME" Language="pl_PL"><Text>Auto Map Tacks Planner</Text></Replace>
-        <Replace Tag="LOC_AMT_V60_MOD_TEASER" Language="pl_PL"><Text>Plan one selected city's districts, improvements, and wonders with population-aware optimization.</Text></Replace>
-        <Replace Tag="LOC_AMT_V60_MOD_DESCRIPTION" Language="pl_PL"><Text>Plan one selected city's districts, improvements, and wonders with population-aware heuristic optimization and a full preview report. [v60]</Text></Replace>
-        <Replace Tag="LOC_AMT_V60_MOD_NAME" Language="pt_BR"><Text>Auto Map Tacks Planner</Text></Replace>
-        <Replace Tag="LOC_AMT_V60_MOD_TEASER" Language="pt_BR"><Text>Plan one selected city's districts, improvements, and wonders with population-aware optimization.</Text></Replace>
-        <Replace Tag="LOC_AMT_V60_MOD_DESCRIPTION" Language="pt_BR"><Text>Plan one selected city's districts, improvements, and wonders with population-aware heuristic optimization and a full preview report. [v60]</Text></Replace>
-        <Replace Tag="LOC_AMT_V60_MOD_NAME" Language="ru_RU"><Text>Auto Map Tacks Planner</Text></Replace>
-        <Replace Tag="LOC_AMT_V60_MOD_TEASER" Language="ru_RU"><Text>Plan one selected city's districts, improvements, and wonders with population-aware optimization.</Text></Replace>
-        <Replace Tag="LOC_AMT_V60_MOD_DESCRIPTION" Language="ru_RU"><Text>Plan one selected city's districts, improvements, and wonders with population-aware heuristic optimization and a full preview report. [v60]</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_MODE_TITLE" Language="zh_Hans_CN"><Text>选择规划模式</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_MODE_SINGLE" Language="zh_Hans_CN"><Text>单城规划</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_MODE_MULTI" Language="zh_Hans_CN"><Text>四城联动（测试）</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_MODE_UNAVAILABLE" Language="zh_Hans_CN"><Text>多城模块暂不可用，仍可使用单城规划。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_MODE_BACK" Language="zh_Hans_CN"><Text>返回</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_MODE_TITLE" Language="zh_Hant_HK"><Text>選擇規劃模式</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_MODE_SINGLE" Language="zh_Hant_HK"><Text>單城規劃</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_MODE_MULTI" Language="zh_Hant_HK"><Text>四城聯動（測試）</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_MODE_UNAVAILABLE" Language="zh_Hant_HK"><Text>多城模組暫不可用，仍可使用單城規劃。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_MODE_BACK" Language="zh_Hant_HK"><Text>返回</Text></Replace>
         <Replace Tag="LOC_AMT_OPTIONS_HOTKEY_CATEGORY" Language="zh_Hans_CN">
             <Text>自动地图钉</Text>
         </Replace>
@@ -336,7 +619,7 @@
             <Text>打开自动规划界面</Text>
         </Replace>
         <Replace Tag="LOC_AMT_ENTRY_BUTTON" Language="zh_Hans_CN"><Text>自动地图钉</Text></Replace>
-        <Replace Tag="LOC_AMT_ENTRY_TOOLTIP" Language="zh_Hans_CN"><Text>自动地图钉规划开关；快捷键：Shift+P</Text></Replace>
+        <Replace Tag="LOC_AMT_ENTRY_TOOLTIP" Language="zh_Hans_CN"><Text>选择单城规划或四城联动（测试）；已打开时恢复当前规划。快捷键：Shift+P</Text></Replace>
         <Replace Tag="LOC_AMT_RULES_REFRESHED" Language="zh_Hans_CN"><Text>科技或市政已完成：已保留本城选项，并按最新规则刷新。</Text></Replace>
         <Replace Tag="LOC_AMT_POPUP_TITLE" Language="zh_Hans_CN">
             <Text>自动地图钉规划</Text>
@@ -619,14 +902,11 @@
         <Replace Tag="LOC_AMT_DIAG_NO_DETAIL" Language="zh_Hans_CN"><Text>检查未返回详细原因。</Text></Replace>
         <Replace Tag="LOC_AMT_PLANNER_FOOTNOTE" Language="zh_Hans_CN"><Text>可预先放置区域、改良、奇观及“删除地貌 / 移除资源 / 种植树林”地图钉来指挥规划；每座城市会分别记住设置。解锁科技或市政后重新预览，即会按最新规则刷新规划。</Text></Replace>
 
-        <!-- Full Traditional Chinese UI, mechanically converted from the maintained Simplified Chinese strings. -->
-        <Replace Tag="LOC_AMT_V60_MOD_NAME" Language="zh_Hant_HK"><Text>自動地圖釘規劃</Text></Replace>
-        <Replace Tag="LOC_AMT_V60_MOD_TEASER" Language="zh_Hant_HK"><Text>根據人口預算，為單座城市規劃區域、改良設施和奇觀。</Text></Replace>
-        <Replace Tag="LOC_AMT_V60_MOD_DESCRIPTION" Language="zh_Hant_HK"><Text>為所選單座城市規劃區域、改良設施和奇觀，結合人口預算進行啟發式組合優化，並在放置前生成完整規劃報告。[v60]</Text></Replace>
+
         <Replace Tag="LOC_AMT_OPTIONS_HOTKEY_CATEGORY" Language="zh_Hant_HK"><Text>自動地圖釘</Text></Replace>
         <Replace Tag="LOC_AMT_OPTIONS_HOTKEY_AUTO_PLAN" Language="zh_Hant_HK"><Text>打開自動規劃界面</Text></Replace>
         <Replace Tag="LOC_AMT_ENTRY_BUTTON" Language="zh_Hant_HK"><Text>自動地圖釘</Text></Replace>
-        <Replace Tag="LOC_AMT_ENTRY_TOOLTIP" Language="zh_Hant_HK"><Text>自動地圖釘規劃開關；快捷鍵：Shift+P</Text></Replace>
+        <Replace Tag="LOC_AMT_ENTRY_TOOLTIP" Language="zh_Hant_HK"><Text>選擇單城規劃或四城聯動（測試）；已開啟時恢復目前規劃。快捷鍵：Shift+P</Text></Replace>
         <Replace Tag="LOC_AMT_RULES_REFRESHED" Language="zh_Hant_HK"><Text>科技或市政已完成：已保留本城選項，并按最新規則刷新。</Text></Replace>
         <Replace Tag="LOC_AMT_POPUP_TITLE" Language="zh_Hant_HK"><Text>自動地圖釘規劃</Text></Replace>
         <Replace Tag="LOC_AMT_TARGET_CITY_LABEL" Language="zh_Hant_HK"><Text>目標城市：</Text></Replace>
@@ -798,5 +1078,642 @@
         <Replace Tag="LOC_AMT_DIAG_FIRST_FAILURE" Language="zh_Hant_HK"><Text>[{1_Stage}] {2_Subject}（{3_X},{4_Y}）：{5_Detail}</Text></Replace>
         <Replace Tag="LOC_AMT_DIAG_NO_DETAIL" Language="zh_Hant_HK"><Text>檢查未返回詳細原因。</Text></Replace>
         <Replace Tag="LOC_AMT_PLANNER_FOOTNOTE" Language="zh_Hant_HK"><Text>可預先放置區域、改良、奇觀及“刪除地貌 / 移除資源 / 種植樹林”地圖釘來指揮規劃；每座城市會分別記住設置。解鎖科技或市政后重新預覽，即會按最新規則刷新規劃。</Text></Replace>
-    </LocalizedText>
+        <Replace Tag="LOC_AMT_MC_CLUSTER_TITLE" Language="zh_Hans_CN"><Text>城市群快照（干运行）</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_CLUSTER_PRIMARY_LABEL" Language="zh_Hans_CN"><Text>主城：</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_CLUSTER_PICK_LABEL" Language="zh_Hans_CN"><Text>参与城市（2-4 座）：</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_CLUSTER_TEMPLATE_LABEL" Language="zh_Hans_CN"><Text>模板参数：</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_CLUSTER_TEMPLATE_SLOTS" Language="zh_Hans_CN"><Text>专业槽位：</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_CLUSTER_HORIZON" Language="zh_Hans_CN"><Text>期限：</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_CLUSTER_HORIZON_CURRENT" Language="zh_Hans_CN"><Text>当前可建</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_CLUSTER_HORIZON_LONG" Language="zh_Hans_CN"><Text>长期规划</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_CLUSTER_DRY_RUN" Language="zh_Hans_CN"><Text>生成干运行报告</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_CLUSTER_CLOSE" Language="zh_Hans_CN"><Text>关闭</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_CLUSTER_REPORT_LABEL" Language="zh_Hans_CN"><Text>干运行报告：</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_CLUSTER_NO_PLACEMENT" Language="zh_Hans_CN"><Text>仅干运行：不会放置或删除任何地图钉。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_CLUSTER_DISTANCE" Language="zh_Hans_CN"><Text>距离</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_CLUSTER_POPULATION" Language="zh_Hans_CN"><Text>人口</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_CLUSTER_REPORT_SUMMARY" Language="zh_Hans_CN"><Text>城市群摘要</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_CLUSTER_PARTICIPANTS" Language="zh_Hans_CN"><Text>参与城市数</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_CLUSTER_RUN_ID" Language="zh_Hans_CN"><Text>runID</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_CLUSTER_SELECTION" Language="zh_Hans_CN"><Text>选择来源</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_CLUSTER_SNAPSHOT_SIG" Language="zh_Hans_CN"><Text>快照签名</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_CLUSTER_REPORT_PER_CITY" Language="zh_Hans_CN"><Text>逐城报告</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_CLUSTER_SLOTS_EXISTING" Language="zh_Hans_CN"><Text>现有槽</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_CLUSTER_SLOTS_CURRENT" Language="zh_Hans_CN"><Text>当前允许</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_CLUSTER_SLOTS_PLANNED" Language="zh_Hans_CN"><Text>规划槽</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_CLUSTER_OWNED_HASH" Language="zh_Hans_CN"><Text>地块归属哈希</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_CLUSTER_DISTRICT_HASH" Language="zh_Hans_CN"><Text>区域状态哈希</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_CLUSTER_REPORT_CLEAR" Language="zh_Hans_CN"><Text>清理范围</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_CLUSTER_CLEAR_SCOPE" Language="zh_Hans_CN"><Text>作用域</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_CLUSTER_CLEAR_AUTO" Language="zh_Hans_CN"><Text>清理自动钉</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_CLUSTER_CLEAR_MANUAL" Language="zh_Hans_CN"><Text>清理手动钉</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_CLUSTER_REPORT_SIGNATURES" Language="zh_Hans_CN"><Text>失效签名</Text></Replace>
+    <Replace Tag="LOC_AMT_MC_CLUSTER_NEED_TWO_CITIES" Language="zh_Hans_CN"><Text>请至少选择两座城市。</Text></Replace>
+    <Replace Tag="LOC_AMT_MC_CLUSTER_TOO_MANY_CITIES" Language="zh_Hans_CN"><Text>最多只能选择四座城市。</Text></Replace>
+    <Replace Tag="LOC_AMT_MC_CLUSTER_TEMPLATE_FAILED" Language="zh_Hans_CN"><Text>无法读取主城规划模板。</Text></Replace>
+    <Replace Tag="LOC_AMT_MC_CLUSTER_TEMPLATE_LOADING" Language="zh_Hans_CN"><Text>正在读取主城规划模板……</Text></Replace>
+    <Replace Tag="LOC_AMT_MC_CLUSTER_SNAPSHOT_FAILED" Language="zh_Hans_CN"><Text>快照生成失败：</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_CLUSTER_TITLE" Language="zh_Hant_HK"><Text>城市群快照（乾運行）</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_CLUSTER_PRIMARY_LABEL" Language="zh_Hant_HK"><Text>主城：</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_CLUSTER_PICK_LABEL" Language="zh_Hant_HK"><Text>參與城市（2-4 座）：</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_CLUSTER_TEMPLATE_LABEL" Language="zh_Hant_HK"><Text>模板参数：</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_CLUSTER_TEMPLATE_SLOTS" Language="zh_Hant_HK"><Text>专业槽位：</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_CLUSTER_HORIZON" Language="zh_Hant_HK"><Text>期限：</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_CLUSTER_HORIZON_CURRENT" Language="zh_Hant_HK"><Text>當前可建</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_CLUSTER_HORIZON_LONG" Language="zh_Hant_HK"><Text>長期規劃</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_CLUSTER_DRY_RUN" Language="zh_Hant_HK"><Text>生成乾運行報告</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_CLUSTER_CLOSE" Language="zh_Hant_HK"><Text>关闭</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_CLUSTER_REPORT_LABEL" Language="zh_Hant_HK"><Text>乾運行報告：</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_CLUSTER_NO_PLACEMENT" Language="zh_Hant_HK"><Text>僅乾運行：不會放置或刪除任何地圖釘。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_CLUSTER_DISTANCE" Language="zh_Hant_HK"><Text>距离</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_CLUSTER_POPULATION" Language="zh_Hant_HK"><Text>人口</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_CLUSTER_REPORT_SUMMARY" Language="zh_Hant_HK"><Text>城市群摘要</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_CLUSTER_PARTICIPANTS" Language="zh_Hant_HK"><Text>参与城市数</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_CLUSTER_RUN_ID" Language="zh_Hant_HK"><Text>runID</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_CLUSTER_SELECTION" Language="zh_Hant_HK"><Text>选择来源</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_CLUSTER_SNAPSHOT_SIG" Language="zh_Hant_HK"><Text>快照签名</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_CLUSTER_REPORT_PER_CITY" Language="zh_Hant_HK"><Text>逐城報告</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_CLUSTER_SLOTS_EXISTING" Language="zh_Hant_HK"><Text>现有槽</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_CLUSTER_SLOTS_CURRENT" Language="zh_Hant_HK"><Text>当前允许</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_CLUSTER_SLOTS_PLANNED" Language="zh_Hant_HK"><Text>规划槽</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_CLUSTER_OWNED_HASH" Language="zh_Hant_HK"><Text>地块归属哈希</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_CLUSTER_DISTRICT_HASH" Language="zh_Hant_HK"><Text>区域状态哈希</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_CLUSTER_REPORT_CLEAR" Language="zh_Hant_HK"><Text>清理範圍</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_CLUSTER_CLEAR_SCOPE" Language="zh_Hant_HK"><Text>作用域</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_CLUSTER_CLEAR_AUTO" Language="zh_Hant_HK"><Text>清理自动钉</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_CLUSTER_CLEAR_MANUAL" Language="zh_Hant_HK"><Text>清理手动钉</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_CLUSTER_REPORT_SIGNATURES" Language="zh_Hant_HK"><Text>失效簽名</Text></Replace>
+    <Replace Tag="LOC_AMT_MC_CLUSTER_NEED_TWO_CITIES" Language="zh_Hant_HK"><Text>請至少選擇兩座城市。</Text></Replace>
+    <Replace Tag="LOC_AMT_MC_CLUSTER_TOO_MANY_CITIES" Language="zh_Hant_HK"><Text>最多只能選擇四座城市。</Text></Replace>
+    <Replace Tag="LOC_AMT_MC_CLUSTER_TEMPLATE_FAILED" Language="zh_Hant_HK"><Text>無法讀取主城規劃模板。</Text></Replace>
+    <Replace Tag="LOC_AMT_MC_CLUSTER_TEMPLATE_LOADING" Language="zh_Hant_HK"><Text>正在讀取主城規劃模板……</Text></Replace>
+    <Replace Tag="LOC_AMT_MC_CLUSTER_SNAPSHOT_FAILED" Language="zh_Hant_HK"><Text>快照生成失敗：</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_CURRENT_CITY" Language="zh_Hans_CN"><Text>当前设置城市</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_PREVIOUS_CITY" Language="zh_Hans_CN"><Text>〈</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_NEXT_CITY" Language="zh_Hans_CN"><Text>〉</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_PREVIOUS_CITY_TOOLTIP" Language="zh_Hans_CN"><Text>上一座规划城市</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_NEXT_CITY_TOOLTIP" Language="zh_Hans_CN"><Text>下一座规划城市</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_REAL_CITY" Language="zh_Hans_CN"><Text>[ICON_Capital] 城市</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_FUTURE_CITY" Language="zh_Hans_CN"><Text>[ICON_MapPin] 未来城市</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_STATUS_UNSET" Language="zh_Hans_CN"><Text>○ 尚未设置</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_STATUS_DIRTY" Language="zh_Hans_CN"><Text>● 有未保存修改</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_STATUS_SAVED" Language="zh_Hans_CN"><Text>✓ 已保存</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_STATUS_REOPTIMIZE" Language="zh_Hans_CN"><Text>↻ 可重新优化</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_STATUS_REVIEW" Language="zh_Hans_CN"><Text>! 需要复核</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_CLEAR_SETTINGS" Language="zh_Hans_CN"><Text>清除当前设置</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_SAVE_SETTINGS" Language="zh_Hans_CN"><Text>保存设置</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_SOLVE" Language="zh_Hans_CN"><Text>求解</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_CLOSE" Language="zh_Hans_CN"><Text>关闭</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_AUTO_SELECT_IMPROVEMENTS" Language="zh_Hans_CN"><Text>自动勾选</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UNDO_AUTO_SELECT" Language="zh_Hans_CN"><Text>撤销自动</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_SAVE_LIMIT" Language="zh_Hans_CN"><Text>已经有四座真实城市保存了设置。请先清除其中一座，再保存当前城市。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_SAVE_OK" Language="zh_Hans_CN"><Text>设置已保存为修订 r{1_Revision}。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_CLEAR_OK" Language="zh_Hans_CN"><Text>已清除当前城市的保存设置；没有改动任何地图钉。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_AUTO_SELECT_RESULT" Language="zh_Hans_CN"><Text>依据 {1_Resources} 种已揭示加成/战略资源，为当前草稿新增 {2_Improvements} 种改良。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_AUTO_SELECT_UNDONE" Language="zh_Hans_CN"><Text>已恢复自动勾选前的改良选择。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_QUICK_SETUP_LABEL" Language="zh_Hans_CN"><Text>快速设置</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_QUICK_TEMPLATE_DEFAULT" Language="zh_Hans_CN"><Text>普通/默认（商业优先）</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_QUICK_TEMPLATE_SCIENCE" Language="zh_Hans_CN"><Text>科技胜利</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_QUICK_TEMPLATE_CULTURE" Language="zh_Hans_CN"><Text>文化胜利</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_QUICK_TEMPLATE_RELIGION" Language="zh_Hans_CN"><Text>宗教胜利</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_QUICK_TEMPLATE_NAVAL" Language="zh_Hans_CN"><Text>海洋文明</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_QUICK_TEMPLATE_MILITARY" Language="zh_Hans_CN"><Text>军事速攻</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_QUICK_SETUP_DONE" Language="zh_Hans_CN"><Text>已为 {1_Count} 座城市生成快速草稿。检查后请点“保存全部并继续”。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_QUICK_SETUP_DONE_FULL" Language="zh_Hans_CN"><Text>已为 {1_Count} 座城市生成快速草稿：政府区锁定在主城，按 {2_Resources} 种已揭示资源自动勾选 {3_Improvements} 种改良（尚未保存）。请检查后点“保存设置”。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_QUICK_SETUP_NO_CITY" Language="zh_Hans_CN"><Text>请先选择一座城市，再选择快速设置模板。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_QUICK_SETUP_UNAVAILABLE" Language="zh_Hans_CN"><Text>快速设置模块不可用。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_SCOPE_TITLE" Language="zh_Hans_CN"><Text>确认求解范围</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_SCOPE_NOTICE" Language="zh_Hans_CN"><Text>请确认本次使用哪些已保存的城市设置。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_SCOPE_CITY_HINT" Language="zh_Hans_CN"><Text>联合规划通常只需 2-4 座核心城市，不必强求联动更多城市。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M3_SOLVING_CAVEAT" Language="zh_Hans_CN"><Text>仅按当前快照计算：只考虑区域加成现状，不考虑战争风险、伟人点数、间谍槽位等。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_SCOPE_INCLUDED" Language="zh_Hans_CN"><Text>本次参与求解</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_SCOPE_EXCLUDED" Language="zh_Hans_CN"><Text>本次不参与</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_SCOPE_PROFILE" Language="zh_Hans_CN"><Text>未来人口 {1_Population} · {2_Slots} 个专业槽位</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_SCOPE_CITY_HEADER" Language="zh_Hans_CN"><Text>【{1_City}】</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_SCOPE_DISTRICTS" Language="zh_Hans_CN"><Text>区域顺序：{1_Names}</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_SCOPE_IMPROVEMENTS" Language="zh_Hans_CN"><Text>已选改良类型：{1_Count} 种（{2_Names}）</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_SCOPE_WONDERS" Language="zh_Hans_CN"><Text>已选奇观：{1_Names}</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_SCOPE_HORIZON" Language="zh_Hans_CN"><Text>规划期限：{1_Horizon}</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_SCOPE_USES_SAVED" Language="zh_Hans_CN"><Text>使用已保存版本，不使用当前草稿</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_SCOPE_NONE" Language="zh_Hans_CN"><Text>无</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_SCOPE_REASON_REVIEW" Language="zh_Hans_CN"><Text>设置需要复核</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_SCOPE_REASON_UNSET" Language="zh_Hans_CN"><Text>尚未保存设置</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_SCOPE_REASON_UNSELECTED" Language="zh_Hans_CN"><Text>已有设置，但本轮未选择</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_SCOPE_EMPTY" Language="zh_Hans_CN"><Text>请先为至少一座城市保存设置。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_SCOPE_BACK" Language="zh_Hans_CN"><Text>返回设置</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_SCOPE_CONFIRM" Language="zh_Hans_CN"><Text>开始求解</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_SCOPE_STALE" Language="zh_Hans_CN"><Text>打开本页后保存设置已变化。请返回并重新确认范围。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_SNAPSHOT_FAILED" Language="zh_Hans_CN"><Text>快照生成失败：{1_Reason}</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_DRY_RUN_REPORT_TITLE" Language="zh_Hans_CN"><Text>M2 设置快照报告</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_REPORT_SUMMARY" Language="zh_Hans_CN"><Text>城市群摘要</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_REPORT_SIGNATURE" Language="zh_Hans_CN"><Text>快照签名</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_REPORT_PARTICIPANTS" Language="zh_Hans_CN"><Text>已保存真实城市</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_REPORT_PER_CITY" Language="zh_Hans_CN"><Text>逐城报告</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_REPORT_FUTURE_POP" Language="zh_Hans_CN"><Text>未来预期人口</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_REPORT_INTERNAL_POP" Language="zh_Hans_CN"><Text>内部捕获当前人口</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_REPORT_SLOTS" Language="zh_Hans_CN"><Text>现有/正规化槽位</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_REPORT_ORDER" Language="zh_Hans_CN"><Text>正规化顺序：</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_REPORT_SAVED_PROJECTS" Language="zh_Hans_CN"><Text>已保存项目：</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_REPORT_RECOMMENDATIONS" Language="zh_Hans_CN"><Text>自动勾选依据：</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_REPORT_NO_RECOMMENDATIONS" Language="zh_Hans_CN"><Text>此修订未使用自动勾选。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_REPORT_NONE" Language="zh_Hans_CN"><Text>无</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_REPORT_CLEAR" Language="zh_Hans_CN"><Text>逐城清理差异（干运行）</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_REPORT_CLEAR_COUNT" Language="zh_Hans_CN"><Text>预计有 {1_Count} 个地图钉进入清理范围。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_REPORT_NO_PLACEMENT" Language="zh_Hans_CN"><Text>没有放置或删除地图钉。本测试包中联合求解仅生成预览。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M3_SOLVING_TITLE" Language="zh_Hans_CN"><Text>联合求解（M6）</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M3_SOLVING_NOTICE" Language="zh_Hans_CN"><Text>正在计算完整联合规划（区域、覆盖、奇观、改良），分帧进行，不会放置任何地图钉。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M3_PREVIEW_TITLE" Language="zh_Hans_CN"><Text>联合规划预览（M6 完整范围）</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M3_PREVIEW_NOTICE" Language="zh_Hans_CN"><Text>本次仅预览：没有放置或删除任何地图钉。切换方案标签可对比布局。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M7_CONFIRM_APPLY" Language="zh_Hans_CN"><Text>确认并应用方案</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M7_APPLY_TITLE" Language="zh_Hans_CN"><Text>应用方案</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M7_APPLY_SUMMARY" Language="zh_Hans_CN"><Text>新增 {1_Add} 个自动钉，删除 {2_Remove} 个旧自动钉，需确认删除的手动钉 {3_Manual} 个。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M7_APPLY_BODY" Language="zh_Hans_CN"><Text>{1_Body}</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M7_APPLY_BACK" Language="zh_Hans_CN"><Text>返回方案</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M7_APPLY_CONFIRM" Language="zh_Hans_CN"><Text>确认并应用</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M7_APPLY_OK" Language="zh_Hans_CN"><Text>方案已应用。撤销可一步恢复应用前的多城地图钉。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M7_APPLY_ROLLED_BACK" Language="zh_Hans_CN"><Text>应用失败并已回滚，没有改动任何地图钉或设置。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M7_APPLY_STALE" Language="zh_Hans_CN"><Text>求解后设置或地图已变化，请返回重新求解。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M7_APPLY_CITY_LINE" Language="zh_Hans_CN"><Text>【{1_City}】新增 {2_Add} / 删除 {3_Remove}</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M7_APPLY_ADD_LINE" Language="zh_Hans_CN"><Text>新增 {1_Subject}（{2_X}, {3_Y}）</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M7_APPLY_REMOVE_LINE" Language="zh_Hans_CN"><Text>删除 {1_Subject}（{2_X}, {3_Y}）</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M7_APPLY_MANUAL_HEADER" Language="zh_Hans_CN"><Text>将删除手动钉 {1_Count} 个：</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M7_UNDO_OK" Language="zh_Hans_CN"><Text>已撤销上一个多城方案：删除新增钉 {1_Removed} 个，恢复旧钉 {2_Restored} 个。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M7_UNDO_PARTIAL" Language="zh_Hans_CN"><Text>撤销部分完成：删除新增钉 {1_Removed} 个，恢复旧钉 {2_Restored} 个；另有 {3_Blocked} 个钉被更新变化占用，暂未恢复。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M3_PARTIAL_PREVIEW_TITLE" Language="zh_Hans_CN"><Text>放宽方案预览（不完整）</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M3_PARTIAL_PREVIEW_NOTICE" Language="zh_Hans_CN"><Text>本次仅预览：无法放置所有必选项目，被跳过项目见下方报告。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M3_PLANS_LABEL" Language="zh_Hans_CN"><Text>展示方案数：{1_Count}</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M3_PLAN_TAB" Language="zh_Hans_CN"><Text>方案 {1_Index}</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M3_RECOMMENDED" Language="zh_Hans_CN"><Text>（推荐）</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M3_REPORT_SUMMARY" Language="zh_Hans_CN"><Text>M6 联合预览 · 参与城市 {1_Cities} 座 · 完整评估 {2_Evaluations} 次 · 分量 {3_Components} 个</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M3_REPORT_PARTIAL_BANNER" Language="zh_Hans_CN"><Text>放宽方案（不完整）：本次无法同时放置所有必选项目。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M3_REPORT_PARTIAL_UNPLACED" Language="zh_Hans_CN"><Text>本次未放置：</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M3_REPORT_PARTIAL_UNKNOWN_REASON" Language="zh_Hans_CN"><Text>找不到可同时放置的合法组合</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M3_REPORT_PER_CITY" Language="zh_Hans_CN"><Text>逐城方案</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M3_REPORT_PLANNED" Language="zh_Hans_CN"><Text>规划项目：{1_Names}</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M3_REPORT_SLOTS" Language="zh_Hans_CN"><Text>槽位满足：{1_Fulfilled}/{2_Slots}</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M3_REPORT_UNPLACED" Language="zh_Hans_CN"><Text>未放置（必需）：{1_Names}</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M3_REPORT_CROSS" Language="zh_Hans_CN"><Text>跨城相邻收益：{1_Count} 组相邻区域</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M3_REPORT_SKIPPED" Language="zh_Hans_CN"><Text>跳过项目</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M3_REPORT_DISTRICT_ONLY" Language="zh_Hans_CN"><Text>M6 完整预览范围：区域、覆盖、同城支撑奇观、逐城预算改良与玩家唯一区域。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M4_REPORT_COVERAGE" Language="zh_Hans_CN"><Text>覆盖情况</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M4_REPORT_COVERAGE_SERVICE" Language="zh_Hans_CN"><Text>{1_Name}：{2_Covered}/{3_Total} 座参与城市已覆盖 · 重复覆盖 {4_Overlap} 处</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M4_COVERAGE_CITIES" Language="zh_Hans_CN"><Text>参与城市群</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M5_REPORT_WONDERS" Language="zh_Hans_CN"><Text>奇观</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M5_REPORT_WONDER_ITEM" Language="zh_Hans_CN"><Text>{1_Wonder}（支撑：{2_Supports}）</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M5_SKIP_PINNED" Language="zh_Hans_CN"><Text>{1_Wonder} 已钉选，已跳过。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M5_SKIP_BUILT" Language="zh_Hans_CN"><Text>{1_Wonder} 已建成，已跳过。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M5_SKIP_CROSS_CITY" Language="zh_Hans_CN"><Text>{2_City} 的 {1_Wonder} 支撑跨城，已跳过。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M5_SKIP_NO_SUPPORT" Language="zh_Hans_CN"><Text>{1_Wonder} 没有合法位置（缺少支撑或地块），已跳过。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M6_REPORT_BUDGET" Language="zh_Hans_CN"><Text>改良预算使用：{1_Used}/{2_Budget}</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M6_REPORT_STRATEGIC" Language="zh_Hans_CN"><Text>已开发战略资源：{1_Count}</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M6_SKIP_NO_BUDGET" Language="zh_Hans_CN"><Text>{2_City} 已无改良预算（未来人口 {1_Pop}），未生成改良请求。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M6_NO_PLAN_DETAIL" Language="zh_Hans_CN"><Text>没有找到合法布局，具体原因如下：</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M6_UNFULFILLED" Language="zh_Hans_CN"><Text>无法放置的必需项目：{1_Names}</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M6_UNFULFILLED_CITY" Language="zh_Hans_CN"><Text>「{1_City}」无法放置：{2_Names}</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M6_UNFULFILLED_GLOBAL" Language="zh_Hans_CN"><Text>跨城或全局项目无法放置：{1_Names}</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M6_DIAG_HEADER" Language="zh_Hans_CN"><Text>候选被排除的主要原因（次数）</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M6_DIAG_ITEM" Language="zh_Hans_CN"><Text>{1_Reason}：{2_Count} 次</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M6_DIAG_PLOT_OCCUPIED" Language="zh_Hans_CN"><Text>地块已被占用</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M6_DIAG_SLOTS_EXHAUSTED" Language="zh_Hans_CN"><Text>人口槽不足</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M6_DIAG_SLOT_INDEX" Language="zh_Hans_CN"><Text>槽位已被其他区域占用</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M6_DIAG_STRATEGY_LIMIT" Language="zh_Hans_CN"><Text>同城一次限制</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M6_DIAG_EXCLUSION" Language="zh_Hans_CN"><Text>区域互斥</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M6_DIAG_LIMIT_REACHED" Language="zh_Hans_CN"><Text>玩家/世界数量上限</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M6_DIAG_REQUEST_MAX" Language="zh_Hans_CN"><Text>该请求已满足到上限</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M6_DIAG_BUDGET" Language="zh_Hans_CN"><Text>改良预算已用尽</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M6_DIAG_SUPPORT" Language="zh_Hans_CN"><Text>奇观支撑冲突</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M6_DIAG_OTHER" Language="zh_Hans_CN"><Text>其他：{1_Reason}</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M6_INPUT_ERROR" Language="zh_Hans_CN"><Text>求解输入异常：{1_Reason}</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M6_REPORT_UNPLACED_LIMIT" Language="zh_Hans_CN"><Text>未放置（玩家唯一限量）：{1_Names}</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UNIQUE_TAB" Language="zh_Hans_CN"><Text>玩家唯一区域</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UNIQUE_GROUP_HEADER" Language="zh_Hans_CN"><Text>玩家唯一区域</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UNIQUE_DROPDOWN_UNAVAILABLE" Language="zh_Hans_CN"><Text>模式下拉菜单不可用，请关闭并重新打开规划器。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UNIQUE_TAB_HINT" Language="zh_Hans_CN"><Text>玩家唯一区域是整个城市群的一份共享规划：可选“自动择城”，或锁定到顶部导航当前显示的城市，或不规划。有效的玩家手动钉始终优先，并以只读状态显示。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UNIQUE_FOOTNOTE" Language="zh_Hans_CN"><Text>右侧仍显示当前设置城市的区域顺序。切换城市只改变“锁定本城”所指对象，不会移动已有锁定。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UNIQUE_OFF" Language="zh_Hans_CN"><Text>不规划</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UNIQUE_AUTO" Language="zh_Hans_CN"><Text>自动择城</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UNIQUE_LOCK" Language="zh_Hans_CN"><Text>锁定本城</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UNIQUE_OFF_TOOLTIP" Language="zh_Hans_CN"><Text>不生成该区域的求解请求。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UNIQUE_AUTO_TOOLTIP" Language="zh_Hans_CN"><Text>联合求解在已保存的参与城市中同时选择归属城市和具体地块；不预先占用任何候选城市的区域位。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UNIQUE_LOCK_TOOLTIP" Language="zh_Hans_CN"><Text>把该项目锁定到当前导航城市。它立即进入该城的区域顺序并占用一个真实区域位；具体地块仍由算法选择。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UNIQUE_RELOCK_TOOLTIP" Language="zh_Hans_CN"><Text>把锁定从原城市移动到顶部导航当前显示的城市。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UNIQUE_LOCKED_CITY" Language="zh_Hans_CN"><Text>已锁定：{1_City}</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UNIQUE_LOCKED_SHORT" Language="zh_Hans_CN"><Text>已锁定</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UNIQUE_RELOCK" Language="zh_Hans_CN"><Text>改锁到本城（{1_City}）</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UNIQUE_MANUAL_PIN_EXISTS" Language="zh_Hans_CN"><Text>已存在该地图钉</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UNIQUE_MANUAL_PIN_DETAIL" Language="zh_Hans_CN"><Text>已存在手动钉（{1_City} · {2_X},{3_Y}）</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UNIQUE_MANUAL_PIN_TOOLTIP" Language="zh_Hans_CN"><Text>有效的玩家手动钉是最高级指导：位置保持不变，但仍须通过完整 DMT 投影合法性验证。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UNIQUE_MANUAL_CONFLICT" Language="zh_Hans_CN"><Text>冲突：发现 {1_Count} 个手动钉，停止该项目求解。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UNIQUE_MANUAL_INVALID" Language="zh_Hans_CN"><Text>手动钉非法，停止该项目求解。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UNIQUE_BUILT" Language="zh_Hans_CN"><Text>已建成：{1_City}</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UNIQUE_FOUNDED" Language="zh_Hans_CN"><Text>已奠基：{1_City}</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UNIQUE_OLD_AUTO_PIN_MARK" Language="zh_Hans_CN"><Text>（已有旧自动钉 ×{1_Count}）</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UNIQUE_UNSAVED_MARK" Language="zh_Hans_CN"><Text>· 未保存</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UNIQUE_DRAFT_CHANGED" Language="zh_Hans_CN"><Text>玩家唯一区域草稿已更改，请点击“保存设置”提交。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UNIQUE_LOCK_NEEDS_CITY" Language="zh_Hans_CN"><Text>请先选择一座真实规划城市；M6U 不支持锁定未来城市。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UNIQUE_CITY_UNAVAILABLE" Language="zh_Hans_CN"><Text>该锁定目标城市已不可用。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UNIQUE_LOCK_UNSAVED_CITY" Language="zh_Hans_CN"><Text>以下玩家唯一项目锁定的城市没有有效保存设置：{1_Names}。请返回设置保存该城，或更改锁定。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UNIQUE_LOCK_INVALID_SAVE" Language="zh_Hans_CN"><Text>无法保存：{1_Names} 的锁定目标无效。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_STATUS_SHARED_DIRTY" Language="zh_Hans_CN"><Text>○ 共享设置有未保存修改</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_STATUS_BOTH_DIRTY" Language="zh_Hans_CN"><Text>● 本城及共享设置均有未保存修改</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_SAVE_OK_WITH_SHARED" Language="zh_Hans_CN"><Text>已保存本城设置 r{1_Revision}，并提交 {2_Shared} 项玩家唯一区域草稿。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_CLEAR_UNIQUE_CONFIRM_TITLE" Language="zh_Hans_CN"><Text>清除本城设置</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_CLEAR_UNIQUE_CONFIRM_BODY" Language="zh_Hans_CN"><Text>清除本城设置将同时取消以下玩家唯一区域锁定：{1_Names}。是否继续？</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_CLEAR_UNIQUE_CONFIRM" Language="zh_Hans_CN"><Text>清除并取消锁定</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_CLEAR_UNIQUE_CANCEL" Language="zh_Hans_CN"><Text>取消</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_SCOPE_UNIQUE_HEADER" Language="zh_Hans_CN"><Text>玩家唯一区域</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_SCOPE_UNIQUE_AUTO" Language="zh_Hans_CN"><Text>{1_Name}：自动择城（候选：{2_Cities}）</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_SCOPE_UNIQUE_LOCKED" Language="zh_Hans_CN"><Text>{1_Name}：已锁定 {2_City}</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_SCOPE_UNIQUE_OFF" Language="zh_Hans_CN"><Text>{1_Name}：不规划</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M6U_REPORT_HEADER" Language="zh_Hans_CN"><Text>玩家唯一区域</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M6U_REPORT_ITEM" Language="zh_Hans_CN"><Text>{1_Name}：选择 {2_City}，第 {3_Slot} 区域位</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M6U_REPORT_UNPLACED" Language="zh_Hans_CN"><Text>{1_Name}：未放置（{2_City}）</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M6U_REPORT_DEFERRED" Language="zh_Hans_CN"><Text>超出槽位预算而推迟：{1_Names}</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M6U_SKIP_HANDLED_BY_UNIQUE" Language="zh_Hans_CN"><Text>{1_Name} 已在“玩家唯一区域”页管理，此处跳过。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M6U_SKIP_BUILT" Language="zh_Hans_CN"><Text>{1_Name} 已建成，已跳过。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M6U_SKIP_FOUNDED" Language="zh_Hans_CN"><Text>{1_Name} 已奠基，已跳过。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M6U_SKIP_MANUAL" Language="zh_Hans_CN"><Text>{1_Name} 已有 1 个有效手动钉，固定环境直接满足请求。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M6U_SKIP_MANUAL_CONFLICT" Language="zh_Hans_CN"><Text>{1_Name} 有多个手动钉，停止该项目求解。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M6U_SKIP_MANUAL_INVALID" Language="zh_Hans_CN"><Text>{1_Name} 的手动钉非法，停止该项目求解。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M6U_SKIP_LOCKED_MISSING" Language="zh_Hans_CN"><Text>{1_Name} 锁定的城市未参与本次求解，停止该项目求解。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M6U_SKIP_PLAYER_LIMIT" Language="zh_Hans_CN"><Text>{1_Name} 已达玩家全局数量上限，已跳过。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M6U_SKIP_NO_TILE" Language="zh_Hans_CN"><Text>{1_Name} 在 {2_City} 没有合法地块。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M6U_AUTO_CITIES" Language="zh_Hans_CN"><Text>候选城市</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M6U_SNAPSHOT_STALE" Language="zh_Hans_CN"><Text>冻结快照已与当前地图钉或城市状态不符。请返回设置并重新确认求解范围。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M6U_SNAPSHOT_STALE_RETURN" Language="zh_Hans_CN"><Text>未生成预览，也没有更改任何设置。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UNIQUE_DEFERRED_MARK" Language="zh_Hans_CN"><Text>·</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UNIQUE_DEFERRED_ROW" Language="zh_Hans_CN"><Text>{1_District}（推迟）</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UNIQUE_DEFERRED_TOOLTIP" Language="zh_Hans_CN"><Text>该项目已超出当前专业区域槽位预算。它仍保留在顺序中，并在有真实槽位时进入放置。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UNSAVED_BODY" Language="zh_Hans_CN"><Text>一座或多座城市存在草稿修改，或共享的玩家唯一区域设置存在草稿修改。请保存全部有效草稿、放弃草稿，或取消关闭。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M3_REPORT_NO_PLACEMENT" Language="zh_Hans_CN"><Text>本次为预览：没有放置或删除任何地图钉。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M3_BUDGET_EXCEEDED" Language="zh_Hans_CN"><Text>评估预算已用完，未生成完整方案。请减少所选项目后重试。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M3_NO_PLAN" Language="zh_Hans_CN"><Text>所选项目没有找到合法布局。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M3_SKIP_LOCKED" Language="zh_Hans_CN"><Text>{2_City} 的 {1_Name} 已建成或已手动钉选，已跳过。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M3_SKIP_PLAYER_LIMIT" Language="zh_Hans_CN"><Text>{2_City} 的 {1_Name} 已达到玩家全局数量上限，已跳过。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M3_SKIP_NO_TILE" Language="zh_Hans_CN"><Text>{2_City} 的 {1_Name} 没有合法地块，已跳过。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M3_SKIP_REQUIRED_DROPPED" Language="zh_Hans_CN"><Text>{2_City} 的必需项目 {1_Name} 无法放置，本次预览在不包含它的前提下继续。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UNSAVED_TITLE" Language="zh_Hans_CN"><Text>存在未保存设置</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UNSAVED_SAVE" Language="zh_Hans_CN"><Text>保存并关闭</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UNSAVED_DISCARD" Language="zh_Hans_CN"><Text>放弃草稿</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UNSAVED_CANCEL" Language="zh_Hans_CN"><Text>取消关闭</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_CURRENT_CITY" Language="zh_Hant_HK"><Text>目前設定城市</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_REAL_CITY" Language="zh_Hant_HK"><Text>[ICON_Capital] 城市</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_STATUS_UNSET" Language="zh_Hant_HK"><Text>○ 尚未設定</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_STATUS_DIRTY" Language="zh_Hant_HK"><Text>● 有未儲存修改</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_STATUS_SAVED" Language="zh_Hant_HK"><Text>✓ 已儲存</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_CLEAR_SETTINGS" Language="zh_Hant_HK"><Text>清除目前設定</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_SAVE_SETTINGS" Language="zh_Hant_HK"><Text>儲存設定</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_SOLVE" Language="zh_Hant_HK"><Text>求解</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_SCOPE_TITLE" Language="zh_Hant_HK"><Text>確認求解範圍</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_SCOPE_INCLUDED" Language="zh_Hant_HK"><Text>本次參與求解</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_SCOPE_EXCLUDED" Language="zh_Hant_HK"><Text>本次不參與</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_SCOPE_NOTICE" Language="zh_Hant_HK"><Text>請確認本次使用哪些已儲存的城市設定。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_SCOPE_CITY_HINT" Language="zh_Hant_HK"><Text>聯合規劃通常只需 2-4 座核心城市，不必強求聯動更多城市。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M3_SOLVING_CAVEAT" Language="zh_Hant_HK"><Text>僅按目前快照計算：只考慮區域加成現狀，不考慮戰爭風險、偉人點數、間諜槽位等。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_QUICK_SETUP_LABEL" Language="zh_Hant_HK"><Text>快速設定</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_QUICK_TEMPLATE_DEFAULT" Language="zh_Hant_HK"><Text>普通/預設（商業優先）</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_QUICK_TEMPLATE_SCIENCE" Language="zh_Hant_HK"><Text>科技勝利</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_QUICK_TEMPLATE_CULTURE" Language="zh_Hant_HK"><Text>文化勝利</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_QUICK_TEMPLATE_RELIGION" Language="zh_Hant_HK"><Text>宗教勝利</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_QUICK_TEMPLATE_NAVAL" Language="zh_Hant_HK"><Text>海洋文明</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_QUICK_TEMPLATE_MILITARY" Language="zh_Hant_HK"><Text>軍事速攻</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_QUICK_SETUP_DONE" Language="zh_Hant_HK"><Text>已為 {1_Count} 座城市產生快速草稿。檢查後請點「儲存全部並繼續」。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_QUICK_SETUP_DONE_FULL" Language="zh_Hant_HK"><Text>已為 {1_Count} 座城市產生快速草稿：政府區鎖定在主城，按 {2_Resources} 種已揭示資源自動勾選 {3_Improvements} 種改良（尚未儲存）。請檢查後點「儲存設定」。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_QUICK_SETUP_NO_CITY" Language="zh_Hant_HK"><Text>請先選擇一座城市，再選擇快速設定模板。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_QUICK_SETUP_UNAVAILABLE" Language="zh_Hant_HK"><Text>快速設定模組不可用。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_SCOPE_CITY_HEADER" Language="zh_Hant_HK"><Text>【{1_City}】</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_SCOPE_DISTRICTS" Language="zh_Hant_HK"><Text>區域順序：{1_Names}</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_SCOPE_IMPROVEMENTS" Language="zh_Hant_HK"><Text>已選改良類型：{1_Count} 種（{2_Names}）</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_SCOPE_WONDERS" Language="zh_Hant_HK"><Text>已選奇觀：{1_Names}</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_SCOPE_HORIZON" Language="zh_Hant_HK"><Text>規劃期限：{1_Horizon}</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_SCOPE_BACK" Language="zh_Hant_HK"><Text>返回設定</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_SCOPE_CONFIRM" Language="zh_Hant_HK"><Text>開始求解</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_DRY_RUN_REPORT_TITLE" Language="zh_Hant_HK"><Text>M2 設定快照報告</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_REPORT_SAVED_PROJECTS" Language="zh_Hant_HK"><Text>已儲存項目：</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_REPORT_RECOMMENDATIONS" Language="zh_Hant_HK"><Text>自動勾選依據：</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_REPORT_NO_RECOMMENDATIONS" Language="zh_Hant_HK"><Text>此修訂未使用自動勾選。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_REPORT_NONE" Language="zh_Hant_HK"><Text>無</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_REPORT_CLEAR_COUNT" Language="zh_Hant_HK"><Text>預計有 {1_Count} 個地圖釘進入清理範圍。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_REPORT_NO_PLACEMENT" Language="zh_Hant_HK"><Text>沒有放置或刪除地圖釘。本測試包中聯合求解僅生成預覽。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M3_SOLVING_TITLE" Language="zh_Hant_HK"><Text>聯合求解（M6）</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M3_SOLVING_NOTICE" Language="zh_Hant_HK"><Text>正在計算完整聯合規劃（區域、覆蓋、奇觀、改良），分幀進行，不會放置任何地圖釘。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M3_PREVIEW_TITLE" Language="zh_Hant_HK"><Text>聯合規劃預覽（M6 完整範圍）</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M3_PREVIEW_NOTICE" Language="zh_Hant_HK"><Text>本次僅預覽：沒有放置或刪除任何地圖釘。切換方案標籤可對比佈局。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M7_CONFIRM_APPLY" Language="zh_Hant_HK"><Text>確認並應用方案</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M7_APPLY_TITLE" Language="zh_Hant_HK"><Text>應用方案</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M7_APPLY_SUMMARY" Language="zh_Hant_HK"><Text>新增 {1_Add} 個自動釘，刪除 {2_Remove} 個舊自動釘，需確認刪除的手動釘 {3_Manual} 個。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M7_APPLY_BODY" Language="zh_Hant_HK"><Text>{1_Body}</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M7_APPLY_BACK" Language="zh_Hant_HK"><Text>返回方案</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M7_APPLY_CONFIRM" Language="zh_Hant_HK"><Text>確認並應用</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M7_APPLY_OK" Language="zh_Hant_HK"><Text>方案已應用。撤銷可一步恢復應用前的多城地圖釘。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M7_APPLY_ROLLED_BACK" Language="zh_Hant_HK"><Text>應用失敗並已回滾，沒有改動任何地圖釘或設定。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M7_APPLY_STALE" Language="zh_Hant_HK"><Text>求解後設定或地圖已變化，請返回重新求解。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M7_APPLY_CITY_LINE" Language="zh_Hant_HK"><Text>【{1_City}】新增 {2_Add} / 刪除 {3_Remove}</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M7_APPLY_ADD_LINE" Language="zh_Hant_HK"><Text>新增 {1_Subject}（{2_X}, {3_Y}）</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M7_APPLY_REMOVE_LINE" Language="zh_Hant_HK"><Text>刪除 {1_Subject}（{2_X}, {3_Y}）</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M7_APPLY_MANUAL_HEADER" Language="zh_Hant_HK"><Text>將刪除手動釘 {1_Count} 個：</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M7_UNDO_OK" Language="zh_Hant_HK"><Text>已撤銷上一個多城方案：刪除新增釘 {1_Removed} 個，恢復舊釘 {2_Restored} 個。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M7_UNDO_PARTIAL" Language="zh_Hant_HK"><Text>撤銷部分完成：刪除新增釘 {1_Removed} 個，恢復舊釘 {2_Restored} 個；另有 {3_Blocked} 個釘被更新變化佔用，暫未恢復。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M3_PARTIAL_PREVIEW_TITLE" Language="zh_Hant_HK"><Text>放寬方案預覽（不完整）</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M3_PARTIAL_PREVIEW_NOTICE" Language="zh_Hant_HK"><Text>本次僅預覽：無法放置所有必選項目，被跳過項目見下方報告。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M3_PLANS_LABEL" Language="zh_Hant_HK"><Text>展示方案數：{1_Count}</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M3_PLAN_TAB" Language="zh_Hant_HK"><Text>方案 {1_Index}</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M3_RECOMMENDED" Language="zh_Hant_HK"><Text>（推薦）</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M3_REPORT_SUMMARY" Language="zh_Hant_HK"><Text>M6 聯合預覽 · 參與城市 {1_Cities} 座 · 完整評估 {2_Evaluations} 次 · 分量 {3_Components} 個</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M3_REPORT_PARTIAL_BANNER" Language="zh_Hant_HK"><Text>放寬方案（不完整）：本次無法同時放置所有必選項目。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M3_REPORT_PARTIAL_UNPLACED" Language="zh_Hant_HK"><Text>本次未放置：</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M3_REPORT_PARTIAL_UNKNOWN_REASON" Language="zh_Hant_HK"><Text>找不到可同時放置的合法組合</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M3_REPORT_PER_CITY" Language="zh_Hant_HK"><Text>逐城方案</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M3_REPORT_PLANNED" Language="zh_Hant_HK"><Text>規劃項目：{1_Names}</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M3_REPORT_SLOTS" Language="zh_Hant_HK"><Text>槽位滿足：{1_Fulfilled}/{2_Slots}</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M3_REPORT_UNPLACED" Language="zh_Hant_HK"><Text>未放置（必需）：{1_Names}</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M3_REPORT_CROSS" Language="zh_Hant_HK"><Text>跨城相鄰收益：{1_Count} 組相鄰區域</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M3_REPORT_SKIPPED" Language="zh_Hant_HK"><Text>跳過項目</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M3_REPORT_DISTRICT_ONLY" Language="zh_Hant_HK"><Text>M6 完整預覽範圍：區域、覆蓋、同城支撐奇觀、逐城預算改良與玩家唯一區域。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M4_REPORT_COVERAGE" Language="zh_Hant_HK"><Text>覆蓋情況</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M4_REPORT_COVERAGE_SERVICE" Language="zh_Hant_HK"><Text>{1_Name}：{2_Covered}/{3_Total} 座參與城市已覆蓋 · 重複覆蓋 {4_Overlap} 處</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M4_COVERAGE_CITIES" Language="zh_Hant_HK"><Text>參與城市群</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M5_REPORT_WONDERS" Language="zh_Hant_HK"><Text>奇觀</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M5_REPORT_WONDER_ITEM" Language="zh_Hant_HK"><Text>{1_Wonder}（支撐：{2_Supports}）</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M5_SKIP_PINNED" Language="zh_Hant_HK"><Text>{1_Wonder} 已釘選，已跳過。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M5_SKIP_BUILT" Language="zh_Hant_HK"><Text>{1_Wonder} 已建成，已跳過。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M5_SKIP_CROSS_CITY" Language="zh_Hant_HK"><Text>{2_City} 的 {1_Wonder} 支撐跨城，已跳過。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M5_SKIP_NO_SUPPORT" Language="zh_Hant_HK"><Text>{1_Wonder} 沒有合法位置（缺少支撐或地塊），已跳過。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M6_REPORT_BUDGET" Language="zh_Hant_HK"><Text>改良預算使用：{1_Used}/{2_Budget}</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M6_REPORT_STRATEGIC" Language="zh_Hant_HK"><Text>已開發戰略資源：{1_Count}</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M6_SKIP_NO_BUDGET" Language="zh_Hant_HK"><Text>{2_City} 已無改良預算（未來人口 {1_Pop}），未生成改良請求。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M6_NO_PLAN_DETAIL" Language="zh_Hant_HK"><Text>沒有找到合法佈局，具體原因如下：</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M6_UNFULFILLED" Language="zh_Hant_HK"><Text>無法放置的必需項目：{1_Names}</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M6_UNFULFILLED_CITY" Language="zh_Hant_HK"><Text>「{1_City}」無法放置：{2_Names}</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M6_UNFULFILLED_GLOBAL" Language="zh_Hant_HK"><Text>跨城或全域項目無法放置：{1_Names}</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M6_DIAG_HEADER" Language="zh_Hant_HK"><Text>候選被排除的主要原因（次數）</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M6_DIAG_ITEM" Language="zh_Hant_HK"><Text>{1_Reason}：{2_Count} 次</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M6_DIAG_PLOT_OCCUPIED" Language="zh_Hant_HK"><Text>地塊已被佔用</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M6_DIAG_SLOTS_EXHAUSTED" Language="zh_Hant_HK"><Text>人口槽不足</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M6_DIAG_SLOT_INDEX" Language="zh_Hant_HK"><Text>槽位已被其他區域佔用</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M6_DIAG_STRATEGY_LIMIT" Language="zh_Hant_HK"><Text>同城一次限制</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M6_DIAG_EXCLUSION" Language="zh_Hant_HK"><Text>區域互斥</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M6_DIAG_LIMIT_REACHED" Language="zh_Hant_HK"><Text>玩家/世界數量上限</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M6_DIAG_REQUEST_MAX" Language="zh_Hant_HK"><Text>該請求已滿足到上限</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M6_DIAG_BUDGET" Language="zh_Hant_HK"><Text>改良預算已用盡</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M6_DIAG_SUPPORT" Language="zh_Hant_HK"><Text>奇觀支撐衝突</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M6_DIAG_OTHER" Language="zh_Hant_HK"><Text>其他：{1_Reason}</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M6_INPUT_ERROR" Language="zh_Hant_HK"><Text>求解輸入異常：{1_Reason}</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M6_REPORT_UNPLACED_LIMIT" Language="zh_Hant_HK"><Text>未放置（玩家唯一限量）：{1_Names}</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UNIQUE_TAB" Language="zh_Hant_HK"><Text>玩家唯一區域</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UNIQUE_GROUP_HEADER" Language="zh_Hant_HK"><Text>玩家唯一區域</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UNIQUE_DROPDOWN_UNAVAILABLE" Language="zh_Hant_HK"><Text>模式下拉選單不可用，請關閉並重新開啟規劃器。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UNIQUE_TAB_HINT" Language="zh_Hant_HK"><Text>玩家唯一區域是整場城市群的一份共用規劃：可選「自動擇城」，或鎖定到頂部導航目前顯示的城市，或不規劃。有效的玩家手動釘始終優先，並以唯讀狀態顯示。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UNIQUE_FOOTNOTE" Language="zh_Hant_HK"><Text>右側仍顯示目前設定城市的區域順序。切換城市只改變「鎖定本城」所指對象，不會移動既有鎖定。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UNIQUE_OFF" Language="zh_Hant_HK"><Text>不規劃</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UNIQUE_AUTO" Language="zh_Hant_HK"><Text>自動擇城</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UNIQUE_LOCK" Language="zh_Hant_HK"><Text>鎖定本城</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UNIQUE_OFF_TOOLTIP" Language="zh_Hant_HK"><Text>不生成該區域的求解請求。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UNIQUE_AUTO_TOOLTIP" Language="zh_Hant_HK"><Text>聯合求解在已儲存的參與城市中同時選擇歸屬城市和具體地塊；不預先佔用任何候選城市的區域位。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UNIQUE_LOCK_TOOLTIP" Language="zh_Hant_HK"><Text>把該項目鎖定到目前導航城市。它立即進入該城的區域順序並佔用一個真實區域位；具體地塊仍由演算法選擇。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UNIQUE_RELOCK_TOOLTIP" Language="zh_Hant_HK"><Text>把鎖定從原城市移動到頂部導航目前顯示的城市。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UNIQUE_LOCKED_CITY" Language="zh_Hant_HK"><Text>已鎖定：{1_City}</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UNIQUE_LOCKED_SHORT" Language="zh_Hant_HK"><Text>已鎖定</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UNIQUE_RELOCK" Language="zh_Hant_HK"><Text>改鎖到本城（{1_City}）</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UNIQUE_MANUAL_PIN_EXISTS" Language="zh_Hant_HK"><Text>已存在該地圖釘</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UNIQUE_MANUAL_PIN_DETAIL" Language="zh_Hant_HK"><Text>已存在手動釘（{1_City} · {2_X},{3_Y}）</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UNIQUE_MANUAL_PIN_TOOLTIP" Language="zh_Hant_HK"><Text>有效的玩家手動釘是最高級指導：位置保持不變，但仍須通過完整 DMT 投影合法性驗證。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UNIQUE_MANUAL_CONFLICT" Language="zh_Hant_HK"><Text>衝突：發現 {1_Count} 個手動釘，停止該項目求解。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UNIQUE_MANUAL_INVALID" Language="zh_Hant_HK"><Text>手動釘非法，停止該項目求解。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UNIQUE_BUILT" Language="zh_Hant_HK"><Text>已建成：{1_City}</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UNIQUE_FOUNDED" Language="zh_Hant_HK"><Text>已奠基：{1_City}</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UNIQUE_OLD_AUTO_PIN_MARK" Language="zh_Hant_HK"><Text>（已有舊自動釘 ×{1_Count}）</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UNIQUE_UNSAVED_MARK" Language="zh_Hant_HK"><Text>· 未儲存</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UNIQUE_DRAFT_CHANGED" Language="zh_Hant_HK"><Text>玩家唯一區域草稿已更改，請點擊「儲存設定」提交。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UNIQUE_LOCK_NEEDS_CITY" Language="zh_Hant_HK"><Text>請先選擇一座真實規劃城市；M6U 不支援鎖定未來城市。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UNIQUE_CITY_UNAVAILABLE" Language="zh_Hant_HK"><Text>該鎖定目標城市已不可用。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UNIQUE_LOCK_UNSAVED_CITY" Language="zh_Hant_HK"><Text>以下玩家唯一項目鎖定的城市沒有有效儲存設定：{1_Names}。請返回設定儲存該城，或更改鎖定。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UNIQUE_LOCK_INVALID_SAVE" Language="zh_Hant_HK"><Text>無法儲存：{1_Names} 的鎖定目標無效。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_STATUS_SHARED_DIRTY" Language="zh_Hant_HK"><Text>○ 共用設定有未儲存修改</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_STATUS_BOTH_DIRTY" Language="zh_Hant_HK"><Text>● 本城及共用設定均有未儲存修改</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_SAVE_OK_WITH_SHARED" Language="zh_Hant_HK"><Text>已儲存本城設定 r{1_Revision}，並提交 {2_Shared} 項玩家唯一區域草稿。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_CLEAR_UNIQUE_CONFIRM_TITLE" Language="zh_Hant_HK"><Text>清除本城設定</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_CLEAR_UNIQUE_CONFIRM_BODY" Language="zh_Hant_HK"><Text>清除本城設定將同時取消以下玩家唯一區域鎖定：{1_Names}。是否繼續？</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_CLEAR_UNIQUE_CONFIRM" Language="zh_Hant_HK"><Text>清除並取消鎖定</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_CLEAR_UNIQUE_CANCEL" Language="zh_Hant_HK"><Text>取消</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_SCOPE_UNIQUE_HEADER" Language="zh_Hant_HK"><Text>玩家唯一區域</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_SCOPE_UNIQUE_AUTO" Language="zh_Hant_HK"><Text>{1_Name}：自動擇城（候選：{2_Cities}）</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_SCOPE_UNIQUE_LOCKED" Language="zh_Hant_HK"><Text>{1_Name}：已鎖定 {2_City}</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_SCOPE_UNIQUE_OFF" Language="zh_Hant_HK"><Text>{1_Name}：不規劃</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M6U_REPORT_HEADER" Language="zh_Hant_HK"><Text>玩家唯一區域</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M6U_REPORT_ITEM" Language="zh_Hant_HK"><Text>{1_Name}：選擇 {2_City}，第 {3_Slot} 區域位</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M6U_REPORT_UNPLACED" Language="zh_Hant_HK"><Text>{1_Name}：未放置（{2_City}）</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M6U_REPORT_DEFERRED" Language="zh_Hant_HK"><Text>超出槽位預算而推遲：{1_Names}</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M6U_SKIP_HANDLED_BY_UNIQUE" Language="zh_Hant_HK"><Text>{1_Name} 已在「玩家唯一區域」頁管理，此處跳過。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M6U_SKIP_BUILT" Language="zh_Hant_HK"><Text>{1_Name} 已建成，已跳過。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M6U_SKIP_FOUNDED" Language="zh_Hant_HK"><Text>{1_Name} 已奠基，已跳過。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M6U_SKIP_MANUAL" Language="zh_Hant_HK"><Text>{1_Name} 已有 1 個有效手動釘，固定環境直接滿足請求。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M6U_SKIP_MANUAL_CONFLICT" Language="zh_Hant_HK"><Text>{1_Name} 有多個手動釘，停止該項目求解。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M6U_SKIP_MANUAL_INVALID" Language="zh_Hant_HK"><Text>{1_Name} 的手動釘非法，停止該項目求解。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M6U_SKIP_LOCKED_MISSING" Language="zh_Hant_HK"><Text>{1_Name} 鎖定的城市未參與本次求解，停止該項目求解。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M6U_SKIP_PLAYER_LIMIT" Language="zh_Hant_HK"><Text>{1_Name} 已達玩家全域數量上限，已跳過。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M6U_SKIP_NO_TILE" Language="zh_Hant_HK"><Text>{1_Name} 在 {2_City} 沒有合法地塊。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M6U_AUTO_CITIES" Language="zh_Hant_HK"><Text>候選城市</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M6U_SNAPSHOT_STALE" Language="zh_Hant_HK"><Text>凍結快照已與目前地圖釘或城市狀態不符。請返回設定並重新確認求解範圍。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M6U_SNAPSHOT_STALE_RETURN" Language="zh_Hant_HK"><Text>未生成預覽，也沒有更改任何設定。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UNIQUE_DEFERRED_MARK" Language="zh_Hant_HK"><Text>·</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UNIQUE_DEFERRED_ROW" Language="zh_Hant_HK"><Text>{1_District}（推遲）</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UNIQUE_DEFERRED_TOOLTIP" Language="zh_Hant_HK"><Text>該項目已超出目前專業區域槽位預算。它仍保留在順序中，並在有真實槽位時進入放置。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M3_REPORT_NO_PLACEMENT" Language="zh_Hant_HK"><Text>本次為預覽：沒有放置或刪除任何地圖釘。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M3_BUDGET_EXCEEDED" Language="zh_Hant_HK"><Text>評估預算已用完，未生成完整方案。請減少所選項目後重試。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M3_NO_PLAN" Language="zh_Hant_HK"><Text>所選項目沒有找到合法佈局。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M3_SKIP_LOCKED" Language="zh_Hant_HK"><Text>{2_City} 的 {1_Name} 已建成或已手動釘選，已跳過。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M3_SKIP_PLAYER_LIMIT" Language="zh_Hant_HK"><Text>{2_City} 的 {1_Name} 已達玩家全域數量上限，已跳過。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M3_SKIP_NO_TILE" Language="zh_Hant_HK"><Text>{2_City} 的 {1_Name} 沒有合法地塊，已跳過。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M3_SKIP_REQUIRED_DROPPED" Language="zh_Hant_HK"><Text>{2_City} 的必需項目 {1_Name} 無法放置，本次預覽在不包含它的前提下繼續。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UNSAVED_TITLE" Language="zh_Hant_HK"><Text>存在未儲存設定</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UNSAVED_BODY" Language="zh_Hant_HK"><Text>一座或多座城市存在草稿修改，或共用的玩家唯一區域設定存在草稿修改。請儲存全部有效草稿、放棄草稿，或取消關閉。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UNSAVED_SAVE" Language="zh_Hant_HK"><Text>儲存並關閉</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UNSAVED_DISCARD" Language="zh_Hant_HK"><Text>放棄草稿</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UNSAVED_CANCEL" Language="zh_Hant_HK"><Text>取消關閉</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_STEP_SETTINGS" Language="zh_Hans_CN"><Text>① 城市设置</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_STEP_SCOPE" Language="zh_Hans_CN"><Text>② 求解范围</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_STEP_COMPARE" Language="zh_Hans_CN"><Text>③ 方案比较</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_STEP_APPLY" Language="zh_Hans_CN"><Text>④ 应用</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_QUICK_START" Language="zh_Hans_CN"><Text>快速设置（推荐）</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_QUICK_CHOOSE" Language="zh_Hans_CN"><Text>选择新手模板</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_QUICK_OFF" Language="zh_Hans_CN"><Text>不启用快速设置</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_QUICK_APPLIED" Language="zh_Hans_CN"><Text>{1_Template} · 已应用到 {2_Count} 城</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_QUICK_CANCEL" Language="zh_Hans_CN"><Text>撤销快速设置</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_QUICK_CANCELLED" Language="zh_Hans_CN"><Text>已撤销快速设置。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_ADVANCED_OPEN" Language="zh_Hans_CN"><Text>高级偏好</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_ADVANCED_TITLE" Language="zh_Hans_CN"><Text>高级偏好</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_ADVANCED_CLOSE" Language="zh_Hans_CN"><Text>收起</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_HIDE_PANEL" Language="zh_Hans_CN"><Text>隐藏面板</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_HIDE_PANEL_TOOLTIP" Language="zh_Hans_CN"><Text>暂时隐藏设置面板以查看和对照游戏地图；当前草稿不会关闭。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_RESTORE_PANEL" Language="zh_Hans_CN"><Text>恢复规划面板</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_RESTORE_PANEL_TOOLTIP" Language="zh_Hans_CN"><Text>返回尚未关闭的多城设置。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_CARD_UNSET" Language="zh_Hans_CN"><Text>未设置</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_CARD_DIRTY" Language="zh_Hans_CN"><Text>未保存</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_CARD_SAVED" Language="zh_Hans_CN"><Text>已保存</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_CARD_REOPTIMIZE" Language="zh_Hans_CN"><Text>可重新优化</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_CARD_REVIEW" Language="zh_Hans_CN"><Text>需要检查</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_SAVE_ALL_CONTINUE" Language="zh_Hans_CN"><Text>保存全部并继续</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_CONFIRM_SCOPE" Language="zh_Hans_CN"><Text>确认求解范围</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_SAVE_ALL_OK" Language="zh_Hans_CN"><Text>已保存 {1_Count} 座城市的设置。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_STAGE_PREPARE" Language="zh_Hans_CN"><Text>准备规划数据</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_STAGE_DISTRICTS" Language="zh_Hans_CN"><Text>组合区域方案</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_STAGE_IMPROVEMENTS" Language="zh_Hans_CN"><Text>协调改良与覆盖</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_STAGE_VERIFY" Language="zh_Hans_CN"><Text>验证最终合法性</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_SOLVING_STAGE" Language="zh_Hans_CN"><Text>正在规划：{1_Stage}</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_SOLVE_TIP" Language="zh_Hans_CN"><Text>可以预先放置手动钉来指导自动规划</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_CANCEL" Language="zh_Hans_CN"><Text>取消</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_COMPARE_TITLE" Language="zh_Hans_CN"><Text>方案比较</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_COMPARE_HINT" Language="zh_Hans_CN"><Text>选方案看地图；悬停“应用”查看逐城增删明细。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_ISSUES_TITLE" Language="zh_Hans_CN"><Text>问题与未完成项</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_NO_ISSUES" Language="zh_Hans_CN"><Text>没有需要注意的问题。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_ISSUE_UNPLACED" Language="zh_Hans_CN"><Text>{1_City}的{2_Subject}未能安排：{3_Reason}。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_BACK_SETTINGS" Language="zh_Hans_CN"><Text>返回设置</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_APPLY_SELECTED" Language="zh_Hans_CN"><Text>应用所选方案</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_APPLY_INTRO" Language="zh_Hans_CN"><Text>应用前请确认本方案将如何修改地图钉。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_APPLY_ADD" Language="zh_Hans_CN"><Text>新增自动钉</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_APPLY_REMOVE" Language="zh_Hans_CN"><Text>删除或替换旧钉</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_APPLY_MANUAL" Language="zh_Hans_CN"><Text>将删除的手动钉</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_SHOW_DETAILS" Language="zh_Hans_CN"><Text>展开逐城明细</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_HIDE_DETAILS" Language="zh_Hans_CN"><Text>收起逐城明细</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_MANUAL_RISK" Language="zh_Hans_CN"><Text>此方案会删除手动钉，应用前需要单独确认。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_MANUAL_CONFIRM" Language="zh_Hans_CN"><Text>我已知晓这些手动钉将被删除</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_MANUAL_RISK_COMPACT" Language="zh_Hans_CN"><Text>此方案将删除 {1_Count} 个手动钉，请确认后再应用。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UNIQUE_LOCKED_HERE" Language="zh_Hans_CN"><Text>已锁定到本城</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UNIQUE_LOCKED_OTHER" Language="zh_Hans_CN"><Text>已锁定到{1_City}</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_UNDO_HINT" Language="zh_Hans_CN"><Text>应用后仍可在规划器中撤销本次操作。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_SCOPE_REASON_UNSELECTED" Language="zh_Hant_HK"><Text>已有設定，但本輪未選取</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_STEP_SETTINGS" Language="zh_Hant_HK"><Text>① 城市設定</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_STEP_SCOPE" Language="zh_Hant_HK"><Text>② 求解範圍</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_STEP_COMPARE" Language="zh_Hant_HK"><Text>③ 方案比較</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_STEP_APPLY" Language="zh_Hant_HK"><Text>④ 套用</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_QUICK_START" Language="zh_Hant_HK"><Text>快速設定（推薦）</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_QUICK_CHOOSE" Language="zh_Hant_HK"><Text>選擇新手範本</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_QUICK_OFF" Language="zh_Hant_HK"><Text>不啟用快速設定</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_QUICK_APPLIED" Language="zh_Hant_HK"><Text>{1_Template} · 已套用到 {2_Count} 城</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_QUICK_CANCEL" Language="zh_Hant_HK"><Text>撤銷快速設定</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_QUICK_CANCELLED" Language="zh_Hant_HK"><Text>已撤銷快速設定。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_ADVANCED_OPEN" Language="zh_Hant_HK"><Text>進階偏好</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_ADVANCED_TITLE" Language="zh_Hant_HK"><Text>進階偏好</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_ADVANCED_CLOSE" Language="zh_Hant_HK"><Text>收起</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_HIDE_PANEL" Language="zh_Hant_HK"><Text>隱藏面板</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_HIDE_PANEL_TOOLTIP" Language="zh_Hant_HK"><Text>暫時隱藏設定面板以查看和對照遊戲地圖；目前草稿不會關閉。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_RESTORE_PANEL" Language="zh_Hant_HK"><Text>恢復規劃面板</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_RESTORE_PANEL_TOOLTIP" Language="zh_Hant_HK"><Text>返回尚未關閉的多城設定。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_CARD_UNSET" Language="zh_Hant_HK"><Text>未設定</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_CARD_DIRTY" Language="zh_Hant_HK"><Text>未儲存</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_CARD_SAVED" Language="zh_Hant_HK"><Text>已儲存</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_CARD_REOPTIMIZE" Language="zh_Hant_HK"><Text>可重新最佳化</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_CARD_REVIEW" Language="zh_Hant_HK"><Text>需要檢查</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_SAVE_ALL_CONTINUE" Language="zh_Hant_HK"><Text>儲存全部並繼續</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_CONFIRM_SCOPE" Language="zh_Hant_HK"><Text>確認求解範圍</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_SAVE_ALL_OK" Language="zh_Hant_HK"><Text>已儲存 {1_Count} 座城市的設定。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_STAGE_PREPARE" Language="zh_Hant_HK"><Text>準備規劃資料</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_STAGE_DISTRICTS" Language="zh_Hant_HK"><Text>組合區域方案</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_STAGE_IMPROVEMENTS" Language="zh_Hant_HK"><Text>協調改良與覆蓋</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_STAGE_VERIFY" Language="zh_Hant_HK"><Text>驗證最終合法性</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_SOLVING_STAGE" Language="zh_Hant_HK"><Text>正在規劃：{1_Stage}</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_SOLVE_TIP" Language="zh_Hant_HK"><Text>可以預先放置手動釘來引導自動規劃</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_CANCEL" Language="zh_Hant_HK"><Text>取消</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_COMPARE_TITLE" Language="zh_Hant_HK"><Text>方案比較</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_COMPARE_HINT" Language="zh_Hant_HK"><Text>選方案看地圖；懸停「套用」查看逐城增刪明細。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_ISSUES_TITLE" Language="zh_Hant_HK"><Text>問題與未完成項</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_NO_ISSUES" Language="zh_Hant_HK"><Text>沒有需要注意的問題。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_ISSUE_UNPLACED" Language="zh_Hant_HK"><Text>{1_City}的{2_Subject}未能安排：{3_Reason}。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_BACK_SETTINGS" Language="zh_Hant_HK"><Text>返回設定</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_APPLY_SELECTED" Language="zh_Hant_HK"><Text>套用所選方案</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_APPLY_INTRO" Language="zh_Hant_HK"><Text>套用前請確認本方案將如何修改地圖釘。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_APPLY_ADD" Language="zh_Hant_HK"><Text>新增自動釘</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_APPLY_REMOVE" Language="zh_Hant_HK"><Text>刪除或取代舊釘</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_APPLY_MANUAL" Language="zh_Hant_HK"><Text>將刪除的手動釘</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_SHOW_DETAILS" Language="zh_Hant_HK"><Text>展開逐城明細</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_HIDE_DETAILS" Language="zh_Hant_HK"><Text>收起逐城明細</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_MANUAL_RISK" Language="zh_Hant_HK"><Text>此方案會刪除手動釘，套用前需要另行確認。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_MANUAL_CONFIRM" Language="zh_Hant_HK"><Text>我已知悉這些手動釘將被刪除</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_MANUAL_RISK_COMPACT" Language="zh_Hant_HK"><Text>此方案將刪除 {1_Count} 個手動釘，請確認後再套用。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UNIQUE_LOCKED_HERE" Language="zh_Hant_HK"><Text>已鎖定到本城</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UNIQUE_LOCKED_OTHER" Language="zh_Hant_HK"><Text>已鎖定到{1_City}</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_UNDO_HINT" Language="zh_Hant_HK"><Text>套用後仍可在規劃器中復原本次操作。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M7_RECOVERY_REQUIRED" Language="zh_Hans_CN"><Text>事务尚未完整恢复，已阻止应用方案以保护现有地图钉和原撤销记录。请返回设置，点击“撤销”重试恢复；若仍失败，请保留此存档及 Lua.log，暂勿修改受影响的地图钉。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M7_RECOVERY_OK" Language="zh_Hans_CN"><Text>已恢复中断的事务，原先的撤销操作仍然可用。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_SHARED" Language="zh_Hans_CN"><Text>跨城／全局</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_MORE_ISSUES" Language="zh_Hans_CN"><Text>另有 {1_Count} 项问题未在此列出；请返回设置查看各城请求。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_YIELDS_UNAVAILABLE" Language="zh_Hans_CN"><Text>预览收益暂不可用（不代表零收益）</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M7_RECOVERY_REQUIRED" Language="zh_Hant_HK"><Text>事務尚未完整恢復，已阻止套用方案以保護現有地圖釘和原復原記錄。請返回設定，點擊「復原」重試恢復；若仍失敗，請保留此存檔及 Lua.log，暫勿修改受影響的地圖釘。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M7_RECOVERY_OK" Language="zh_Hant_HK"><Text>已恢復中斷的事務，原先的復原操作仍然可用。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_SHARED" Language="zh_Hant_HK"><Text>跨城／全域</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_MORE_ISSUES" Language="zh_Hant_HK"><Text>另有 {1_Count} 項問題未在此列出；請返回設定查看各城請求。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UI_YIELDS_UNAVAILABLE" Language="zh_Hant_HK"><Text>預覽收益暫不可用（不代表零收益）</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M7_UNDO_BLOCKED" Language="zh_Hans_CN"><Text>未执行撤销：目标钉已被修改或待恢复位置被占用。现有地图钉和原撤销记录均已保留；请解决冲突后重试。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M7_UNDO_FAILED" Language="zh_Hans_CN"><Text>撤销失败，已恢复到撤销前的状态。原撤销记录仍保留，可重试。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M7_UNDO_BLOCKED" Language="zh_Hant_HK"><Text>未執行復原：目標釘已被修改或待恢復位置被佔用。現有地圖釘和原復原記錄均已保留；請解決衝突後重試。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_M7_UNDO_FAILED" Language="zh_Hant_HK"><Text>復原失敗，已恢復到復原前的狀態。原復原記錄仍保留，可重試。</Text></Replace>
+    <Replace Tag="LOC_AMT_R40_MOD_NAME" Language="zh_Hans_CN"><Text>自动地图钉规划 [r40]</Text></Replace>
+        <Replace Tag="LOC_AMT_R40_MOD_TEASER" Language="zh_Hans_CN"><Text>从同一入口选择单城规划或最多四城联动（测试），支持区域、改良和奇观的预览、确认与撤销。[r40]</Text></Replace>
+        <Replace Tag="LOC_AMT_R40_MOD_DESCRIPTION" Language="zh_Hans_CN"><Text>从同一入口选择单城规划或最多四城联动（测试），支持区域、改良和奇观的预览、确认与撤销。[r40]</Text></Replace>
+
+
+        <Replace Tag="LOC_AMT_R40_MOD_NAME" Language="de_DE"><Text>Auto Map Tacks Planner [r40]</Text></Replace>
+        <Replace Tag="LOC_AMT_R40_MOD_TEASER" Language="de_DE"><Text>Choose single-city planning or linked planning for up to four cities (test) from one entry. Preview, apply and undo district, improvement and wonder plans. [r40]</Text></Replace>
+        <Replace Tag="LOC_AMT_R40_MOD_DESCRIPTION" Language="de_DE"><Text>Choose single-city planning or linked planning for up to four cities (test) from one entry. Preview, apply and undo district, improvement and wonder plans. [r40]</Text></Replace>
+        <Replace Tag="LOC_AMT_R40_MOD_NAME" Language="es_ES"><Text>Auto Map Tacks Planner [r40]</Text></Replace>
+        <Replace Tag="LOC_AMT_R40_MOD_TEASER" Language="es_ES"><Text>Choose single-city planning or linked planning for up to four cities (test) from one entry. Preview, apply and undo district, improvement and wonder plans. [r40]</Text></Replace>
+        <Replace Tag="LOC_AMT_R40_MOD_DESCRIPTION" Language="es_ES"><Text>Choose single-city planning or linked planning for up to four cities (test) from one entry. Preview, apply and undo district, improvement and wonder plans. [r40]</Text></Replace>
+        <Replace Tag="LOC_AMT_R40_MOD_NAME" Language="fr_FR"><Text>Auto Map Tacks Planner [r40]</Text></Replace>
+        <Replace Tag="LOC_AMT_R40_MOD_TEASER" Language="fr_FR"><Text>Choose single-city planning or linked planning for up to four cities (test) from one entry. Preview, apply and undo district, improvement and wonder plans. [r40]</Text></Replace>
+        <Replace Tag="LOC_AMT_R40_MOD_DESCRIPTION" Language="fr_FR"><Text>Choose single-city planning or linked planning for up to four cities (test) from one entry. Preview, apply and undo district, improvement and wonder plans. [r40]</Text></Replace>
+        <Replace Tag="LOC_AMT_R40_MOD_NAME" Language="it_IT"><Text>Auto Map Tacks Planner [r40]</Text></Replace>
+        <Replace Tag="LOC_AMT_R40_MOD_TEASER" Language="it_IT"><Text>Choose single-city planning or linked planning for up to four cities (test) from one entry. Preview, apply and undo district, improvement and wonder plans. [r40]</Text></Replace>
+        <Replace Tag="LOC_AMT_R40_MOD_DESCRIPTION" Language="it_IT"><Text>Choose single-city planning or linked planning for up to four cities (test) from one entry. Preview, apply and undo district, improvement and wonder plans. [r40]</Text></Replace>
+        <Replace Tag="LOC_AMT_R40_MOD_NAME" Language="ja_JP"><Text>Auto Map Tacks Planner [r40]</Text></Replace>
+        <Replace Tag="LOC_AMT_R40_MOD_TEASER" Language="ja_JP"><Text>Choose single-city planning or linked planning for up to four cities (test) from one entry. Preview, apply and undo district, improvement and wonder plans. [r40]</Text></Replace>
+        <Replace Tag="LOC_AMT_R40_MOD_DESCRIPTION" Language="ja_JP"><Text>Choose single-city planning or linked planning for up to four cities (test) from one entry. Preview, apply and undo district, improvement and wonder plans. [r40]</Text></Replace>
+        <Replace Tag="LOC_AMT_R40_MOD_NAME" Language="ko_KR"><Text>Auto Map Tacks Planner [r40]</Text></Replace>
+        <Replace Tag="LOC_AMT_R40_MOD_TEASER" Language="ko_KR"><Text>Choose single-city planning or linked planning for up to four cities (test) from one entry. Preview, apply and undo district, improvement and wonder plans. [r40]</Text></Replace>
+        <Replace Tag="LOC_AMT_R40_MOD_DESCRIPTION" Language="ko_KR"><Text>Choose single-city planning or linked planning for up to four cities (test) from one entry. Preview, apply and undo district, improvement and wonder plans. [r40]</Text></Replace>
+        <Replace Tag="LOC_AMT_R40_MOD_NAME" Language="pl_PL"><Text>Auto Map Tacks Planner [r40]</Text></Replace>
+        <Replace Tag="LOC_AMT_R40_MOD_TEASER" Language="pl_PL"><Text>Choose single-city planning or linked planning for up to four cities (test) from one entry. Preview, apply and undo district, improvement and wonder plans. [r40]</Text></Replace>
+        <Replace Tag="LOC_AMT_R40_MOD_DESCRIPTION" Language="pl_PL"><Text>Choose single-city planning or linked planning for up to four cities (test) from one entry. Preview, apply and undo district, improvement and wonder plans. [r40]</Text></Replace>
+        <Replace Tag="LOC_AMT_R40_MOD_NAME" Language="pt_BR"><Text>Auto Map Tacks Planner [r40]</Text></Replace>
+        <Replace Tag="LOC_AMT_R40_MOD_TEASER" Language="pt_BR"><Text>Choose single-city planning or linked planning for up to four cities (test) from one entry. Preview, apply and undo district, improvement and wonder plans. [r40]</Text></Replace>
+        <Replace Tag="LOC_AMT_R40_MOD_DESCRIPTION" Language="pt_BR"><Text>Choose single-city planning or linked planning for up to four cities (test) from one entry. Preview, apply and undo district, improvement and wonder plans. [r40]</Text></Replace>
+        <Replace Tag="LOC_AMT_R40_MOD_NAME" Language="ru_RU"><Text>Auto Map Tacks Planner [r40]</Text></Replace>
+        <Replace Tag="LOC_AMT_R40_MOD_TEASER" Language="ru_RU"><Text>Choose single-city planning or linked planning for up to four cities (test) from one entry. Preview, apply and undo district, improvement and wonder plans. [r40]</Text></Replace>
+        <Replace Tag="LOC_AMT_R40_MOD_DESCRIPTION" Language="ru_RU"><Text>Choose single-city planning or linked planning for up to four cities (test) from one entry. Preview, apply and undo district, improvement and wonder plans. [r40]</Text></Replace>
+        <Replace Tag="LOC_AMT_R40_MOD_NAME" Language="zh_Hant_HK"><Text>自動地圖釘規劃 [r40]</Text></Replace>
+        <Replace Tag="LOC_AMT_R40_MOD_TEASER" Language="zh_Hant_HK"><Text>從同一入口選擇單城規劃或最多四城聯動（測試），支援區域、改良和奇觀的預覽、確認與復原。[r40]</Text></Replace>
+        <Replace Tag="LOC_AMT_R40_MOD_DESCRIPTION" Language="zh_Hant_HK"><Text>從同一入口選擇單城規劃或最多四城聯動（測試），支援區域、改良和奇觀的預覽、確認與復原。[r40]</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_PREVIOUS_CITY" Language="zh_Hant_HK"><Text>〈</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_NEXT_CITY" Language="zh_Hant_HK"><Text>〉</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_PREVIOUS_CITY_TOOLTIP" Language="zh_Hant_HK"><Text>上一座規劃城市</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_NEXT_CITY_TOOLTIP" Language="zh_Hant_HK"><Text>下一座規劃城市</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_FUTURE_CITY" Language="zh_Hant_HK"><Text>[ICON_MapPin] 未來城市</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_STATUS_REOPTIMIZE" Language="zh_Hant_HK"><Text>↻ 可重新優化</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_STATUS_REVIEW" Language="zh_Hant_HK"><Text>! 需要復核</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_CLOSE" Language="zh_Hant_HK"><Text>關閉</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_AUTO_SELECT_IMPROVEMENTS" Language="zh_Hant_HK"><Text>自動勾選</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_UNDO_AUTO_SELECT" Language="zh_Hant_HK"><Text>撤銷自動</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_SAVE_LIMIT" Language="zh_Hant_HK"><Text>已經有四座真實城市保存了設置。請先清除其中一座，再保存當前城市。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_SAVE_OK" Language="zh_Hant_HK"><Text>設置已保存為修訂 r{1_Revision}。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_CLEAR_OK" Language="zh_Hant_HK"><Text>已清除當前城市的保存設置；沒有改動任何地圖釘。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_AUTO_SELECT_RESULT" Language="zh_Hant_HK"><Text>依據 {1_Resources} 種已揭示加成/戰略資源，為當前草稿新增 {2_Improvements} 種改良。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_AUTO_SELECT_UNDONE" Language="zh_Hant_HK"><Text>已恢復自動勾選前的改良選擇。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_SCOPE_PROFILE" Language="zh_Hant_HK"><Text>未來人口 {1_Population} · {2_Slots} 個專業槽位</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_SCOPE_USES_SAVED" Language="zh_Hant_HK"><Text>使用已保存版本，不使用當前草稿</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_SCOPE_NONE" Language="zh_Hant_HK"><Text>無</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_SCOPE_REASON_REVIEW" Language="zh_Hant_HK"><Text>設置需要復核</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_SCOPE_REASON_UNSET" Language="zh_Hant_HK"><Text>尚未保存設置</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_SCOPE_EMPTY" Language="zh_Hant_HK"><Text>請先為至少一座城市保存設置。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_SCOPE_STALE" Language="zh_Hant_HK"><Text>打開本頁后保存設置已變化。請返回并重新確認范圍。</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_SNAPSHOT_FAILED" Language="zh_Hant_HK"><Text>快照生成失敗：{1_Reason}</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_REPORT_SUMMARY" Language="zh_Hant_HK"><Text>城市群摘要</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_REPORT_SIGNATURE" Language="zh_Hant_HK"><Text>快照簽名</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_REPORT_PARTICIPANTS" Language="zh_Hant_HK"><Text>已保存真實城市</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_REPORT_PER_CITY" Language="zh_Hant_HK"><Text>逐城報告</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_REPORT_FUTURE_POP" Language="zh_Hant_HK"><Text>未來預期人口</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_REPORT_INTERNAL_POP" Language="zh_Hant_HK"><Text>內部捕獲當前人口</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_REPORT_SLOTS" Language="zh_Hant_HK"><Text>現有/正規化槽位</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_REPORT_ORDER" Language="zh_Hant_HK"><Text>正規化順序：</Text></Replace>
+        <Replace Tag="LOC_AMT_MC_REPORT_CLEAR" Language="zh_Hant_HK"><Text>逐城清理差異（干運行）</Text></Replace>
+        </LocalizedText>
 </GameData>

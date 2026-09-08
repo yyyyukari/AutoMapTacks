@@ -4,13 +4,142 @@
   <Container ID="PreviewWorldIcons"/>
 
   <Box ID="SettingsBlocker" Color="0,0,0,140" Size="parent,parent" ConsumeMouse="1">
-    <Grid ID="AMTBackground" Anchor="C,C" Size="930,720" Style="WindowFrameTitle" ConsumeMouse="1">
+    <Grid ID="AMTBackground" Anchor="C,C" Size="930,790" Style="WindowFrameTitle" ConsumeMouse="1">
       <Label ID="AMTTitle" Anchor="C,T" Offset="0,12" Style="WindowHeader" String="{LOC_AMT_POPUP_TITLE:upper}"/>
+      <GridButton ID="MCSettingsHideButton" Anchor="R,T" Offset="16,9" Size="112,28" Style="MainButton" FontStyle="Shadow"
+                  String="LOC_AMT_MC_UI_HIDE_PANEL" ToolTip="LOC_AMT_MC_UI_HIDE_PANEL_TOOLTIP" Hidden="1"/>
 
-      <Label Anchor="L,T" Offset="24,52" Style="FontNormal14" String="LOC_AMT_TARGET_CITY_LABEL"/>
-      <Label ID="CityName" Anchor="L,T" Offset="135,52" Style="FontNormal14" String="LOC_AMT_TARGET_CITY_NONE"/>
+      <!-- UI-R1: the four planning phases remain visible throughout the flow. -->
+      <Grid ID="MCStepBar" Anchor="C,T" Offset="0,40" Size="882,34" Color="26,74,99,220">
+        <Stack Anchor="C,C" StackGrowth="Right" Padding="6">
+          <Label ID="MCStep1" Size="210,28" Align="Center" Style="FontNormal14" String="LOC_AMT_MC_UI_STEP_SETTINGS"/>
+          <Label ID="MCStep2" Size="210,28" Align="Center" Style="FontNormal14" String="LOC_AMT_MC_UI_STEP_SCOPE"/>
+          <Label ID="MCStep3" Size="210,28" Align="Center" Style="FontNormal14" String="LOC_AMT_MC_UI_STEP_COMPARE"/>
+          <Label ID="MCStep4" Size="210,28" Align="Center" Style="FontNormal14" String="LOC_AMT_MC_UI_STEP_APPLY"/>
+        </Stack>
+      </Grid>
 
-      <Label Anchor="L,T" Offset="24,78" Style="FontNormal14" String="LOC_AMT_YIELD_FOCUS_LABEL"/>
+      <!-- Cards show one adaptive page of up to four cities; arrows page through larger empires. -->
+      <GridButton ID="MCPreviousCityButton" Anchor="L,T" Offset="24,85" Size="54,40">
+        <Image Anchor="C,C" Texture="Controls_ArrowButtonLeft" Size="19,23" StateOffsetIncrement="0,23"/>
+      </GridButton>
+      <Stack ID="MCCityCards" Anchor="L,T" Offset="84,80" StackGrowth="Right" Padding="6">
+        <GridButton ID="MCCityCard1" Size="184,50" Style="MainButton" FontStyle="Shadow">
+          <Label ID="MCCityCard1Name" Anchor="L,T" Offset="10,5" Size="164,22" Align="Center" Style="FontNormal14" String=""/>
+          <Label ID="MCCityCard1Status" Anchor="L,T" Offset="10,26" Size="164,18" Align="Center" Style="FontNormal12" String=""/>
+        </GridButton>
+        <GridButton ID="MCCityCard2" Size="184,50" Style="MainButton" FontStyle="Shadow">
+          <Label ID="MCCityCard2Name" Anchor="L,T" Offset="10,5" Size="164,22" Align="Center" Style="FontNormal14" String=""/>
+          <Label ID="MCCityCard2Status" Anchor="L,T" Offset="10,26" Size="164,18" Align="Center" Style="FontNormal12" String=""/>
+        </GridButton>
+        <GridButton ID="MCCityCard3" Size="184,50" Style="MainButton" FontStyle="Shadow">
+          <Label ID="MCCityCard3Name" Anchor="L,T" Offset="10,5" Size="164,22" Align="Center" Style="FontNormal14" String=""/>
+          <Label ID="MCCityCard3Status" Anchor="L,T" Offset="10,26" Size="164,18" Align="Center" Style="FontNormal12" String=""/>
+        </GridButton>
+        <GridButton ID="MCCityCard4" Size="184,50" Style="MainButton" FontStyle="Shadow">
+          <Label ID="MCCityCard4Name" Anchor="L,T" Offset="10,5" Size="164,22" Align="Center" Style="FontNormal14" String=""/>
+          <Label ID="MCCityCard4Status" Anchor="L,T" Offset="10,26" Size="164,18" Align="Center" Style="FontNormal12" String=""/>
+        </GridButton>
+      </Stack>
+      <GridButton ID="MCNextCityButton" Anchor="R,T" Offset="24,85" Size="54,40">
+        <Image Anchor="C,C" Texture="Controls_ArrowButtonRight" Size="19,23" StateOffsetIncrement="0,23"/>
+      </GridButton>
+      <Label ID="MCSettingsStatus" Anchor="C,T" Offset="0,132" Size="620,24" Align="Center" Style="FontNormal14" String="LOC_AMT_MC_STATUS_UNSET"/>
+
+      <Label ID="MCQuickSetupLabel" Anchor="L,T" Offset="24,163" Size="180,32" Style="FontNormal16" FontStyle="Glow" String="LOC_AMT_MC_UI_QUICK_START"/>
+      <PullDown ID="MCQuickSetupPull" Anchor="L,T" Offset="210,160" Size="420,34" Style="PullDownBlue"
+                ScrollThreshold="300" AutoSizePopUp="1" SpaceForScroll="0"/>
+      <GridButton ID="MCAdvancedToggleButton" Anchor="R,T" Offset="24,160" Size="250,34" Style="MainButton" FontStyle="Shadow" String="LOC_AMT_MC_UI_ADVANCED_OPEN"/>
+
+      <!-- Hidden legacy header controls remain so the single-city path and old callbacks stay isolated. -->
+      <Label ID="MCCityHeader" Hidden="1" String="LOC_AMT_MC_CURRENT_CITY"/>
+      <Label ID="MCCityPosition" Hidden="1" String=""/>
+      <Grid ID="MCCityNavigator" Hidden="1"/>
+      <Label ID="MCCityType" Hidden="1" String=""/>
+      <Label ID="CityName" Anchor="C,T" Offset="0,47" Size="300,32" Align="Center" Style="FontFlair20"
+             FontStyle="Stroke" String="LOC_AMT_TARGET_CITY_NONE"/>
+
+      <Stack ID="CategoryTabs" Anchor="L,T" Offset="24,204" StackGrowth="Right" Padding="8">
+        <GridButton ID="DistrictTabButton" Size="180,36" Style="MainButton" FontStyle="Shadow" String="LOC_AMT_CATEGORY_DISTRICTS"/>
+        <GridButton ID="ImprovementTabButton" Size="180,36" Style="MainButton" FontStyle="Shadow" String="LOC_AMT_CATEGORY_IMPROVEMENTS"/>
+        <GridButton ID="WonderTabButton" Size="180,36" Style="MainButton" FontStyle="Shadow" String="LOC_AMT_CATEGORY_WONDERS"/>
+      </Stack>
+
+      <Label ID="CategoryHint" Anchor="L,T" Offset="24,251" Size="615,34" WrapWidth="615" Style="FontNormal14" String=""/>
+      <Grid ID="RuleBanner" Anchor="L,T" Offset="24,289" Size="615,32" Color="26,74,99,210">
+        <Label ID="AutoCountLabel" Anchor="L,C" Offset="12,0" Size="591,28" Style="FontNormal16" FontStyle="Glow"
+               Color="255,229,151,255" String=""/>
+      </Grid>
+      <Stack ID="CategoryActions" Anchor="L,T" Offset="24,329" StackGrowth="Right" Padding="8">
+        <GridButton ID="LongTermButton" Size="145,32" Style="MainButton" FontStyle="Shadow" String="LOC_AMT_LONG_TERM"/>
+        <GridButton ID="CurrentBuildableButton" Size="145,32" Style="MainButton" FontStyle="Shadow" String="LOC_AMT_CURRENT_BUILDABLE"/>
+        <GridButton ID="MCAutoSelectImprovementsButton" Size="115,32" Style="MainButton" FontStyle="Shadow" String="LOC_AMT_MC_AUTO_SELECT_IMPROVEMENTS" Hidden="1"/>
+        <GridButton ID="MCUndoAutoSelectButton" Size="85,32" Style="MainButton" FontStyle="Shadow" String="LOC_AMT_MC_UNDO_AUTO_SELECT" Hidden="1"/>
+        <GridButton ID="ClearCategoryButton" Size="65,32" Style="ButtonRed" FontStyle="Shadow" String="LOC_AMT_CLEAR_CATEGORY"/>
+        <Label ID="SelectionCount" Anchor="L,C" Offset="2,0" Size="70,28" Style="FontNormal14" String=""/>
+      </Stack>
+
+      <ScrollPanel ID="ItemScroll" Anchor="L,T" Offset="24,368" Size="615,225" Style="ScrollPanelWithRightBar">
+        <Stack ID="ItemGrid" Anchor="L,T" Size="585,0" StackGrowth="Right" WrapGrowth="Down" WrapWidth="585" Padding="5"/>
+      </ScrollPanel>
+
+      <Label ID="SelectionHint" Anchor="L,T" Offset="24,600" Size="615,52" WrapWidth="615" Style="FontNormal12" String="LOC_AMT_PLANNER_FOOTNOTE"/>
+
+      <Label ID="SpecialtySlotsLabel" Anchor="R,T" Offset="34,210" Style="FontNormal14" String="LOC_AMT_SPECIALTY_SLOTS_LABEL"/>
+      <Label ID="SpecialtySlotsHint" Anchor="R,T" Offset="28,237" Size="250,68" WrapWidth="250" Style="FontNormal12" String="LOC_AMT_SPECIALTY_SLOTS_HINT"/>
+      <ScrollPanel ID="PriorityScroll" Anchor="R,T" Offset="24,309" Size="270,276" Style="ScrollPanelWithRightBar">
+        <Stack ID="WeightStack" Anchor="L,T" Size="240,0" StackGrowth="Down" Padding="5"/>
+      </ScrollPanel>
+      <Stack ID="SpecialtySlotControls" Anchor="R,T" Offset="24,592" StackGrowth="Right" Padding="4">
+        <Label Anchor="L,C" Size="120,28" Align="Right" Style="FontNormal14" String="LOC_AMT_SPECIALTY_SLOT_COUNT_LABEL"/>
+        <GridButton ID="RemoveSlotButton" Size="36,30" Style="MainButton" FontStyle="Shadow" String="LOC_AMT_SLOT_REMOVE"/>
+        <Label ID="SlotCountLabel" Anchor="L,C" Size="42,28" Align="Center" Style="FontNormal16"/>
+        <GridButton ID="AddSlotButton" Size="36,30" Style="MainButton" FontStyle="Shadow" String="LOC_AMT_SLOT_ADD"/>
+      </Stack>
+      <Stack ID="PopulationControls" Anchor="R,T" Offset="24,630" StackGrowth="Right" Padding="4">
+        <Image ID="PopulationIcon" Anchor="L,C" Size="22,22"/>
+        <Label Anchor="L,C" Size="114,28" Align="Right" Style="FontNormal14" String="LOC_AMT_POPULATION_BUDGET_LABEL"/>
+        <GridButton ID="RemovePopulationButton" Size="36,30" Style="MainButton" FontStyle="Shadow" String="LOC_AMT_SLOT_REMOVE"/>
+        <Label ID="PopulationBudgetLabel" Anchor="L,C" Size="42,28" Align="Center" Style="FontNormal16"/>
+        <GridButton ID="AddPopulationButton" Size="36,30" Style="MainButton" FontStyle="Shadow" String="LOC_AMT_SLOT_ADD"/>
+      </Stack>
+      <Label ID="PopulationWarning" Anchor="R,T" Offset="24,661" Size="270,16" WrapWidth="270"
+             Style="FontNormal12" Color="255,197,92,255" String="" Hidden="1"/>
+
+      <CheckBox ID="MultiCityCheck" Anchor="L,B" Offset="24,105" Size="850,25" Style="MainCheckBox" ColorSet="Beige_Black" Hidden="1"
+                BoxOnLeft="1" String="LOC_AMT_MULTI_CITY" ToolTip="LOC_AMT_MULTI_CITY_TOOLTIP" ButtonSize="20,20" CheckSize="20,20"/>
+
+      <CheckBox ID="OverwriteCheck" Anchor="L,B" Offset="24,73" Size="270,25" Style="MainCheckBox" ColorSet="Beige_Black"
+                BoxOnLeft="1" String="LOC_AMT_OVERWRITE" ToolTip="LOC_AMT_OVERWRITE_TOOLTIP" ButtonSize="20,20" CheckSize="20,20"/>
+      <CheckBox ID="ClearCheck" Anchor="L,B" Offset="315,73" Size="270,25" Style="MainCheckBox" ColorSet="Beige_Black"
+                BoxOnLeft="1" String="LOC_AMT_CLEAR" ToolTip="LOC_AMT_CLEAR_TOOLTIP" ButtonSize="20,20" CheckSize="20,20"/>
+      <CheckBox ID="ClearManualCheck" Anchor="L,B" Offset="600,73" Size="260,25" Style="MainCheckBox" ColorSet="Beige_Black"
+                BoxOnLeft="1" String="LOC_AMT_CLEAR_MANUAL" ToolTip="LOC_AMT_CLEAR_MANUAL_TOOLTIP" ButtonSize="20,20" CheckSize="20,20"/>
+
+      <Label ID="ResultText" Anchor="L,B" Offset="24,47" Size="870,22" WrapWidth="870" Style="FontNormal14" String=""/>
+      <Label ID="WarningText" Anchor="L,B" Offset="24,44" Size="870,28" WrapWidth="870" Style="FontNormal16"
+             Color="255,56,48,255" Hidden="1" String=""/>
+
+      <GridButton ID="UndoButton" Anchor="L,B" Offset="12,10" Size="180,36" Style="MainButton" FontStyle="Shadow" String="LOC_AMT_UNDO"/>
+      <GridButton ID="OneClickButton" Anchor="R,B" Offset="320,10" Size="180,36" Style="MainButton" FontStyle="Shadow"
+                  String="LOC_AMT_HIGH_ADJACENCY_ANALYSIS" ToolTip="LOC_AMT_HIGH_ADJACENCY_ANALYSIS_TOOLTIP"/>
+      <GridButton ID="OkButton" Anchor="R,B" Offset="170,10" Size="150,36" Style="MainButton" FontStyle="Shadow" String="LOC_AMT_OK"/>
+      <GridButton ID="CancelButton" Anchor="R,B" Offset="12,10" Size="150,36" Style="ButtonRed" FontStyle="Shadow" String="LOC_AMT_CANCEL"/>
+      <GridButton ID="MCClearSettingsButton" Anchor="L,B" Offset="12,10" Size="155,36" Style="ButtonRed" FontStyle="Shadow" String="LOC_AMT_MC_CLEAR_SETTINGS" Hidden="1"/>
+      <GridButton ID="MCSaveSettingsButton" Anchor="R,B" Offset="292,10" Size="150,36" Style="MainButton" FontStyle="Shadow" String="LOC_AMT_MC_SAVE_SETTINGS" Hidden="1"/>
+      <GridButton ID="MCSolveButton" Anchor="R,B" Offset="142,10" Size="140,36" Style="MainButton" FontStyle="Shadow" String="LOC_AMT_MC_SOLVE" Hidden="1"/>
+      <GridButton ID="MCCloseButton" Anchor="R,B" Offset="278,10" Size="120,36" Style="MainButton" FontStyle="Shadow" String="LOC_AMT_MC_CLOSE" Hidden="1"/>
+      <GridButton ID="MCPrimaryActionButton" Anchor="R,B" Offset="12,10" Size="256,36" Style="ButtonRed" FontStyle="Shadow"
+                  String="LOC_AMT_MC_UI_SAVE_ALL_CONTINUE" Hidden="1"/>
+
+      <!-- Advanced preferences are deliberately outside the beginner path. -->
+      <Grid ID="MCAdvancedPanel" Anchor="R,T" Offset="24,202" Size="650,154" Style="WindowFrameTitle" Hidden="1" ConsumeMouse="1">
+        <Label Anchor="L,T" Offset="18,12" Style="FontNormal16" FontStyle="Glow" String="LOC_AMT_MC_UI_ADVANCED_TITLE"/>
+        <GridButton ID="MCAdvancedCloseButton" Anchor="R,T" Offset="12,8" Size="160,30" Style="MainButton" FontStyle="Shadow"
+                    String="LOC_AMT_MC_UI_ADVANCED_CLOSE"/>
+      </Grid>
+      <!-- Shared controls stay direct children so the legacy single-city layout remains intact. -->
+      <Label ID="YieldFocusLabel" Anchor="L,T" Offset="24,78" Style="FontNormal14" String="LOC_AMT_YIELD_FOCUS_LABEL"/>
       <Stack ID="YieldFocusButtons" Anchor="L,T" Offset="24,101" StackGrowth="Right" Padding="5">
         <Grid Style="CityPanelFilterGrid">
           <CheckBox ID="ScienceFocusButton" Style="CityPanelCBScience" String="[ICON_Science]"/>
@@ -41,71 +170,6 @@
                 BoxOnLeft="1" String="LOC_AMT_UNIQUE_DIRECTION" ToolTip="LOC_AMT_UNIQUE_DIRECTION_TOOLTIP" ButtonSize="20,20" CheckSize="20,20"/>
       <CheckBox ID="PreservePlanningCheck" Anchor="R,T" Offset="24,111" Size="270,24" Style="MainCheckBox" ColorSet="Beige_Black"
                 BoxOnLeft="1" String="LOC_AMT_PRESERVE_PLANNING" ToolTip="LOC_AMT_PRESERVE_PLANNING_TOOLTIP" ButtonSize="20,20" CheckSize="20,20"/>
-
-      <Stack ID="CategoryTabs" Anchor="L,T" Offset="24,148" StackGrowth="Right" Padding="8">
-        <GridButton ID="DistrictTabButton" Size="180,36" Style="MainButton" FontStyle="Shadow" String="LOC_AMT_CATEGORY_DISTRICTS"/>
-        <GridButton ID="ImprovementTabButton" Size="180,36" Style="MainButton" FontStyle="Shadow" String="LOC_AMT_CATEGORY_IMPROVEMENTS"/>
-        <GridButton ID="WonderTabButton" Size="180,36" Style="MainButton" FontStyle="Shadow" String="LOC_AMT_CATEGORY_WONDERS"/>
-      </Stack>
-
-      <Label ID="CategoryHint" Anchor="L,T" Offset="24,195" Size="615,34" WrapWidth="615" Style="FontNormal14" String=""/>
-      <Grid ID="RuleBanner" Anchor="L,T" Offset="24,233" Size="615,32" Color="26,74,99,210">
-        <Label ID="AutoCountLabel" Anchor="L,C" Offset="12,0" Size="591,28" Style="FontNormal16" FontStyle="Glow"
-               Color="255,229,151,255" String=""/>
-      </Grid>
-      <Stack Anchor="L,T" Offset="24,273" StackGrowth="Right" Padding="8">
-        <GridButton ID="LongTermButton" Size="145,32" Style="MainButton" FontStyle="Shadow" String="LOC_AMT_LONG_TERM"/>
-        <GridButton ID="CurrentBuildableButton" Size="145,32" Style="MainButton" FontStyle="Shadow" String="LOC_AMT_CURRENT_BUILDABLE"/>
-        <GridButton ID="ClearCategoryButton" Size="65,32" Style="ButtonRed" FontStyle="Shadow" String="LOC_AMT_CLEAR_CATEGORY"/>
-        <Label ID="SelectionCount" Anchor="L,C" Offset="2,0" Size="110,28" Style="FontNormal14" String=""/>
-      </Stack>
-
-      <ScrollPanel ID="ItemScroll" Anchor="L,T" Offset="24,312" Size="615,225" Style="ScrollPanelWithRightBar">
-        <Stack ID="ItemGrid" Anchor="L,T" Size="585,0" StackGrowth="Right" WrapGrowth="Down" WrapWidth="585" Padding="5"/>
-      </ScrollPanel>
-
-      <Label ID="SelectionHint" Anchor="L,T" Offset="24,544" Size="615,52" WrapWidth="615" Style="FontNormal12" String="LOC_AMT_PLANNER_FOOTNOTE"/>
-
-      <Label Anchor="R,T" Offset="34,154" Style="FontNormal14" String="LOC_AMT_SPECIALTY_SLOTS_LABEL"/>
-      <Label Anchor="R,T" Offset="28,181" Size="250,68" WrapWidth="250" Style="FontNormal12" String="LOC_AMT_SPECIALTY_SLOTS_HINT"/>
-      <ScrollPanel ID="PriorityScroll" Anchor="R,T" Offset="24,253" Size="270,276" Style="ScrollPanelWithRightBar">
-        <Stack ID="WeightStack" Anchor="L,T" Size="240,0" StackGrowth="Down" Padding="5"/>
-      </ScrollPanel>
-      <Stack Anchor="R,T" Offset="24,536" StackGrowth="Right" Padding="4">
-        <Label Anchor="L,C" Size="120,28" Align="Right" Style="FontNormal14" String="LOC_AMT_SPECIALTY_SLOT_COUNT_LABEL"/>
-        <GridButton ID="RemoveSlotButton" Size="36,30" Style="MainButton" FontStyle="Shadow" String="LOC_AMT_SLOT_REMOVE"/>
-        <Label ID="SlotCountLabel" Anchor="L,C" Size="42,28" Align="Center" Style="FontNormal16"/>
-        <GridButton ID="AddSlotButton" Size="36,30" Style="MainButton" FontStyle="Shadow" String="LOC_AMT_SLOT_ADD"/>
-      </Stack>
-      <Stack Anchor="R,T" Offset="24,574" StackGrowth="Right" Padding="4">
-        <Image ID="PopulationIcon" Anchor="L,C" Size="22,22"/>
-        <Label Anchor="L,C" Size="114,28" Align="Right" Style="FontNormal14" String="LOC_AMT_POPULATION_BUDGET_LABEL"/>
-        <GridButton ID="RemovePopulationButton" Size="36,30" Style="MainButton" FontStyle="Shadow" String="LOC_AMT_SLOT_REMOVE"/>
-        <Label ID="PopulationBudgetLabel" Anchor="L,C" Size="42,28" Align="Center" Style="FontNormal16"/>
-        <GridButton ID="AddPopulationButton" Size="36,30" Style="MainButton" FontStyle="Shadow" String="LOC_AMT_SLOT_ADD"/>
-      </Stack>
-      <Label ID="PopulationWarning" Anchor="R,T" Offset="24,605" Size="270,16" WrapWidth="270"
-             Style="FontNormal12" Color="255,197,92,255" String="" Hidden="1"/>
-
-      <CheckBox ID="MultiCityCheck" Anchor="L,B" Offset="24,105" Size="850,25" Style="MainCheckBox" ColorSet="Beige_Black" Hidden="1"
-                BoxOnLeft="1" String="LOC_AMT_MULTI_CITY" ToolTip="LOC_AMT_MULTI_CITY_TOOLTIP" ButtonSize="20,20" CheckSize="20,20"/>
-
-      <CheckBox ID="OverwriteCheck" Anchor="L,B" Offset="24,73" Size="270,25" Style="MainCheckBox" ColorSet="Beige_Black"
-                BoxOnLeft="1" String="LOC_AMT_OVERWRITE" ToolTip="LOC_AMT_OVERWRITE_TOOLTIP" ButtonSize="20,20" CheckSize="20,20"/>
-      <CheckBox ID="ClearCheck" Anchor="L,B" Offset="315,73" Size="270,25" Style="MainCheckBox" ColorSet="Beige_Black"
-                BoxOnLeft="1" String="LOC_AMT_CLEAR" ToolTip="LOC_AMT_CLEAR_TOOLTIP" ButtonSize="20,20" CheckSize="20,20"/>
-      <CheckBox ID="ClearManualCheck" Anchor="L,B" Offset="600,73" Size="260,25" Style="MainCheckBox" ColorSet="Beige_Black"
-                BoxOnLeft="1" String="LOC_AMT_CLEAR_MANUAL" ToolTip="LOC_AMT_CLEAR_MANUAL_TOOLTIP" ButtonSize="20,20" CheckSize="20,20"/>
-
-      <Label ID="ResultText" Anchor="L,B" Offset="24,47" Size="870,22" WrapWidth="870" Style="FontNormal14" String=""/>
-      <Label ID="WarningText" Anchor="L,B" Offset="24,44" Size="870,28" WrapWidth="870" Style="FontNormal16"
-             Color="255,56,48,255" Hidden="1" String=""/>
-
-      <GridButton ID="UndoButton" Anchor="L,B" Offset="12,10" Size="180,36" Style="MainButton" FontStyle="Shadow" String="LOC_AMT_UNDO"/>
-      <GridButton ID="OneClickButton" Anchor="R,B" Offset="320,10" Size="180,36" Style="MainButton" FontStyle="Shadow"
-                  String="LOC_AMT_HIGH_ADJACENCY_ANALYSIS" ToolTip="LOC_AMT_HIGH_ADJACENCY_ANALYSIS_TOOLTIP"/>
-      <GridButton ID="OkButton" Anchor="R,B" Offset="170,10" Size="150,36" Style="MainButton" FontStyle="Shadow" String="LOC_AMT_OK"/>
-      <GridButton ID="CancelButton" Anchor="R,B" Offset="12,10" Size="150,36" Style="ButtonRed" FontStyle="Shadow" String="LOC_AMT_CANCEL"/>
       <Box ID="PlanningOverlay" Anchor="C,C" Size="parent,parent" Color="0,0,0,185" Hidden="1" ConsumeMouse="1">
         <Grid Anchor="C,C" Size="560,174" Style="WindowFrameTitle">
           <AlphaAnim Anchor="C,T" Offset="0,24" Size="520,88" Cycle="Bounce" Speed="1.2" AlphaStart="1" AlphaEnd="0.55">
@@ -116,6 +180,116 @@
                       String="LOC_AMT_CANCEL_CALCULATION"/>
         </Grid>
       </Box>
+
+      <Box ID="MCScopeOverlay" Anchor="C,C" Size="parent,parent" Color="0,0,0,205" Hidden="1" ConsumeMouse="1">
+        <Grid ID="MCScopeFrame" Anchor="C,C" Size="790,405" Style="WindowFrameTitle" ConsumeMouse="1">
+          <Label ID="MCScopeTitle" Anchor="C,T" Offset="0,14" Style="WindowHeader" String="{LOC_AMT_MC_SCOPE_TITLE:upper}"/>
+          <Label ID="MCScopeNotice" Anchor="L,T" Offset="28,52" Size="734,26" WrapWidth="734" Align="Center"
+                 Style="FontNormal16" FontStyle="Glow" Color="255,229,151,255" String="LOC_AMT_MC_SCOPE_NOTICE"/>
+          <Grid ID="MCScopeIncludedPanel" Anchor="L,T" Offset="28,82" Size="350,260" Color="26,74,99,225">
+            <Label Anchor="L,T" Offset="16,10" Size="318,32" Style="FontNormal20" FontStyle="Glow"
+                   Color="154,221,170,255" String="LOC_AMT_MC_SCOPE_INCLUDED"/>
+            <ScrollPanel ID="MCScopeIncludedScroll" Anchor="L,T" Offset="14,48" Size="322,198" Style="ScrollPanelWithRightBar">
+              <Label ID="MCScopeIncludedText" Anchor="L,T" Size="292,188" WrapWidth="292" Style="FontNormal16" String=""/>
+            </ScrollPanel>
+          </Grid>
+          <Grid ID="MCScopeExcludedPanel" Anchor="R,T" Offset="28,82" Size="350,260" Color="67,58,55,225">
+            <Label Anchor="L,T" Offset="16,10" Size="318,32" Style="FontNormal20" FontStyle="Glow"
+                   Color="255,197,92,255" String="LOC_AMT_MC_SCOPE_EXCLUDED"/>
+            <ScrollPanel ID="MCScopeExcludedScroll" Anchor="L,T" Offset="14,48" Size="322,198" Style="ScrollPanelWithRightBar">
+              <Label ID="MCScopeExcludedText" Anchor="L,T" Size="292,188" WrapWidth="292" Style="FontNormal16" String=""/>
+            </ScrollPanel>
+          </Grid>
+          <ScrollPanel ID="MCScopeScroll" Anchor="L,T" Offset="28,105" Size="734,470" Style="ScrollPanelWithRightBar" Hidden="1">
+            <Label ID="MCScopeText" Anchor="L,T" Size="700,0" WrapWidth="700" Style="FontNormal16" String=""/>
+          </ScrollPanel>
+          <Label ID="MCPlanTitle" Anchor="L,T" Offset="28,82" Size="300,26" WrapWidth="300" Style="FontNormal16" FontStyle="Glow" Color="154,221,170,255" String="" Hidden="1"/>
+          <GridButton ID="MCPlanButton1" Anchor="L,T" Offset="28,112" Size="120,32" Style="MainButton" FontStyle="Shadow" String="" Hidden="1"/>
+          <GridButton ID="MCPlanButton2" Anchor="L,T" Offset="158,112" Size="120,32" Style="MainButton" FontStyle="Shadow" String="" Hidden="1"/>
+          <GridButton ID="MCPlanButton3" Anchor="L,T" Offset="288,112" Size="120,32" Style="MainButton" FontStyle="Shadow" String="" Hidden="1"/>
+          <GridButton ID="MCScopeBackButton" Anchor="L,B" Offset="16,12" Size="170,36" Style="MainButton" FontStyle="Shadow" String="LOC_AMT_MC_SCOPE_BACK"/>
+          <GridButton ID="MCScopeConfirmButton" Anchor="R,B" Offset="16,12" Size="220,36" Style="MainButton" FontStyle="Shadow" String="LOC_AMT_MC_SCOPE_CONFIRM"/>
+          <GridButton ID="MCScopeCloseButton" Anchor="R,B" Offset="16,12" Size="170,36" Style="ButtonRed" FontStyle="Shadow" String="LOC_AMT_MC_CLOSE" Hidden="1"/>
+        </Grid>
+      </Box>
+
+      <Box ID="MCUniqueClearOverlay" Anchor="C,C" Size="parent,parent" Color="0,0,0,205" Hidden="1" ConsumeMouse="1">
+        <Grid Anchor="C,C" Size="640,240" Style="WindowFrameTitle" ConsumeMouse="1">
+          <Label Anchor="C,T" Offset="0,16" Style="WindowHeader" String="{LOC_AMT_MC_CLEAR_UNIQUE_CONFIRM_TITLE:upper}"/>
+          <Label ID="MCUniqueClearBody" Anchor="L,T" Offset="28,64" Size="584,84" WrapWidth="584" Align="Center"
+                 Style="FontNormal16" String=""/>
+          <GridButton ID="MCUniqueClearConfirmButton" Anchor="L,B" Offset="18,18" Size="210,36" Style="ButtonRed" FontStyle="Shadow" String="LOC_AMT_MC_CLEAR_UNIQUE_CONFIRM"/>
+          <GridButton ID="MCUniqueClearCancelButton" Anchor="R,B" Offset="18,18" Size="210,36" Style="MainButton" FontStyle="Shadow" String="LOC_AMT_MC_CLEAR_UNIQUE_CANCEL"/>
+        </Grid>
+      </Box>
+
+      <Box ID="MCPlanningOverlay" Anchor="C,C" Size="parent,parent" Color="0,0,0,185" Hidden="1" ConsumeMouse="1">
+        <Grid Anchor="C,C" Size="600,370" Style="WindowFrameTitle">
+          <Label Anchor="C,T" Offset="0,14" Style="WindowHeader" String="{LOC_AMT_MC_M3_SOLVING_TITLE:upper}"/>
+          <Stack ID="MCPlanningStages" Anchor="L,T" Offset="48,54" StackGrowth="Down" Padding="8">
+            <Label ID="MCPlanningStage1" Size="504,24" Style="FontNormal16" String="LOC_AMT_MC_UI_STAGE_PREPARE"/>
+            <Label ID="MCPlanningStage2" Size="504,24" Style="FontNormal16" String="LOC_AMT_MC_UI_STAGE_DISTRICTS"/>
+            <Label ID="MCPlanningStage3" Size="504,24" Style="FontNormal16" String="LOC_AMT_MC_UI_STAGE_IMPROVEMENTS"/>
+            <Label ID="MCPlanningStage4" Size="504,24" Style="FontNormal16" String="LOC_AMT_MC_UI_STAGE_VERIFY"/>
+          </Stack>
+          <AlphaAnim Anchor="C,T" Offset="0,188" Size="554,44" Cycle="Bounce" Speed="1.2" AlphaStart="1" AlphaEnd="0.55">
+            <Label ID="MCPlanningStatus" Anchor="C,C" Size="540,48" WrapWidth="540" Align="Center" Style="FontNormal18"
+                   String="LOC_AMT_CALCULATING_LONG"/>
+          </AlphaAnim>
+          <Label ID="MCPlanningTip" Anchor="C,T" Offset="0,240" Size="520,42" WrapWidth="520" Align="Center"
+                 Style="FontNormal14" Color="255,229,151,255" String="LOC_AMT_MC_UI_SOLVE_TIP"/>
+          <Label ID="MCPlanningCaveat" Hidden="1" String=""/>
+          <GridButton ID="MCPlanningCancelButton" Anchor="C,B" Offset="0,14" Size="160,36" Style="ButtonRed" FontStyle="Shadow"
+                      String="LOC_AMT_MC_UI_CANCEL"/>
+        </Grid>
+      </Box>
+
+      <Box ID="MCUnsavedOverlay" Anchor="C,C" Size="parent,parent" Color="0,0,0,205" Hidden="1" ConsumeMouse="1">
+        <Grid Anchor="C,C" Size="670,250" Style="WindowFrameTitle" ConsumeMouse="1">
+          <Label Anchor="C,T" Offset="0,16" Style="WindowHeader" String="{LOC_AMT_MC_UNSAVED_TITLE:upper}"/>
+          <Label Anchor="L,T" Offset="28,64" Size="614,70" WrapWidth="614" Align="Center" Style="FontNormal16" String="LOC_AMT_MC_UNSAVED_BODY"/>
+          <GridButton ID="MCUnsavedSaveButton" Anchor="L,B" Offset="18,18" Size="180,36" Style="MainButton" FontStyle="Shadow" String="LOC_AMT_MC_UNSAVED_SAVE"/>
+          <GridButton ID="MCUnsavedDiscardButton" Anchor="C,B" Offset="0,18" Size="180,36" Style="ButtonRed" FontStyle="Shadow" String="LOC_AMT_MC_UNSAVED_DISCARD"/>
+          <GridButton ID="MCUnsavedCancelButton" Anchor="R,B" Offset="18,18" Size="180,36" Style="MainButton" FontStyle="Shadow" String="LOC_AMT_MC_UNSAVED_CANCEL"/>
+        </Grid>
+      </Box>
+    </Grid>
+  </Box>
+
+  <!-- Hiding the settings blocker leaves a small map-edge handle that does
+       not discard drafts or close the planning session. -->
+  <GridButton ID="MCSettingsRestoreButton" Anchor="R,C" Offset="12,0" Size="190,40" Style="MainButton" FontStyle="Shadow"
+              String="LOC_AMT_MC_UI_RESTORE_PANEL" ToolTip="LOC_AMT_MC_UI_RESTORE_PANEL_TOOLTIP" Hidden="1"/>
+
+  <!-- These drawers are siblings of SettingsBlocker: hiding the editor reveals the map. -->
+  <Box ID="MCPlanPreviewOverlay" Anchor="C,C" Size="parent,parent" Color="0,0,0,35" Hidden="1" ConsumeMouse="0">
+    <Grid ID="MCPlanPreviewFrame" Anchor="R,C" Offset="18,0" Size="420,430" Style="WindowFrameTitle" ConsumeMouse="1">
+      <Label ID="MCPlanPreviewTitle" Anchor="C,T" Offset="0,14" Style="WindowHeader" String="{LOC_AMT_MC_UI_COMPARE_TITLE:upper}"/>
+      <Label Anchor="L,T" Offset="22,52" Size="376,42" WrapWidth="376" Align="Center" Style="FontNormal14"
+             Color="255,229,151,255" String="LOC_AMT_MC_UI_COMPARE_HINT"/>
+      <Stack ID="MCPlanCards" Anchor="L,T" Offset="22,100" StackGrowth="Down" Padding="7">
+        <GridButton ID="MCPlanCard1" Size="376,42" Style="MainButton" FontStyle="Shadow" String="" Hidden="1"/>
+        <GridButton ID="MCPlanCard2" Size="376,42" Style="MainButton" FontStyle="Shadow" String="" Hidden="1"/>
+        <GridButton ID="MCPlanCard3" Size="376,42" Style="MainButton" FontStyle="Shadow" String="" Hidden="1"/>
+      </Stack>
+      <Label ID="MCPlanIssueTitle" Anchor="L,T" Offset="22,252" Size="376,24" Style="FontNormal16" FontStyle="Glow" String="LOC_AMT_MC_UI_ISSUES_TITLE"/>
+      <ScrollPanel ID="MCPlanIssueScroll" Anchor="L,T" Offset="22,278" Size="376,92" Style="ScrollPanelWithRightBar">
+        <Label ID="MCPlanIssueText" Anchor="L,T" Size="344,0" WrapWidth="344" Style="FontNormal14" String=""/>
+      </ScrollPanel>
+      <Grid ID="MCPlanManualRiskPanel" Anchor="L,T" Offset="22,252" Size="376,118" Color="98,54,46,235" Hidden="1">
+        <!-- The localized risk sentence requires a pin-count argument.  Leave
+             the initial value empty and populate it when the risk panel opens. -->
+        <Label ID="MCPlanManualRiskText" Anchor="L,T" Offset="12,10" Size="352,48" WrapWidth="352" Style="FontNormal14"
+               Color="255,197,92,255" String=""/>
+        <CheckBox ID="MCPlanManualConfirmCheck" Anchor="L,T" Offset="12,70" Size="348,32" Style="MainCheckBox" ColorSet="Beige_Black"
+                  BoxOnLeft="1" String="LOC_AMT_MC_UI_MANUAL_CONFIRM" ButtonSize="20,20" CheckSize="20,20"/>
+      </Grid>
+      <GridButton ID="MCPlanPreviewBackButton" Anchor="L,B" Offset="16,14" Size="116,36" Style="MainButton" FontStyle="Shadow"
+                  String="LOC_AMT_MC_UI_BACK_SETTINGS"/>
+      <GridButton ID="MCPlanPreviewCloseButton" Anchor="C,B" Offset="0,14" Size="96,36" Style="MainButton" FontStyle="Shadow"
+                  String="LOC_AMT_MC_CLOSE"/>
+      <GridButton ID="MCPlanPreviewApplyButton" Anchor="R,B" Offset="16,14" Size="150,36" Style="ButtonRed" FontStyle="Shadow"
+                  String="LOC_AMT_MC_UI_APPLY_SELECTED"/>
     </Grid>
   </Box>
 
@@ -138,6 +312,36 @@
     <GridButton ID="PreviewConfirmButton" Anchor="C,B" Offset="30,10" Size="150,36" Style="MainButton" FontStyle="Shadow" String="LOC_AMT_CONFIRM_PLAN"/>
     <GridButton ID="PreviewCancelButton" Anchor="R,B" Offset="12,10" Size="120,36" Style="ButtonRed" FontStyle="Shadow" String="LOC_AMT_CANCEL"/>
   </Grid>
+
+  <!-- r39: native mode selection belongs to this planner context, not the
+       launch-bar context.  It never initializes settings or a city scope. -->
+  <Box ID="ModeChooserBlocker" Anchor="C,C" Size="parent,parent" Color="0,0,0,140" Hidden="1" ConsumeMouse="1">
+    <Grid Anchor="C,C" Size="620,350" Style="WindowFrameTitle" ConsumeMouse="1">
+      <Label Anchor="C,T" Offset="0,14" Style="WindowHeader" String="{LOC_AMT_MC_MODE_TITLE:upper}"/>
+      <GridButton ID="ModeSingleButton" Anchor="C,T" Offset="0,62" Size="400,42" Style="MainButton" FontStyle="Shadow"
+                  String="LOC_AMT_MC_MODE_SINGLE"/>
+      <GridButton ID="ModeMultiButton" Anchor="C,T" Offset="0,158" Size="400,42" Style="MainButton" FontStyle="Shadow"
+                  String="LOC_AMT_MC_MODE_MULTI"/>
+      <Label ID="ModeUnavailableLabel" Anchor="C,T" Offset="0,258" Size="564,32" WrapWidth="564" Align="Center" Style="FontNormal14"
+             Color="255,197,92,255" Hidden="1" String="LOC_AMT_MC_MODE_UNAVAILABLE"/>
+      <GridButton ID="ModeBackButton" Anchor="C,B" Offset="0,14" Size="160,36" Style="MainButton" FontStyle="Shadow"
+                  String="LOC_AMT_MC_MODE_BACK"/>
+    </Grid>
+  </Box>
+
+  <Instance Name="UniqueDistrictEntry">
+    <Container ID="Top" Size="585,76">
+      <Box Anchor="C,C" Size="parent,parent" Color="26,74,99,220"/>
+      <Image ID="SubjectIcon" Anchor="L,C" Offset="12,0" Size="38,38"/>
+      <Label ID="SubjectName" Anchor="L,C" Offset="58,-12" Size="112,28" Style="FontNormal16" FontStyle="Glow" String=""/>
+      <Label ID="StatusHint" Anchor="L,C" Offset="58,16" Size="390,22" Style="FontNormal12"
+             Color="255,229,151,255" String="" Hidden="1"/>
+      <Label ID="ReadOnlyState" Anchor="L,C" Offset="170,0" Size="402,32" Style="FontNormal16"
+             Color="255,229,151,255" String="" Hidden="1"/>
+      <PullDown ID="ModePull" Anchor="L,C" Offset="170,0" Size="250,24" Style="PullDownBlue"
+                ScrollThreshold="300" AutoSizePopUp="1" SpaceForScroll="0"/>
+    </Container>
+  </Instance>
 
   <Instance Name="PlannerIconEntry">
     <Container ID="Top" Size="43,43">

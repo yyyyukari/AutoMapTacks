@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Mod id="a3f7d2e1-9c4b-4e8a-bb13-7d11f9c2a04e" version="60">
+<?xml version='1.0' encoding='utf-8'?>
+<Mod id="a3f7d2e1-9c4b-4e8a-bb13-7d11f9c2a04e" version="40">
   <Properties>
-    <Name>LOC_AMT_V60_MOD_NAME</Name>
+    <Name>LOC_AMT_R40_MOD_NAME</Name>
     <Authors>yyyyukari</Authors>
-    <Teaser>LOC_AMT_V60_MOD_TEASER</Teaser>
-    <Description>LOC_AMT_V60_MOD_DESCRIPTION</Description>
+    <Teaser>LOC_AMT_R40_MOD_TEASER</Teaser>
+    <Description>LOC_AMT_R40_MOD_DESCRIPTION</Description>
     <AffectsSavedGames>0</AffectsSavedGames>
     <CompatibleVersions>1.2,2.0</CompatibleVersions>
   </Properties>
@@ -13,47 +13,47 @@
   </Dependencies>
 
   <LocalizedText>
-    <Text id="LOC_AMT_V60_MOD_NAME">
-      <en_US>Auto Map Tacks Planner</en_US>
-      <de_DE>Auto Map Tacks Planner</de_DE>
-      <es_ES>Auto Map Tacks Planner</es_ES>
-      <fr_FR>Auto Map Tacks Planner</fr_FR>
-      <it_IT>Auto Map Tacks Planner</it_IT>
-      <ja_JP>Auto Map Tacks Planner</ja_JP>
-      <ko_KR>Auto Map Tacks Planner</ko_KR>
-      <pl_PL>Auto Map Tacks Planner</pl_PL>
-      <pt_BR>Auto Map Tacks Planner</pt_BR>
-      <ru_RU>Auto Map Tacks Planner</ru_RU>
-      <zh_Hans_CN>自动地图钉规划</zh_Hans_CN>
-      <zh_Hant_HK>自動地圖釘規劃</zh_Hant_HK>
+    <Text id="LOC_AMT_R40_MOD_NAME">
+      <en_US>Auto Map Tacks Planner [r40]</en_US>
+      <de_DE>Auto Map Tacks Planner [r40]</de_DE>
+      <es_ES>Auto Map Tacks Planner [r40]</es_ES>
+      <fr_FR>Auto Map Tacks Planner [r40]</fr_FR>
+      <it_IT>Auto Map Tacks Planner [r40]</it_IT>
+      <ja_JP>Auto Map Tacks Planner [r40]</ja_JP>
+      <ko_KR>Auto Map Tacks Planner [r40]</ko_KR>
+      <pl_PL>Auto Map Tacks Planner [r40]</pl_PL>
+      <pt_BR>Auto Map Tacks Planner [r40]</pt_BR>
+      <ru_RU>Auto Map Tacks Planner [r40]</ru_RU>
+      <zh_Hans_CN>自动地图钉规划 [r40]</zh_Hans_CN>
+      <zh_Hant_HK>自動地圖釘規劃 [r40]</zh_Hant_HK>
     </Text>
-    <Text id="LOC_AMT_V60_MOD_TEASER">
-      <en_US>Plan one selected city's districts, improvements, and wonders with population-aware optimization.</en_US>
-      <de_DE>Plan one selected city's districts, improvements, and wonders with population-aware optimization.</de_DE>
-      <es_ES>Plan one selected city's districts, improvements, and wonders with population-aware optimization.</es_ES>
-      <fr_FR>Plan one selected city's districts, improvements, and wonders with population-aware optimization.</fr_FR>
-      <it_IT>Plan one selected city's districts, improvements, and wonders with population-aware optimization.</it_IT>
-      <ja_JP>Plan one selected city's districts, improvements, and wonders with population-aware optimization.</ja_JP>
-      <ko_KR>Plan one selected city's districts, improvements, and wonders with population-aware optimization.</ko_KR>
-      <pl_PL>Plan one selected city's districts, improvements, and wonders with population-aware optimization.</pl_PL>
-      <pt_BR>Plan one selected city's districts, improvements, and wonders with population-aware optimization.</pt_BR>
-      <ru_RU>Plan one selected city's districts, improvements, and wonders with population-aware optimization.</ru_RU>
-      <zh_Hans_CN>根据人口预算，为单座城市规划区域、改良设施和奇观。</zh_Hans_CN>
-      <zh_Hant_HK>根據人口預算，為單座城市規劃區域、改良設施和奇觀。</zh_Hant_HK>
+    <Text id="LOC_AMT_R40_MOD_TEASER">
+      <en_US>Choose single-city planning or linked planning for up to four cities (test) from one entry. Preview, apply and undo district, improvement and wonder plans. [r40]</en_US>
+      <de_DE>Choose single-city planning or linked planning for up to four cities (test) from one entry. Preview, apply and undo district, improvement and wonder plans. [r40]</de_DE>
+      <es_ES>Choose single-city planning or linked planning for up to four cities (test) from one entry. Preview, apply and undo district, improvement and wonder plans. [r40]</es_ES>
+      <fr_FR>Choose single-city planning or linked planning for up to four cities (test) from one entry. Preview, apply and undo district, improvement and wonder plans. [r40]</fr_FR>
+      <it_IT>Choose single-city planning or linked planning for up to four cities (test) from one entry. Preview, apply and undo district, improvement and wonder plans. [r40]</it_IT>
+      <ja_JP>Choose single-city planning or linked planning for up to four cities (test) from one entry. Preview, apply and undo district, improvement and wonder plans. [r40]</ja_JP>
+      <ko_KR>Choose single-city planning or linked planning for up to four cities (test) from one entry. Preview, apply and undo district, improvement and wonder plans. [r40]</ko_KR>
+      <pl_PL>Choose single-city planning or linked planning for up to four cities (test) from one entry. Preview, apply and undo district, improvement and wonder plans. [r40]</pl_PL>
+      <pt_BR>Choose single-city planning or linked planning for up to four cities (test) from one entry. Preview, apply and undo district, improvement and wonder plans. [r40]</pt_BR>
+      <ru_RU>Choose single-city planning or linked planning for up to four cities (test) from one entry. Preview, apply and undo district, improvement and wonder plans. [r40]</ru_RU>
+      <zh_Hans_CN>从同一入口选择单城规划或最多四城联动（测试），支持区域、改良和奇观的预览、确认与撤销。[r40]</zh_Hans_CN>
+      <zh_Hant_HK>從同一入口選擇單城規劃或最多四城聯動（測試），支援區域、改良和奇觀的預覽、確認與復原。[r40]</zh_Hant_HK>
     </Text>
-    <Text id="LOC_AMT_V60_MOD_DESCRIPTION">
-      <en_US>Plan one selected city's districts, improvements, and wonders with population-aware heuristic optimization and a full preview report. [v60]</en_US>
-      <de_DE>Plan one selected city's districts, improvements, and wonders with population-aware heuristic optimization and a full preview report. [v60]</de_DE>
-      <es_ES>Plan one selected city's districts, improvements, and wonders with population-aware heuristic optimization and a full preview report. [v60]</es_ES>
-      <fr_FR>Plan one selected city's districts, improvements, and wonders with population-aware heuristic optimization and a full preview report. [v60]</fr_FR>
-      <it_IT>Plan one selected city's districts, improvements, and wonders with population-aware heuristic optimization and a full preview report. [v60]</it_IT>
-      <ja_JP>Plan one selected city's districts, improvements, and wonders with population-aware heuristic optimization and a full preview report. [v60]</ja_JP>
-      <ko_KR>Plan one selected city's districts, improvements, and wonders with population-aware heuristic optimization and a full preview report. [v60]</ko_KR>
-      <pl_PL>Plan one selected city's districts, improvements, and wonders with population-aware heuristic optimization and a full preview report. [v60]</pl_PL>
-      <pt_BR>Plan one selected city's districts, improvements, and wonders with population-aware heuristic optimization and a full preview report. [v60]</pt_BR>
-      <ru_RU>Plan one selected city's districts, improvements, and wonders with population-aware heuristic optimization and a full preview report. [v60]</ru_RU>
-      <zh_Hans_CN>为所选单座城市规划区域、改良设施和奇观，结合人口预算进行启发式组合优化，并在放置前生成完整规划报告。[v60]</zh_Hans_CN>
-      <zh_Hant_HK>為所選單座城市規劃區域、改良設施和奇觀，結合人口預算進行啟發式組合優化，並在放置前生成完整規劃報告。[v60]</zh_Hant_HK>
+    <Text id="LOC_AMT_R40_MOD_DESCRIPTION">
+      <en_US>Choose single-city planning or linked planning for up to four cities (test) from one entry. Preview, apply and undo district, improvement and wonder plans. [r40]</en_US>
+      <de_DE>Choose single-city planning or linked planning for up to four cities (test) from one entry. Preview, apply and undo district, improvement and wonder plans. [r40]</de_DE>
+      <es_ES>Choose single-city planning or linked planning for up to four cities (test) from one entry. Preview, apply and undo district, improvement and wonder plans. [r40]</es_ES>
+      <fr_FR>Choose single-city planning or linked planning for up to four cities (test) from one entry. Preview, apply and undo district, improvement and wonder plans. [r40]</fr_FR>
+      <it_IT>Choose single-city planning or linked planning for up to four cities (test) from one entry. Preview, apply and undo district, improvement and wonder plans. [r40]</it_IT>
+      <ja_JP>Choose single-city planning or linked planning for up to four cities (test) from one entry. Preview, apply and undo district, improvement and wonder plans. [r40]</ja_JP>
+      <ko_KR>Choose single-city planning or linked planning for up to four cities (test) from one entry. Preview, apply and undo district, improvement and wonder plans. [r40]</ko_KR>
+      <pl_PL>Choose single-city planning or linked planning for up to four cities (test) from one entry. Preview, apply and undo district, improvement and wonder plans. [r40]</pl_PL>
+      <pt_BR>Choose single-city planning or linked planning for up to four cities (test) from one entry. Preview, apply and undo district, improvement and wonder plans. [r40]</pt_BR>
+      <ru_RU>Choose single-city planning or linked planning for up to four cities (test) from one entry. Preview, apply and undo district, improvement and wonder plans. [r40]</ru_RU>
+      <zh_Hans_CN>从同一入口选择单城规划或最多四城联动（测试），支持区域、改良和奇观的预览、确认与撤销。[r40]</zh_Hans_CN>
+      <zh_Hant_HK>從同一入口選擇單城規劃或最多四城聯動（測試），支援區域、改良和奇觀的預覽、確認與復原。[r40]</zh_Hant_HK>
     </Text>
   </LocalizedText>
 

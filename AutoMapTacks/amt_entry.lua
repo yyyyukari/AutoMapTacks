@@ -1,9 +1,16 @@
-print("[AMT] amt_entry.lua LOAD START v58");
+
 
 local m_LaunchButtonInstance = {};
 local m_IsInjected = false;
+local m_PlannerReady = false;
+local m_ContextInitialized = false;
+local m_Shutdown = false;
 
+-- r39 supersedes r33 direct-open: the planner owns the native chooser and all
+-- mode/capability checks.  This context never loads multi-city dependencies;
+-- a failed optional multi-city load must not remove the single-city entry.
 local function AMT_OpenFromButton()
+    if m_Shutdown or not m_PlannerReady then return; end
     LuaEvents.AMT_OpenPlanner();
 end
 
@@ -35,7 +42,7 @@ local function InjectLaunchButton()
     end
 
     ContextPtr:BuildInstanceForControl(
-        "AMTEntryButtonInstance",
+        "AMTMCEntryButtonInstance",
         m_LaunchButtonInstance,
         buttonStack
     );
@@ -64,24 +71,49 @@ local function InjectLaunchButton()
         function() UI.PlaySound("Main_Menu_Mouse_Over"); end
     );
 
-    ContextPtr:BuildInstanceForControl("AMTEntryPinInstance", {}, buttonStack);
+    ContextPtr:BuildInstanceForControl("AMTMCEntryPinInstance", {}, buttonStack);
     ResizeLaunchBar(buttonStack);
     m_IsInjected = true;
     return true;
 end
 
 local function OnLoadScreenClose()
-    if InjectLaunchButton() then
+    if m_Shutdown or not m_PlannerReady or InjectLaunchButton() then
         Events.LoadScreenClose.Remove(OnLoadScreenClose);
     end
 end
 
-local function OnInit(isReload)
+local function AMT_MC_OnPlannerReady(ready)
+    if m_Shutdown then return; end
+    m_PlannerReady = ready == true;
     Events.LoadScreenClose.Remove(OnLoadScreenClose);
-    if not InjectLaunchButton() then
+    if m_LaunchButtonInstance.OpenPlannerButton then
+        m_LaunchButtonInstance.OpenPlannerButton:SetDisabled(not m_PlannerReady);
+    end
+    if m_ContextInitialized and m_PlannerReady
+        and not InjectLaunchButton() then
         Events.LoadScreenClose.Add(OnLoadScreenClose);
     end
 end
 
+local function OnInit(isReload)
+    if m_Shutdown then return; end
+    m_ContextInitialized = true;
+    AMT_MC_OnPlannerReady(m_PlannerReady);
+    LuaEvents.AMT_RequestPlannerReady();
+end
+
+local function OnShutdown()
+    m_Shutdown = true;
+    m_PlannerReady = false;
+    Events.LoadScreenClose.Remove(OnLoadScreenClose);
+    LuaEvents.AMT_PlannerReady.Remove(AMT_MC_OnPlannerReady);
+    if m_LaunchButtonInstance.OpenPlannerButton then
+        m_LaunchButtonInstance.OpenPlannerButton:SetDisabled(true);
+    end
+end
+
 ContextPtr:SetInitHandler(OnInit);
-print("[AMT] amt_entry.lua LOAD END");
+ContextPtr:SetShutdown(OnShutdown);
+LuaEvents.AMT_PlannerReady.Add(AMT_MC_OnPlannerReady);
+LuaEvents.AMT_RequestPlannerReady();

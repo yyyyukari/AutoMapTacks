@@ -1,17 +1,17 @@
 # 自动地图钉规划 / Auto Map Tacks Planner
 
-这是一个《文明 VI》单城市规划辅助模组。选中城市后点击屏幕左下方的“自动地图钉”按钮，或按 `Shift+P`，可以为该城市规划区域、改良设施和奇观，并在真正写入地图钉之前查看完整报告。
+这是一个《文明 VI》地图钉规划辅助模组。r40 在同一入口提供“单城规划”与“四城联动（测试）”。点击“自动地图钉”按钮或按 `Shift+P`，可以规划区域、改良设施和奇观，并在真正写入地图钉之前查看完整报告。
 
 ## 下载与安装（Steam / Epic）
 
 - Steam 玩家可通过 [Steam 创意工坊](https://steamcommunity.com/sharedfiles/filedetails/?id=3771382002) 订阅。
-- Epic 和其他需要手动安装的玩家，请在 [GitHub Releases](../../releases/latest) 下载最新的 `*-Epic.zip`。
+- Epic 和其他需要手动安装的玩家，请在 [GitHub Releases](../../releases/latest) 下载 `AutoMapTacks-v1.0.0-r40.zip` 和对应 SHA-256 文件。
 - 本模组必须与 [Detailed Map Tacks](https://github.com/hanweizhang/Civ6DetailedMapTacks) 一同安装并启用。
 
 Windows 手动安装：
 
 1. 启动过一次《文明 VI》并退出游戏。
-2. 将 `*-Epic.zip` 直接解压到游戏的 `Mods` 目录。Epic 版常见位置为 `%USERPROFILE%\Documents\My Games\Sid Meier's Civilization VI (Epic)\Mods`；部分环境使用不带 `(Epic)` 的目录名。
+2. 将正式 ZIP 解压到游戏的 `Mods` 目录。Epic 版常见位置为 `%USERPROFILE%\Documents\My Games\Sid Meier's Civilization VI (Epic)\Mods`；部分环境使用不带 `(Epic)` 的目录名。
 3. 确认文件位于 `Mods\AutoMapTacks\AutoMapTacks.modinfo`，而不是多嵌套一层同名文件夹。
 4. 单独安装 Detailed Map Tacks，然后在游戏的“额外内容”中启用两个模组。
 
@@ -36,13 +36,13 @@ Windows 手动安装：
 2. 启用本模组并开始或载入游戏。
 3. 选中一座自己的城市。
 4. 点击“自动地图钉”入口按钮，或按 `Shift+P` 打开规划界面。
-5. 设置专业区域顺序、规划人口、规划范围和产出侧重点。
+5. 选择单城或四城联动模式，设置专业区域顺序、规划人口和产出侧重点；联动模式逐城保存设置并确认参与范围，最多四城。
 6. 手动选择规划项目；如需判断城市定位，可先运行“高加成专业区域分析”，再点击“预览规划”。
 7. 检查规划报告后确认放置。
 
 ## 规划模型
 
-本模组当前只优化所选城市。附近城市的已有区域和玩家地图钉可以作为固定相邻环境参与评分，但不会联合求解多座城市。
+单城模式优化所选城市；四城联动（测试）模式联合求解玩家确认的城市群，最多四城。已有区域和玩家地图钉可以作为固定条件参与规划。
 
 专业区域槽位越靠前，优先级越高。规划人口决定可用专业区域名额，并用于估算合理的改良设施数量。改良设施预算约为规划人口的 80%，至少 1 格、最多 12 格；已有改良会占用预算。
 
